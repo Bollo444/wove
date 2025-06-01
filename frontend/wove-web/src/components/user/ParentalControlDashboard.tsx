@@ -132,6 +132,33 @@ const ParentalControlDashboard: React.FC = () => {
                     Manage Settings
                   </button>
                 </div>
+                {/* Story Creations Subsection Placeholder */}
+                <div className="mt-4 pt-3 border-t border-gray-200">
+                  <h4 className="text-md font-medium text-gray-700">Recent Stories:</h4>
+                  {/* Example with stories */}
+                  <ul className="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                    <li>
+                      The Magical Treehouse (In Progress) -{' '}
+                      <a href="#" className="text-purple-600 hover:underline">
+                        View
+                      </a>
+                    </li>
+                    <li>
+                      Adventures in Space (Pending Approval) -{' '}
+                      <a href="#" className="text-purple-600 hover:underline">
+                        Review
+                      </a>
+                    </li>
+                    <li>
+                      My First Story (Completed) -{' '}
+                      <a href="#" className="text-purple-600 hover:underline">
+                        Read
+                      </a>
+                    </li>
+                  </ul>
+                  {/* Example for no stories - uncomment if needed and remove/conditionalize the list above */}
+                  {/* <p className="text-sm text-gray-600 mt-1">No stories created yet.</p> */}
+                </div>
               </div>
             ))}
           </div>

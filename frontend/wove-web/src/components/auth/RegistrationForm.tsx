@@ -7,6 +7,7 @@ const RegistrationForm: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -31,14 +32,13 @@ const RegistrationForm: React.FC = () => {
     }
     
     try {
-      // Create username from first and last name for now
-      const username = `${formData.firstName}${formData.lastName}`.toLowerCase().replace(/\s+/g, '');
-      
       await register({
         email: formData.email,
         password: formData.password,
-        username: username,
+        username: formData.username, // Use formData.username
         ageTier: formData.claimedAgeTier,
+        dateOfBirth: formData.dateOfBirth,
+        parentEmail: formData.parentEmail,
       });
     } catch (err: any) {
       setError(err.message || 'Failed to register. Please try again.');
@@ -88,6 +88,22 @@ const RegistrationForm: React.FC = () => {
               disabled={isLoading}
             />
           </div>
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+            Username
+          </label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+            className="input-field"
+            disabled={isLoading}
+          />
         </div>
 
         <div className="mb-4">
@@ -207,6 +223,17 @@ const RegistrationForm: React.FC = () => {
         <Link href="/login" legacyBehavior>
           <a className="font-medium text-purple-600 hover:text-purple-500">Log in</a>
         </Link>
+      </p>
+      <p className="mt-4 text-center text-xs text-gray-500">
+        By creating an account, you agree to our{' '}
+        <Link href="/terms" legacyBehavior>
+          <a className="font-medium text-purple-600 hover:text-purple-500">Terms of Service</a>
+        </Link>{' '}
+        and{' '}
+        <Link href="/privacy" legacyBehavior>
+          <a className="font-medium text-purple-600 hover:text-purple-500">Privacy Policy</a>
+        </Link>
+        .
       </p>
     </div>
   );

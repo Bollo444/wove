@@ -10,6 +10,7 @@ interface User {
   ageTier: string;
   isEmailVerified: boolean;
   isAgeVerified: boolean;
+  role: string; // Added role property
 }
 
 interface AuthContextType {
@@ -26,6 +27,8 @@ interface RegisterData {
   password: string;
   username: string;
   ageTier: string;
+  dateOfBirth: string;
+  parentEmail?: string;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
