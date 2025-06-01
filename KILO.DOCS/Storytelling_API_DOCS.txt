@@ -1,0 +1,348 @@
+---
+
+# Interactive Storytelling Platform - API Documentation (Overview)
+
+**Version:** 1.0.0
+**Base URL (Production):** `https://api.storyplatform.com/v1`
+**Base URL (Development):** `http://localhost:3000/v1` (Example)
+
+**Authentication:** All protected endpoints require a JSON Web Token (JWT) passed in the `Authorization` header as a Bearer token.
+`Authorization: Bearer <YOUR_JWT_TOKEN>`
+
+**Content-Type:** `application/json` for request and response bodies.
+
+## General Principles
+
+*   **Age-Tiering:** Many responses and resource availability will be filtered/adapted based on the authenticated user's verified age tier. This is often handled server-side.
+*   **Asynchronous Operations:** Operations like AI media generation or digital book creation are often asynchronous. The API will typically return an immediate acknowledgment (e.g., `202 Accepted`) with a task ID or a resource URL that will be populated later. Clients may need to poll or listen for WebSocket events for completion.
+*   **Error Handling:** Standard HTTP status codes are used. Error responses will generally follow this format:
+    ```json
+    {
+      "statusCode": 400,
+      "message": "Validation failed or specific error message.",
+      "errors": [ // Optional: array of specific field errors
+        { "field": "fieldName", "message": "Error detail" }
+      ]
+    }
+    ```
+
+## 1. Authentication & Age Verification (`/auth`)
+
+### `POST /auth/register`
+*   **Description:** Registers a new user.
+*   **Request Body:**
+    ```json
+    {
+      "email": "user@example.com",
+      "password": "securePassword123",
+      "dateOfBirth": "YYYY-MM-DD", // Used for initial age tier guess
+      "parentEmail": "parent@example.com" // Optional, required for <13
+    }
+    ```
+*   **Response (201 Created):**
+    ```json
+    {
+      "userId": "uuid",
+      "email": "user@example.com",
+      "ageTierStatus": "pending_verification" // or "kids_pending_parental_consent"
+    }
+    ```
+*   **Authentication:** None
+
+### `POST /auth/login`
+*   **Description:** Logs in an existing user.
+*   **Request Body:**
+    ```json
+    {
+      "email": "user@example.com",
+      "password": "securePassword123"
+    }
+    ```
+*   **Response (200 OK):**
+    ```json
+    {
+      "accessToken": "your_jwt_token",
+      "user": {
+        "userId": "uuid",
+        "email": "user@example.com",
+        "verifiedAgeTier": "teens" // or "kids", "adults", "unverified"
+      }
+    }
+    ```
+*   **Authentication:** None
+
+### `POST /auth/verify-age`
+*   **Description:** Submits information for age verification (e.g., ID document details for adults, or triggers parental consent flow).
+*   **Request Body:** Depends on verification method. Could be a redirect URL to a 3rd party, or form data.
+    ```json
+    {
+      "method": "id_upload", // "parental_consent_email", "google_sso"
+      "verificationData": { /* ... specific to method ... */ }
+    }
+    ```
+*   **Response (202 Accepted or 200 OK):** Status of verification initiation.
+*   **Authentication:** Required
+
+### `GET /auth/me`
+*   **Description:** Retrieves the currently authenticated user's profile.
+*   **Response (200 OK):**
+    ```json
+    {
+      "userId": "uuid",
+      "email": "user@example.com",
+      "username": "StoryTeller21",
+      "verifiedAgeTier": "teens",
+      "preferences": { /* ... */ },
+      "parentalControls": { /* If applicable */ }
+    }
+    ```
+*   **Authentication:** Required
+
+## 2. Users (`/users`)
+
+### `PUT /users/me`
+*   **Description:** Updates the authenticated user's profile (e.g., username, preferences).
+*   **Request Body:** Subset of user profile fields.
+*   **Response (200 OK):** Updated user profile.
+*   **Authentication:** Required
+
+### `PUT /users/me/parental-controls`
+*   **Description:** (For parent accounts) Updates parental control settings for a linked child account.
+*   **Request Body:** Parental control settings object.
+*   **Response (200 OK):** Updated settings.
+*   **Authentication:** Required (as parent)
+
+## 3. Story Library & Initiation (`/stories`)
+
+### `GET /stories/premises`
+*   **Description:** Retrieves a list of AI-generated story premises suitable for the user's age tier.
+*   **Query Parameters:** `genre`, `theme`, `ageTier` (admin override), `limit`, `offset`.
+*   **Response (200 OK):**
+    ```json
+    {
+      "premises": [
+        {
+          "premiseId": "uuid",
+          "title": "The Lost Dragon's Amulet",
+          "description": "A young adventurer...",
+          "coverArtUrl": "https://cdn.storyplatform.com/covers/dragon.jpg",
+          "genre": "Fantasy",
+          "ageTier": "kids",
+          "openingMusicThemePreviewUrl": "..."
+        }
+      ],
+      "total": 100
+    }
+    ```
+*   **Authentication:** Required (to determine age-appropriate content)
+
+### `POST /stories`
+*   **Description:** Creates a new story from a selected premise or custom input.
+*   **Request Body:**
+    ```json
+    {
+      "premiseId": "uuid", // Optional, if starting from a premise
+      "customTitle": "My Unique Adventure", // Optional, if not using premise title
+      "customPremise": "A story about...", // Optional
+      "collaborationMode": "solo_ai", // "solo_user_only", "multi_user_ai", "multi_user_only"
+      "endingPreference": "user_controlled", // "random", "ai_controlled"
+      "initialStyle": "whimsical", // Tone/style
+      "ageTierSetting": "teens" // User's desired setting, validated against their verified tier
+    }
+    ```
+*   **Response (201 Created):**
+    ```json
+    {
+      "storyId": "uuid",
+      "title": "My Unique Adventure",
+      "status": "in_progress",
+      // ... other story details and initial scene/segment
+      "initialScene": {
+          "segmentId": "uuid_segment",
+          "content": "The story begins...",
+          "imageUrl": "...", // Initial image
+          "audioThemeUrl": "..."
+      },
+      "websocketJoinToken": "join_token_for_realtime_session" // If applicable
+    }
+    ```
+*   **Authentication:** Required
+
+### `GET /stories`
+*   **Description:** Lists stories the user is involved in (created, collaborating, bookmarked).
+*   **Query Parameters:** `status` (in_progress, completed), `role` (author, collaborator), `bookmarked`, `limit`, `offset`.
+*   **Response (200 OK):** Array of story objects.
+*   **Authentication:** Required
+
+### `GET /stories/{storyId}`
+*   **Description:** Retrieves details of a specific story, including its segments.
+*   **Response (200 OK):**
+    ```json
+    {
+      "storyId": "uuid",
+      "title": "...",
+      "status": "in_progress",
+      "ageTier": "teens",
+      "collaborators": [{ "userId": "uuid", "username": "...", "role": "author" }],
+      "segments": [
+        {
+          "segmentId": "uuid",
+          "authorType": "user", // "ai"
+          "userId": "uuid_user", // if authorType is user
+          "content": "User wrote this part.",
+          "timestamp": "iso_date_time",
+          "imageUrl": "...",
+          "videoClipUrl": "...",
+          "audioEffectUrl": "...",
+          "visualEffects": { /* ... */ }
+        }
+        // ... more segments
+      ],
+      "dynamicSoundtrackState": { /* ... */ },
+      "contextualVisualEffectsState": { /* ... */ }
+    }
+    ```
+*   **Authentication:** Required (user must have access to the story)
+
+## 4. Interactive Storytelling (Primarily WebSocket-driven)
+
+While initial story load and history might use REST (`GET /stories/{storyId}/segments`), the turn-by-turn interaction is via WebSockets.
+
+**WebSocket Endpoint:** `wss://api.storyplatform.com/v1/story-socket` (or similar)
+*   Connection requires authentication (e.g., passing JWT in handshake or an initial auth message).
+
+### WebSocket Events: Client -> Server
+
+*   **`joinStory`**
+    *   **Payload:** `{ "storyId": "uuid", "joinToken": "from_story_creation_or_invite" }`
+    *   **Action:** Client joins a specific story's real-time session/room.
+*   **`submitTurn`**
+    *   **Payload:** `{ "storyId": "uuid", "userInput": "The hero decided to...", "applyAutoFix": true/false }`
+    *   **Action:** User submits their contribution. Backend processes, calls AI if needed, generates multimedia, etc.
+*   **`sendChatMessage`**
+    *   **Payload:** `{ "storyId": "uuid", "message": "Great idea!" }`
+    *   **Action:** Sends a message to the collaboration chat sidebar.
+*   **`typingActivity`**
+    *   **Payload:** `{ "storyId": "uuid", "isTyping": true/false }`
+    *   **Action:** Informs others if the user is typing.
+*   **`requestStoryConclusion`**
+    *   **Payload:** `{ "storyId": "uuid", "reason": "user_decision" }`
+    *   **Action:** Initiates process to end the story. For collaborative stories, this might trigger a vote.
+
+### WebSocket Events: Server -> Client
+
+*   **`storyUpdated`**
+    *   **Payload:** `{ "storyId": "uuid", "newSegment": { ... segment_object ... }, "updatedSoundtrack": { ... }, "updatedVisualEffects": { ... } }`
+    *   **Action:** A new segment (user or AI) has been added, or multimedia is ready.
+*   **`userJoined` / `userLeft`**
+    *   **Payload:** `{ "storyId": "uuid", "user": { "userId": "uuid", "username": "..." } }`
+    *   **Action:** Notifies clients of participant changes.
+*   **`turnChanged`**
+    *   **Payload:** `{ "storyId": "uuid", "currentTurnUserId": "uuid_user_or_ai" }`
+    *   **Action:** Indicates whose turn it is.
+*   **`chatMessageReceived`**
+    *   **Payload:** `{ "storyId": "uuid", "sender": { "userId": "uuid", "username": "..." }, "message": "...", "timestamp": "..." }`
+    *   **Action:** New chat message.
+*   **`typingActivityUpdate`**
+    *   **Payload:** `{ "storyId": "uuid", "user": { "userId": "uuid", "username": "..." }, "isTyping": true/false }`
+    *   **Action:** Typing status update for a user.
+*   **`storyConcluded`**
+    *   **Payload:** `{ "storyId": "uuid", "finalSegment": { ... }, "reason": "..." }`
+    *   **Action:** The story has officially ended.
+*   **`mediaReady`**
+    *   **Payload:** `{ "storyId": "uuid", "segmentId": "uuid", "mediaType": "image" / "video", "url": "..." }`
+    *   **Action:** Notifies that a requested asynchronous media generation is complete.
+*   **`errorOccurred`**
+    *   **Payload:** `{ "message": "...", "details": "..." }`
+    *   **Action:** General error notification for WebSocket interactions.
+
+## 5. Multimedia & Enhancements (Mostly triggered by backend, URLs provided)
+
+Generally, the client doesn't directly request generation of individual media items via REST after story start. This is orchestrated by the backend during story progression.
+
+### `POST /stories/{storyId}/segments/enhance-input` (Input Enhancement "Auto-Fix" Preview)
+*   **Description:** (Optional) If Auto-Fix needs a server roundtrip for preview before submission.
+*   **Request Body:** `{ "rawInput": "user text to fix", "storyContext": "previous paragraph..." }`
+*   **Response (200 OK):** `{ "enhancedInput": "User text, but fixed." }`
+*   **Authentication:** Required
+
+### `GET /stories/{storyId}/gallery`
+*   **Description:** Retrieves a list of all generated visual media (images, video clips) for a story.
+*   **Response (200 OK):**
+    ```json
+    {
+      "mediaAssets": [
+        { "assetId": "uuid", "type": "image", "url": "...", "segmentId": "uuid", "timestamp": "..." },
+        { "assetId": "uuid", "type": "video", "url": "...", "segmentId": "uuid", "timestamp": "..." }
+      ]
+    }
+    ```
+*   **Authentication:** Required
+
+## 6. Interactive Digital Book (`/books`)
+
+### `POST /stories/{storyId}/book`
+*   **Description:** Initiates the creation of an interactive digital book for a completed story. (Asynchronous)
+*   **Response (202 Accepted):**
+    ```json
+    {
+      "storyId": "uuid",
+      "bookCreationStatus": "pending",
+      "message": "Book creation initiated. You will be notified upon completion."
+    }
+    ```
+*   **Authentication:** Required
+
+### `GET /stories/{storyId}/book`
+*   **Description:** Retrieves the status and URL of the interactive digital book for a story.
+*   **Response (200 OK):**
+    ```json
+    {
+      "storyId": "uuid",
+      "bookId": "uuid_book", // If created
+      "status": "completed", // "pending", "failed"
+      "bookUrl": "https://cdn.storyplatform.com/books/uuid_book/index.html", // If completed
+      "coverArtUrl": "...",
+      "title": "..."
+    }
+    ```
+*   **Authentication:** Required
+
+### `GET /books`
+*   **Description:** Lists all digital books created by or shared with the user.
+*   **Response (200 OK):** Array of book objects (similar to `GET /stories/{storyId}/book` response).
+*   **Authentication:** Required
+
+## 7. Collaboration Management (Endpoints for story setup, WebSocket for live)
+
+### `POST /stories/{storyId}/collaborators`
+*   **Description:** Invites a user to collaborate on a story.
+*   **Request Body:** `{ "emailOrUsername": "invited_user", "role": "editor" }`
+*   **Response (200 OK):** Confirmation.
+*   **Authentication:** Required (User must be an author/owner of the story)
+
+### `DELETE /stories/{storyId}/collaborators/{userId}`
+*   **Description:** Removes a collaborator from a story.
+*   **Response (204 No Content):**
+*   **Authentication:** Required (User must be an author/owner)
+
+## 8. Content Reporting (`/reports`)
+
+### `POST /reports/content`
+*   **Description:** Allows users to report inappropriate content.
+*   **Request Body:**
+    ```json
+    {
+      "contentType": "story_segment" / "chat_message" / "generated_image",
+      "contentId": "uuid_of_the_content",
+      "storyId": "uuid_optional",
+      "reason": "User's explanation for the report",
+      "reportedByUserId": "uuid_current_user"
+    }
+    ```
+*   **Response (202 Accepted):** Report received.
+*   **Authentication:** Required
+
+---
+
+This API documentation provides a foundational structure. Many more specific endpoints for managing preferences, notifications, admin functions, and detailed error codes would be needed for a complete system. The complexity also lies in the rich data models for story segments, visual effects, and dynamic soundtracks, which are often nested within the responses above.

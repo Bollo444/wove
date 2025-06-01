@@ -1,0 +1,341 @@
+/* Age-Appropriate Theme Styles for Wove */
+
+/* Base theme variables are injected by ThemeProvider */
+
+/* Kids Theme Specific Styles */
+.theme-kids {
+  /* Enhanced animations and playful elements */
+}
+
+.theme-kids .btn {
+  border-radius: var(--border-radius-xl);
+  font-weight: 600;
+  text-transform: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.theme-kids .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.theme-kids .card {
+  border-radius: var(--border-radius-xl);
+  border: 2px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.theme-kids .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.theme-kids .story-card {
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
+}
+
+.theme-kids .input {
+  border-radius: var(--border-radius-lg);
+  border: 2px solid var(--color-border);
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-md);
+}
+
+.theme-kids .input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.theme-kids .header {
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border-radius: 0 0 var(--border-radius-xl) var(--border-radius-xl);
+}
+
+.theme-kids .navigation {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.theme-kids .story-text {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+}
+
+/* Teens Theme Specific Styles */
+.theme-teens {
+  /* Modern, trendy styling */
+}
+
+.theme-teens .btn {
+  border-radius: var(--border-radius-lg);
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border: none;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.theme-teens .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.1);
+}
+
+.theme-teens .card {
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.theme-teens .story-card {
+  background: linear-gradient(135deg, var(--color-surface) 0%, rgba(102, 126, 234, 0.05) 100%);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.theme-teens .input {
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.theme-teens .input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.theme-teens .header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  backdrop-filter: blur(10px);
+}
+
+.theme-teens .navigation {
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.theme-teens .story-text {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+/* Adults Theme Specific Styles */
+.theme-adults {
+  /* Professional, clean styling */
+}
+
+.theme-adults .btn {
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: white;
+  transition: all 0.15s ease;
+}
+
+.theme-adults .btn:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.theme-adults .btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.theme-adults .btn-outline:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.theme-adults .card {
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-adults .card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.theme-adults .story-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.theme-adults .input {
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.theme-adults .input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.theme-adults .header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.theme-adults .navigation {
+  font-weight: 400;
+}
+
+.theme-adults .story-text {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+}
+
+/* Unverified/Default Theme Specific Styles */
+.theme-unverified {
+  /* Neutral, accessible styling */
+}
+
+.theme-unverified .btn {
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: white;
+  transition: all 0.15s ease;
+}
+
+.theme-unverified .btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.theme-unverified .card {
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.theme-unverified .story-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.theme-unverified .input {
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.theme-unverified .input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.theme-unverified .header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.theme-unverified .story-text {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+/* Common utility classes that adapt to themes */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-accent {
+  color: var(--color-text-accent);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+.border-default {
+  border-color: var(--color-border);
+}
+
+/* Responsive font scaling */
+@media (max-width: 768px) {
+  .theme-kids .story-text {
+    font-size: var(--font-size-base);
+  }
+  
+  .theme-kids .navigation {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .theme-kids .btn:hover,
+  .theme-kids .card:hover,
+  .theme-teens .btn:hover {
+    transform: none;
+  }
+  
+  .theme-kids .btn,
+  .theme-kids .card,
+  .theme-teens .btn,
+  .theme-teens .input,
+  .theme-adults .btn,
+  .theme-unverified .btn {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .theme-kids .card,
+  .theme-teens .card,
+  .theme-adults .card,
+  .theme-unverified .card {
+    border-width: 2px;
+  }
+  
+  .theme-kids .input,
+  .theme-teens .input,
+  .theme-adults .input,
+  .theme-unverified .input {
+    border-width: 2px;
+  }
+}
