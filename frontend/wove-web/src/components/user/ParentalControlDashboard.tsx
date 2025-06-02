@@ -1,100 +1,133 @@
 import React, { useState, useEffect } from 'react';
-// import { useAuth } from '../../contexts/AuthContext'; // Placeholder
-// import { User } from '@shared/types/user'; // Assuming shared User type
-// import { AgeTier } from '@shared/types/age-tier'; // Assuming shared AgeTier type
-
-// Dummy data for placeholder
-const dummyChildAccounts = [
-  {
-    id: 'child1',
-    displayName: 'Kiddo1',
-    ageTier: 'KIDS',
-    lastActivity: '2 hours ago',
-    timeSpentToday: '45min / 2hr limit',
-    contentRestrictions: ['violence', 'mature_themes'],
-  },
-  {
-    id: 'child2',
-    displayName: 'Teenager2',
-    ageTier: 'TEENS_U16',
-    lastActivity: '30 mins ago',
-    timeSpentToday: '1hr 15min / 3hr limit',
-    contentRestrictions: ['mature_themes'],
-  },
-];
-
-const dummyPendingRequests = [
-  {
-    id: 'req1',
-    childName: 'Kiddo1',
-    requestType: 'Story Publishing',
-    details: 'Request to publish "Adventures in Space"',
-    requestedAt: new Date(Date.now() - 3600000).toLocaleString(),
-  },
-  {
-    id: 'req2',
-    childName: 'Teenager2',
-    requestType: 'Collaboration Invite',
-    details: 'Request to collaborate on "Mystery Island" with UserX',
-    requestedAt: new Date(Date.now() - 7200000).toLocaleString(),
-  },
-];
+import { useAuth, User, ChildAccount, ChildSettings, PendingRequest } from '../../contexts/AuthContext';
+import { AgeTier } from '@shared/types/age-tier'; // Still useful for AgeTier.KIDS etc.
 
 const ParentalControlDashboard: React.FC = () => {
-  // const { user, fetchChildAccounts, fetchPendingRequests, updateChildSettings } = useAuth(); // Placeholder
-  const [childAccounts, setChildAccounts] = useState(dummyChildAccounts);
-  const [pendingRequests, setPendingRequests] = useState(dummyPendingRequests);
-  const [isLoading, setIsLoading] = useState(false);
+  const { user, fetchChildAccounts, fetchPendingRequests, updateChildSettings } = useAuth();
+  
+  const [childAccounts, setChildAccounts] = useState<ChildAccount[]>([]);
+  const [pendingRequests, setPendingRequests] = useState<PendingRequest[]>([]);
+  const [isLoading, setIsLoading] = useState(true); // Start with loading true
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     setIsLoading(true);
-  //     Promise.all([
-  //       fetchChildAccounts(user.id),
-  //       fetchPendingRequests(user.id)
-  //     ]).then(([children, requests]) => {
-  //       setChildAccounts(children);
-  //       setPendingRequests(requests);
-  //     }).catch(err => {
-  //       setError(err.message || 'Failed to load dashboard data.');
-  //     }).finally(() => {
-  //       setIsLoading(false);
-  //     });
-  //   }
-  // }, [user, fetchChildAccounts, fetchPendingRequests]);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
+  const [editingChild, setEditingChild] = useState<ChildAccount | null>(null);
+  const [currentChildSettings, setCurrentChildSettings] = useState<Partial<ChildSettings>>({});
+
+  useEffect(() => {
+    if (user && user.role === 'parent') { // Check for parent role
+      setIsLoading(true);
+      Promise.all([
+        fetchChildAccounts(), // Removed user.id, context function should know parent
+        fetchPendingRequests()  // Removed user.id
+      ]).then(([children, requests]) => {
+        setChildAccounts(children);
+        setPendingRequests(requests);
+        setError(null); // Clear any previous errors
+      }).catch(err => {
+        console.error("Error fetching dashboard data:", err);
+        setError(err.message || 'Failed to load dashboard data.');
+      }).finally(() => {
+        setIsLoading(false);
+      });
+    } else if (user) { // User is logged in but not a parent
+      setIsLoading(false);
+      setError("You do not have permission to view this page.");
+    } else { // No user logged in
+        setIsLoading(false);
+        // setError("Please log in to view this page."); // Or redirect, handled by page typically
+    }
+  }, [user, fetchChildAccounts, fetchPendingRequests]);
+
+  const openSettingsModal = (child: ChildAccount) => {
+    setEditingChild(child);
+    // Ensure currentSettings is not undefined before spreading
+    setCurrentChildSettings(child.currentSettings || {}); 
+    setShowSettingsModal(true);
+  };
+
+  const closeSettingsModal = () => {
+    setEditingChild(null);
+    setShowSettingsModal(false);
+  };
+
+  const handleSettingChange = (settingKey: keyof ChildSettings, value: any) => {
+    setCurrentChildSettings(prev => ({ ...prev, [settingKey]: value }));
+  };
+
+  const handleTimeLimitChange = (value: string) => {
+    setCurrentChildSettings(prev => ({
+      ...prev,
+      timeLimits: { ...(prev.timeLimits || { dailyMinutes: 0 }), dailyMinutes: parseInt(value,10) || 0 }
+    }));
+  };
+
+  const handleContentRestrictionToggle = (restriction: string) => {
+    setCurrentChildSettings(prev => {
+      const currentRestrictions = prev.contentRestrictions || [];
+      const newRestrictions = currentRestrictions.includes(restriction)
+        ? currentRestrictions.filter(r => r !== restriction)
+        : [...currentRestrictions, restriction];
+      return { ...prev, contentRestrictions: newRestrictions };
+    });
+  };
+
 
   const handleApproveRequest = (requestId: string) => {
     console.log(`Approving request ${requestId} (placeholder)`);
     // API call to approve request
     setPendingRequests(prev => prev.filter(req => req.id !== requestId));
-    alert('Request approval functionality not yet implemented.');
+    // alert('Request approval functionality not yet implemented.');
   };
 
   const handleDenyRequest = (requestId: string) => {
     console.log(`Denying request ${requestId} (placeholder)`);
     // API call to deny request
     setPendingRequests(prev => prev.filter(req => req.id !== requestId));
-    alert('Request denial functionality not yet implemented.');
+    // alert('Request denial functionality not yet implemented.');
   };
 
-  const handleUpdateChildSettings = (childId: string, settings: any) => {
-    console.log(`Updating settings for child ${childId}:`, settings, '(placeholder)');
-    // API call to update settings
-    alert('Child settings update functionality not yet implemented.');
+  const handleSaveChildSettings = () => {
+    if (!editingChild) return;
+    console.log(`Saving settings for child ${editingChild.id}:`, currentChildSettings);
+    
+    updateChildSettings(editingChild.id, currentChildSettings as ChildSettings)
+      .then(() => {
+        // Optimistically update local state or re-fetch
+        setChildAccounts(prev =>
+          prev.map(child =>
+            child.id === editingChild!.id
+              ? { ...child, currentSettings: currentChildSettings as ChildSettings }
+              : child,
+          ),
+        );
+        closeSettingsModal();
+      })
+      .catch(err => {
+        console.error("Error updating child settings:", err);
+        // Display error to user in modal or dashboard
+        setError("Failed to update settings. Please try again.");
+      });
   };
 
+  if (!user) {
+     // Handled by page or layout, or show login prompt
+    return <div className="text-center p-8">Please log in to access this page.</div>;
+  }
+  
   if (isLoading) {
     return <div className="text-center p-8">Loading dashboard...</div>;
   }
 
-  if (error) {
+  if (error) { // This will now catch "No permission" error as well
     return <div className="text-center p-8 text-red-500">Error: {error}</div>;
   }
+  
+  // Additional check specifically for role if error is more generic
+  if (user.role !== 'parent') {
+    return <div className="text-center p-8 text-orange-500">You do not have permission to view this page.</div>;
+  }
 
-  // if (!user) {
-  //   return <div className="text-center p-8">Please log in to view the parental control dashboard.</div>;
-  // }
 
   return (
     <div className="space-y-8">
@@ -118,15 +151,17 @@ const ParentalControlDashboard: React.FC = () => {
                 <p className="text-sm text-gray-500">Last Activity: {child.lastActivity}</p>
                 <p className="text-sm text-gray-500">Time Spent Today: {child.timeSpentToday}</p>
                 <p className="text-sm text-gray-500">
-                  Content Restrictions: {child.contentRestrictions.join(', ') || 'None'}
+                  Content Restrictions: {(child.currentSettings?.contentRestrictions || []).join(', ') || 'None'}
+                </p>
+                 <p className="text-sm text-gray-500">
+                  Collaboration: {child.currentSettings?.collaborationPermissions || 'N/A'}
+                </p>
+                <p className="text-sm text-gray-500">
+                  Story Publishing: {child.currentSettings?.storyPublishingAllowed ? 'Allowed' : 'Disallowed'}
                 </p>
                 <div className="mt-2">
                   <button
-                    onClick={() =>
-                      handleUpdateChildSettings(child.id, {
-                        /* new settings */
-                      })
-                    }
+                    onClick={() => openSettingsModal(child)}
                     className="text-xs bg-purple-100 text-purple-700 hover:bg-purple-200 px-3 py-1 rounded-full"
                   >
                     Manage Settings
@@ -179,9 +214,98 @@ const ParentalControlDashboard: React.FC = () => {
           </div>
         )}
       </section>
+
+      {/* Settings Modal */}
+      {showSettingsModal && editingChild && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center">
+          <div className="relative p-8 bg-white w-full max-w-2xl mx-auto rounded-lg shadow-xl">
+            <h3 className="text-xl font-semibold text-gray-800 mb-6">
+              Manage Settings for {editingChild.displayName}
+            </h3>
+            
+            {/* Time Limits */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Daily Time Limit (minutes)</label>
+              <input
+                type="number"
+                value={currentChildSettings.timeLimits?.dailyMinutes || 0}
+                onChange={e => handleTimeLimitChange(e.target.value)}
+                className="input-field w-full"
+              />
+            </div>
+
+            {/* Content Restrictions - Example: Checkboxes */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Content Restrictions</label>
+              {['violence', 'mature_themes', 'horror', 'strong_language'].map(restriction => (
+                <div key={restriction} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id={`restriction-${restriction}`}
+                    checked={(currentChildSettings.contentRestrictions || []).includes(restriction)}
+                    onChange={() => handleContentRestrictionToggle(restriction)}
+                    className="h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+                  />
+                  <label htmlFor={`restriction-${restriction}`} className="ml-2 text-sm text-gray-700">
+                    {restriction.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                  </label>
+                </div>
+              ))}
+            </div>
+
+            {/* Collaboration Permissions */}
+            <div className="mb-4">
+              <label htmlFor="collaborationPermissions" className="block text-sm font-medium text-gray-700 mb-1">
+                Collaboration Permissions
+              </label>
+              <select
+                id="collaborationPermissions"
+                value={currentChildSettings.collaborationPermissions || 'blocked'}
+                onChange={e => handleSettingChange('collaborationPermissions', e.target.value)}
+                className="input-field w-full"
+              >
+                <option value="blocked">Blocked</option>
+                <option value="supervised">Supervised</option>
+                <option value="friends_only">Friends Only</option>
+                <option value="allowed">Allowed</option>
+              </select>
+            </div>
+
+            {/* Story Publishing */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Story Publishing</label>
+              <div className="flex items-center">
+                 <input
+                    type="checkbox"
+                    id="storyPublishingAllowed"
+                    checked={currentChildSettings.storyPublishingAllowed || false}
+                    onChange={e => handleSettingChange('storyPublishingAllowed', e.target.checked)}
+                    className="h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+                  />
+                <label htmlFor="storyPublishingAllowed" className="ml-2 text-sm text-gray-700">
+                  Allow child to publish stories
+                </label>
+              </div>
+            </div>
+            
+            <div className="flex justify-end space-x-3">
+              <button onClick={closeSettingsModal} className="btn-secondary">Cancel</button>
+              <button onClick={handleSaveChildSettings} className="btn-primary">Save Changes</button>
+            </div>
+            <button
+                onClick={closeSettingsModal}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
+// .input-field { @apply mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm; }
+// .btn-primary { @apply px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50; }
 // .btn-secondary {
 //   @apply px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500;
 // }

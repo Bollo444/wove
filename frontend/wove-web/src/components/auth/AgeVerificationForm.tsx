@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-// import { useAuth } from '../../contexts/AuthContext'; // Placeholder
-// import { AgeVerificationRequestDto } from '@shared/types/verification'; // Assuming shared DTO
+import { useAuth } from '../../contexts/AuthContext'; // Placeholder, will be properly defined later
+// import { AgeVerificationRequestDto } from '@shared/types/verification'; // Removed as it does not exist
 
 const AgeVerificationForm: React.FC = () => {
-  const [verificationType, setVerificationType] = useState<'id' | 'google' | 'parent_consent'>(
+  const [verificationType, setVerificationType] = useState<'id_upload' | 'google_sso' | 'parental_consent_email'>(
     'id',
   );
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  // const { submitAgeVerification, triggerGoogleAgeVerification } = useAuth(); // Placeholder
+  const { submitAgeVerification } = useAuth(); // Assuming a generic function in AuthContext
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -18,43 +18,71 @@ const AgeVerificationForm: React.FC = () => {
     }
   };
 
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     setSuccessMessage(null);
-
-    if (verificationType === 'id' && !file) {
-      setError('Please select a file for ID verification.');
-      return;
-    }
-
     setIsLoading(true);
-    // Placeholder for submission logic
-    console.log('Submitting age verification:', { verificationType, file });
-    // try {
-    //   if (verificationType === 'id' && file) {
-    //     const formData = new FormData();
-    //     formData.append('document', file);
-    //     formData.append('verificationMethod', 'id_document');
-    //     // await submitAgeVerification(formData); // This would be an API call
-    //     setSuccessMessage('ID document submitted for verification.');
-    //   } else if (verificationType === 'google') {
-    //     // await triggerGoogleAgeVerification(); // This would redirect to Google OAuth
-    //     setSuccessMessage('Redirecting to Google for age verification...');
-    //   } else if (verificationType === 'parent_consent') {
-    //     // This flow might be different, e.g., initiated by parent
-    //     setSuccessMessage('Parental consent flow initiated (placeholder).');
-    //   }
-    // } catch (err: any) {
-    //   setError(err.message || 'Age verification submission failed.');
-    // } finally {
-    //   setIsLoading(false);
-    // }
-    setTimeout(() => {
-      // Simulate API call
+
+    try {
+      let payload: { method: string; verificationData: any } = {
+        method: verificationType,
+        verificationData: {},
+      };
+
+      if (verificationType === 'id_upload') {
+        if (!file) {
+          setError('Please select a file for ID verification.');
+          setIsLoading(false);
+          return;
+        }
+        try {
+          const base64String = await fileToBase64(file);
+          payload.verificationData = {
+            document: base64String, // Base64 encoded file
+            fileName: file.name,
+            fileType: file.type,
+          };
+          await submitAgeVerification(payload.method, payload.verificationData);
+          setSuccessMessage('ID document submitted for verification. You will be notified once reviewed.');
+        } catch (conversionError) {
+          console.error('Error converting file to Base64:', conversionError);
+          setError('Failed to process ID document. Please try again.');
+          setIsLoading(false);
+          return;
+        }
+
+      } else if (verificationType === 'google_sso') {
+        // Client might just inform the backend to initiate, or redirect.
+        // AuthContext's submitAgeVerification would handle the specifics.
+        // Example: payload.verificationData could include a redirect_uri if needed by backend.
+        await submitAgeVerification(payload.method, payload.verificationData);
+        setSuccessMessage('Redirecting to Google for age verification... Follow the prompts.');
+        // Actual redirection would likely happen within the AuthContext function
+
+      } else if (verificationType === 'parental_consent_email') {
+        // This might require collecting a parent's email if not already on file,
+        // or simply be a trigger if the user is a child awaiting consent.
+        // For this example, let's assume it's a trigger. AuthContext might need user's details.
+        // payload.verificationData could contain childUserId or similar if an admin/parent is triggering this.
+        // If the user themselves are re-requesting, it might be simpler.
+        await submitAgeVerification(payload.method, payload.verificationData);
+        setSuccessMessage('Parental consent request processed. Please check the parent/guardian email for further steps.');
+      }
+    } catch (err: any) {
+      setError(err.message || 'Age verification submission failed.');
+    } finally {
       setIsLoading(false);
-      setError('Age verification functionality not yet implemented.');
-    }, 1000);
+    }
   };
 
   return (
@@ -73,17 +101,17 @@ const AgeVerificationForm: React.FC = () => {
           </label>
           <select
             value={verificationType}
-            onChange={e => setVerificationType(e.target.value as any)}
+            onChange={e => setVerificationType(e.target.value as 'id_upload' | 'google_sso' | 'parental_consent_email')}
             className="input-field"
             disabled={isLoading}
           >
-            <option value="id">Upload ID Document</option>
-            <option value="google">Verify with Google</option>
-            <option value="parent_consent">Request Parental Consent (if applicable)</option>
+            <option value="id_upload">Upload ID Document</option>
+            <option value="google_sso">Verify with Google</option>
+            <option value="parental_consent_email">Request Parental Consent (if applicable)</option>
           </select>
         </div>
 
-        {verificationType === 'id' && (
+        {verificationType === 'id_upload' && (
           <div className="mb-4">
             <label htmlFor="idDocument" className="block text-sm font-medium text-gray-700 mb-1">
               ID Document (e.g., Driver's License, Passport)
@@ -107,14 +135,14 @@ const AgeVerificationForm: React.FC = () => {
           </div>
         )}
 
-        {verificationType === 'google' && (
+        {verificationType === 'google_sso' && (
           <p className="text-sm text-gray-600 mb-4">
             You will be redirected to Google to verify your age using your Google account
             information.
           </p>
         )}
 
-        {verificationType === 'parent_consent' && (
+        {verificationType === 'parental_consent_email' && (
           <p className="text-sm text-gray-600 mb-4">
             This option is typically used if you are under a certain age and require a parent or
             guardian to consent. Further instructions would be provided based on your account
@@ -124,10 +152,10 @@ const AgeVerificationForm: React.FC = () => {
 
         <button type="submit" disabled={isLoading} className="w-full btn-primary">
           {isLoading
-            ? 'Submitting...'
-            : verificationType === 'google'
+            ? 'Processing...'
+            : verificationType === 'google_sso'
               ? 'Continue with Google'
-              : 'Submit for Verification'}
+              : 'Submit Verification Request'}
         </button>
       </form>
       <p className="mt-4 text-xs text-gray-500 text-center">

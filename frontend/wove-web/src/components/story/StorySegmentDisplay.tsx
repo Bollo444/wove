@@ -2,30 +2,35 @@ import React from 'react';
 import ImageDisplay from '../media/ImageDisplay';
 import VideoDisplay from '../media/VideoDisplay';
 import AudioDisplay from '../media/AudioDisplay';
-// import { StorySegment, MediaAsset } from '@shared/types/story'; // Assuming shared types
+// Using types from StoryContext or a shared location is preferred.
+// For this example, assuming StoryContext exports these or they are globally available.
+// If not, they would need to be imported from their definition file (e.g., ../../contexts/StoryContext)
+// For now, let's assume they are implicitly available or defined locally for StorySegmentDisplay if StoryContext types are not directly imported.
+// To make this concrete, let's assume a local definition for clarity if not directly importing from context.
 
-// Placeholder types if not using shared yet
-interface MediaAssetPlaceholder {
+interface MediaAsset { // Should match type in StoryContext
   id: string;
   type: 'image' | 'video' | 'audio';
   url: string;
   altText?: string;
 }
 
-interface StorySegmentPlaceholder {
+interface StorySegment { // Should match type in StoryContext
   id: string;
   content: string;
   position: number;
-  authorName?: string; // Or authorId to link to profile
-  mediaAssets?: MediaAssetPlaceholder[];
-  // Add other relevant fields like mood, visualEffects settings, etc.
+  authorName?: string; 
+  authorId?: string; // As per StoryContext definition
+  mediaAssets?: MediaAsset[];
+  createdAt?: string; // As per StoryContext definition
+  // visualEffects, etc.
 }
 
 interface StorySegmentDisplayProps {
-  segment: StorySegmentPlaceholder;
-  isCurrentUserTurn?: boolean; // For collaborative stories
-  onEdit?: (segmentId: string) => void; // If editable
-  onAddChoice?: (segmentId: string) => void; // If branching is possible from here
+  segment: StorySegment; // Use the more accurate type
+  isCurrentUserTurn?: boolean;
+  onEdit?: (segmentId: string) => void;
+  onAddChoice?: (segmentId: string) => void;
 }
 
 const StorySegmentDisplay: React.FC<StorySegmentDisplayProps> = ({
@@ -34,11 +39,21 @@ const StorySegmentDisplay: React.FC<StorySegmentDisplayProps> = ({
   onEdit,
   onAddChoice,
 }) => {
+  // Differentiate styling based on authorType (if available, e.g., from segment.authorType === 'AI')
+  // const segmentStyle = segment.authorType === 'AI' 
+  //   ? "bg-purple-50 border-l-4 border-purple-300" 
+  //   : "bg-white";
+  const authorType = (segment as any).authorType; // If authorType is part of segment from API
+  const segmentStyle = authorType === 'ai' || authorType === 'AI'
+    ? "bg-purple-50 border-l-4 border-purple-300 hover:shadow-purple-100"
+    : "bg-white hover:shadow-slate-100";
+
+
   return (
-    <div className="mb-8 p-4 md:p-6 bg-white rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl">
-      {/* Display Media Assets (e.g., image at the top of the segment) */}
+    <div className={`mb-8 p-4 md:p-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out ${segmentStyle}`}>
+      {/* Display Media Assets */}
       {segment.mediaAssets?.map(asset => (
-        <div key={asset.id} className="mb-4">
+        <div key={asset.id} className="mb-4 rounded-md overflow-hidden">
           {asset.type === 'image' && (
             <ImageDisplay
               src={asset.url}
@@ -48,13 +63,13 @@ const StorySegmentDisplay: React.FC<StorySegmentDisplayProps> = ({
           {asset.type === 'video' && (
             <VideoDisplay
               src={asset.url}
-              alt={asset.altText || `Video for segment ${segment.id}`}
+              // VideoDisplay might not use 'alt', but could have a 'title' or similar
             />
           )}
           {asset.type === 'audio' && (
             <AudioDisplay
               src={asset.url}
-              title={asset.altText || `Audio for segment ${segment.id}`}
+              title={asset.altText || `Audio for segment ${segment.id}`} // Assuming AudioDisplay takes a title
             />
           )}
         </div>

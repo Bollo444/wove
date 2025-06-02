@@ -12,7 +12,7 @@ const RegistrationForm: React.FC = () => {
     confirmPassword: '',
     dateOfBirth: '',
     claimedAgeTier: AgeTier.UNVERIFIED, // Default or derive from DOB
-    parentEmail: '', // Conditional
+    parentEmail: '',
   });
   const [error, setError] = useState<string | null>(null);
   const { register, isLoading } = useAuth();
@@ -29,25 +29,26 @@ const RegistrationForm: React.FC = () => {
       setError('Passwords do not match.');
       return;
     }
-    
+
+    // Prepare payload based on API documentation
+    const payload: any = {
+      email: formData.email,
+      password: formData.password,
+      dateOfBirth: formData.dateOfBirth,
+    };
+
+    if (formData.claimedAgeTier === AgeTier.KIDS) {
+      payload.parentEmail = formData.parentEmail;
+    }
+
     try {
-      // Create username from first and last name for now
-      const username = `${formData.firstName}${formData.lastName}`.toLowerCase().replace(/\s+/g, '');
-      
-      await register({
-        email: formData.email,
-        password: formData.password,
-        username: username,
-        ageTier: formData.claimedAgeTier,
-      });
+      await register(payload);
     } catch (err: any) {
       setError(err.message || 'Failed to register. Please try again.');
     }
   };
 
-  // Logic to determine if parentEmail is required based on age/ageTier
-  const requiresParentEmail =
-    formData.claimedAgeTier === AgeTier.KIDS || formData.claimedAgeTier === AgeTier.TEENS_U16;
+  const requiresParentEmail = formData.claimedAgeTier === AgeTier.KIDS;
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl">
@@ -171,8 +172,7 @@ const RegistrationForm: React.FC = () => {
               Select your age group
             </option>
             <option value={AgeTier.KIDS}>Kids (Under 13)</option>
-            <option value={AgeTier.TEENS_U16}>Teens (13-15)</option>
-            <option value={AgeTier.TEENS_16_PLUS}>Teens (16-17)</option>
+            <option value={AgeTier.TEENS}>Teens (13-17)</option>
             <option value={AgeTier.ADULTS}>Adults (18+)</option>
           </select>
         </div>
@@ -180,7 +180,7 @@ const RegistrationForm: React.FC = () => {
         {requiresParentEmail && (
           <div className="mb-6 p-4 bg-purple-50 border border-purple-200 rounded-md">
             <p className="text-sm text-purple-700 mb-2">
-              Parental consent is required for this age group.
+              Parental consent is required for users under 13. Please provide a parent or guardian's email.
             </p>
             <label htmlFor="parentEmail" className="block text-sm font-medium text-gray-700 mb-1">
               Parent/Guardian Email
@@ -191,7 +191,7 @@ const RegistrationForm: React.FC = () => {
               id="parentEmail"
               value={formData.parentEmail}
               onChange={handleChange}
-              required={requiresParentEmail}
+              required={requiresParentEmail} // Conditionally required
               className="input-field"
               disabled={isLoading}
             />

@@ -1,29 +1,17 @@
 import React, { useState, useEffect } from 'react';
-// import { useAuth } from '../../contexts/AuthContext'; // Placeholder
-// import { User } from '@shared/types/user'; // Assuming shared User type
-
-// Dummy user data for placeholder
-const dummyUser = {
-  id: '123',
-  firstName: 'Alex',
-  lastName: 'Wove',
-  displayName: 'AlexW',
-  email: 'alex.wove@example.com',
-  bio: 'Loves creating interactive stories and exploring new worlds. Favorite genres: Sci-Fi and Fantasy.',
-  // preferences: { notifications: true, theme: 'dark' } // Example
-};
+import Link from 'next/link';
+import { useAuth, User } from '../../contexts/AuthContext'; // Assuming User type is exported or use a local version
 
 const UserSettingsForm: React.FC = () => {
-  // const { user, updateUserProfile, changePassword } = useAuth(); // Placeholder
-  const user = dummyUser; // Using dummy data
+  const { user, updateUserProfile, changePassword, isLoading: authLoading } = useAuth();
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    displayName: '',
-    email: '', // Email might not be changeable or require re-verification
-    bio: '',
-    // Add other settings like notification preferences, theme, etc.
+    // User in AuthContext might not have firstName, lastName, bio.
+    // These fields are often part of a separate UserProfile object in more complex apps.
+    // For now, let's assume 'username' is the primary display name and 'bio' might be added.
+    username: '', // Using username from User context
+    bio: '', 
+    // email is from user context and read-only here
   });
   const [passwordData, setPasswordData] = useState({
     currentPassword: '',
@@ -34,17 +22,15 @@ const UserSettingsForm: React.FC = () => {
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [profileSuccess, setProfileSuccess] = useState<string | null>(null);
   const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null);
-  const [isProfileLoading, setIsProfileLoading] = useState(false);
-  const [isPasswordLoading, setIsPasswordLoading] = useState(false);
+  const [isProfileLoading, setIsProfileLoading] = useState(false); // For profile updates
+  const [isPasswordLoading, setIsPasswordLoading] = useState(false); // For password changes
 
   useEffect(() => {
     if (user) {
       setFormData({
-        firstName: user.firstName || '',
-        lastName: user.lastName || '',
-        displayName: user.displayName || '',
-        email: user.email || '',
-        bio: user.bio || '',
+        username: user.username || '',
+        // bio: user.bio || '', // Assuming user object might get a bio field
+        bio: (user as any).bio || '', // Temporary, if bio is not in User type
       });
     }
   }, [user]);
@@ -62,21 +48,28 @@ const UserSettingsForm: React.FC = () => {
     setProfileError(null);
     setProfileSuccess(null);
     setIsProfileLoading(true);
-    // Placeholder for profile update logic
-    console.log('Updating profile with:', formData);
-    // try {
-    //   await updateUserProfile(formData);
-    //   setProfileSuccess('Profile updated successfully!');
-    // } catch (err: any) {
-    //   setProfileError(err.message || 'Failed to update profile.');
-    // } finally {
-    //   setIsProfileLoading(false);
-    // }
-    setTimeout(() => {
-      // Simulate API call
-      setIsProfileLoading(false);
-      setProfileError('Profile update functionality not yet implemented.');
-    }, 1000);
+    
+    // Construct the data to update. Based on current User type, only username and potentially new fields like bio.
+    // The AuthContext User type doesn't have firstName/lastName.
+    // If your API expects these, the User type in AuthContext and its population need adjustment.
+    const profileUpdateData: Partial<User> = {
+        username: formData.username,
+        // bio: formData.bio, // if bio is part of User type
+    };
+    if (formData.bio) { // Temporary if bio is not strictly in User type
+        (profileUpdateData as any).bio = formData.bio;
+    }
+
+    updateUserProfile(profileUpdateData)
+      .then(() => {
+        setProfileSuccess('Profile updated successfully!');
+      })
+      .catch(err => {
+        setProfileError(err.message || 'Failed to update profile.');
+      })
+      .finally(() => {
+        setIsProfileLoading(false);
+      });
   };
 
   const handlePasswordSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -88,23 +81,23 @@ const UserSettingsForm: React.FC = () => {
       return;
     }
     setIsPasswordLoading(true);
-    // Placeholder for password change logic
-    console.log('Changing password...');
-    // try {
-    //   await changePassword(passwordData.currentPassword, passwordData.newPassword);
-    //   setPasswordSuccess('Password changed successfully!');
-    //   setPasswordData({ currentPassword: '', newPassword: '', confirmNewPassword: '' });
-    // } catch (err: any) {
-    //   setPasswordError(err.message || 'Failed to change password.');
-    // } finally {
-    //   setIsPasswordLoading(false);
-    // }
-    setTimeout(() => {
-      // Simulate API call
-      setIsPasswordLoading(false);
-      setPasswordError('Password change functionality not yet implemented.');
-    }, 1000);
+
+    changePassword(passwordData.currentPassword, passwordData.newPassword)
+      .then(() => {
+        setPasswordSuccess('Password changed successfully!');
+        setPasswordData({ currentPassword: '', newPassword: '', confirmNewPassword: '' });
+      })
+      .catch(err => {
+        setPasswordError(err.message || 'Failed to change password.');
+      })
+      .finally(() => {
+        setIsPasswordLoading(false);
+      });
   };
+
+  if (authLoading) {
+    return <div className="text-center p-8">Loading settings...</div>;
+  }
 
   if (!user) {
     return <div className="text-center p-8">Please log in to view settings.</div>;
@@ -114,72 +107,70 @@ const UserSettingsForm: React.FC = () => {
     <div className="max-w-2xl mx-auto mt-10 p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Account Settings</h1>
 
+      {/* Account Status Section */}
+      <section className="mb-8 p-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold text-gray-700 mb-3">Account Status</h2>
+        <div className="space-y-2">
+          <p><strong>Email:</strong> {user.email} ({user.isEmailVerified ? <span className="text-green-600">Verified</span> : <span className="text-yellow-600">Not Verified</span>})</p>
+          <p><strong>Age Tier:</strong> {user.ageTier.toUpperCase()} ({user.isAgeVerified ? <span className="text-green-600">Verified</span> : <span className="text-yellow-600">Not Verified</span>})</p>
+          <p><strong>Role:</strong> {user.role.toUpperCase()}</p>
+          {!user.isAgeVerified && (
+            <Link href="/verify-age" legacyBehavior>
+              <a className="text-purple-600 hover:underline">Verify Your Age Now</a>
+            </Link>
+          )}
+           {user.isAgeVerified && (
+            <Link href="/verify-age" legacyBehavior>
+              <a className="text-sm text-purple-600 hover:underline">Manage Age Verification</a>
+            </Link>
+          )}
+        </div>
+         {user.role === 'parent' && (
+          <div className="mt-4">
+            <Link href="/parental-controls" legacyBehavior>
+              <a className="btn-secondary">View Parental Dashboard</a>
+            </Link>
+          </div>
+        )}
+      </section>
+      
       {/* Profile Information Form */}
       <section className="mb-12 p-6 bg-white rounded-lg shadow-xl">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4">Profile Information</h2>
+        <h2 className="text-xl font-semibold text-gray-700 mb-4">Edit Profile Information</h2>
         {profileError && <p className="text-red-500 text-sm mb-4">{profileError}</p>}
         {profileSuccess && <p className="text-green-500 text-sm mb-4">{profileSuccess}</p>}
         <form onSubmit={handleProfileSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-                First Name
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                value={formData.firstName}
-                onChange={handleProfileChange}
-                className="input-field"
-                disabled={isProfileLoading}
-              />
-            </div>
-            <div>
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-                Last Name
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                value={formData.lastName}
-                onChange={handleProfileChange}
-                className="input-field"
-                disabled={isProfileLoading}
-              />
-            </div>
-          </div>
+          {/* Removed firstName and lastName as they are not in AuthContext.User for now */}
           <div className="mb-4">
-            <label htmlFor="displayName" className="block text-sm font-medium text-gray-700 mb-1">
-              Display Name
+            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              Username (Display Name)
             </label>
             <input
               type="text"
-              name="displayName"
-              id="displayName"
-              value={formData.displayName}
+              name="username"
+              id="username"
+              value={formData.username}
               onChange={handleProfileChange}
               className="input-field"
-              disabled={isProfileLoading}
+              disabled={isProfileLoading || authLoading}
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email (cannot be changed)
+           <div className="mb-4">
+            <label htmlFor="email_display" className="block text-sm font-medium text-gray-700 mb-1">
+              Email (cannot be changed here)
             </label>
             <input
               type="email"
-              name="email"
-              id="email"
-              value={formData.email}
+              name="email_display"
+              id="email_display"
+              value={user.email} 
               readOnly
               className="input-field bg-gray-100 cursor-not-allowed"
             />
           </div>
           <div className="mb-6">
             <label htmlFor="bio" className="block text-sm font-medium text-gray-700 mb-1">
-              Bio
+              Bio (Optional)
             </label>
             <textarea
               name="bio"
@@ -188,10 +179,10 @@ const UserSettingsForm: React.FC = () => {
               value={formData.bio}
               onChange={handleProfileChange}
               className="input-field"
-              disabled={isProfileLoading}
+              disabled={isProfileLoading || authLoading}
             ></textarea>
           </div>
-          <button type="submit" disabled={isProfileLoading} className="btn-primary">
+          <button type="submit" disabled={isProfileLoading || authLoading} className="btn-primary">
             {isProfileLoading ? 'Saving Profile...' : 'Save Profile Changes'}
           </button>
         </form>

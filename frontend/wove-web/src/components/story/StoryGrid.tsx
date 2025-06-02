@@ -1,28 +1,14 @@
 import React from 'react';
 import StoryCard from './StoryCard';
-// import { Story } from '@shared/types/story'; // Assuming a shared Story type
-
-// Placeholder for Story type if not using shared type yet
-interface StoryPlaceholder {
-  id: string;
-  title: string;
-  description?: string;
-  coverImageUrl?: string;
-  authorName: string;
-  authorId: string;
-  ageTier: string;
-  tags?: string[];
-  viewCount?: number;
-  likeCount?: number;
-}
+import { Premise } from '../../types/story.d'; // Import Premise type
 
 interface StoryGridProps {
-  stories: StoryPlaceholder[]; // Replace with actual Story type later
+  premises: Premise[]; // Changed to use Premise type
   isLoading?: boolean;
   error?: string | null;
 }
 
-const StoryGrid: React.FC<StoryGridProps> = ({ stories, isLoading, error }) => {
+const StoryGrid: React.FC<StoryGridProps> = ({ premises, isLoading, error }) => {
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -46,17 +32,17 @@ const StoryGrid: React.FC<StoryGridProps> = ({ stories, isLoading, error }) => {
   }
 
   if (error) {
-    return <p className="text-red-500 text-center">Error loading stories: {error}</p>;
+    return <p className="text-red-500 text-center">Error loading story premises: {error}</p>;
   }
 
-  if (!stories || stories.length === 0) {
-    return <p className="text-gray-600 text-center">No stories found.</p>;
+  if (!premises || premises.length === 0) {
+    return <p className="text-gray-600 text-center">No story premises found.</p>;
   }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {stories.map(story => (
-        <StoryCard key={story.id} story={story} />
+      {premises.map(premise => (
+        <StoryCard key={premise.premiseId} premise={premise} />
       ))}
     </div>
   );
