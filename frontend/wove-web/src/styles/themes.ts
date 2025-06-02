@@ -3,7 +3,7 @@
  * Provides different visual themes based on user's age tier
  */
 
-import { AgeTier } from '@shared/types/age-tier';
+import { AgeTier } from 'shared';
 
 export interface ThemeColors {
   primary: string;

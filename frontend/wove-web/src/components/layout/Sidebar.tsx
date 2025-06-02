@@ -1,302 +1,326 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../../contexts/AuthContext';
+import { useStory } from '../../contexts/StoryContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { useRouter } from 'next/navigation';
 
 interface SidebarProps {
-  className?: string;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ className = '' }) => {
-  const { user } = useAuth();
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const { user, logout } = useAuth();
+  const { stories, loadUserStories } = useStory();
   const { ageTier } = useTheme();
-  const router = useRouter();
-  const [activeSection, setActiveSection] = useState<string>('');
+  const [recentStories, setRecentStories] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const getAgeAppropriateSections = () => {
-    const baseSections = [
+  useEffect(() => {
+    if (user && isOpen) {
+      loadRecentStories();
+    }
+  }, [user, isOpen]);
+
+  const loadRecentStories = async () => {
+    if (!user) return;
+    
+    setIsLoading(true);
+    try {
+      await loadUserStories(user.id);
+      // Get the 5 most recent stories
+      const recent = stories
+        .sort((a, b) => new Date(b.updatedAt || b.createdAt).getTime() - new Date(a.updatedAt || a.createdAt).getTime())
+        .slice(0, 5);
+      setRecentStories(recent);
+    } catch (error) {
+      console.error('Failed to load recent stories:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const getNavigationItems = () => {
+    const baseItems = [
       {
-        title: 'Stories',
-        icon: '📚',
-        items: [
-          { href: '/my-stories', label: 'My Stories', icon: '📖' },
-          { href: '/favorites', label: 'Favorites', icon: '⭐' },
-          { href: '/recent', label: 'Recently Read', icon: '🕒' },
-        ]
+        name: 'Explore Stories',
+        href: '/explore',
+        icon: (
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        ),
+        description: 'Discover amazing stories'
       },
+      {
+        name: 'Create Story',
+        href: '/create',
+        icon: (
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          </svg>
+        ),
+        description: 'Start a new adventure'
+      }
     ];
 
-    switch (ageTier) {
-      case 'kids':
-        return [
-          {
-            title: 'My Stories',
-            icon: '📚',
-            items: [
-              { href: '/my-stories', label: 'My Stories', icon: '📖' },
-              { href: '/shared-with-me', label: 'Shared with Me', icon: '🤝' },
-              { href: '/favorites', label: 'Favorites', icon: '⭐' },
-            ]
-          },
-          {
-            title: 'Create',
-            icon: '✨',
-            items: [
-              { href: '/create/story', label: 'New Story', icon: '📝' },
-              { href: '/create/character', label: 'Create Character', icon: '👤' },
-              { href: '/templates', label: 'Story Templates', icon: '📋' },
-            ]
-          },
-          {
-            title: 'Friends',
-            icon: '👥',
-            items: [
-              { href: '/friends', label: 'My Friends', icon: '👫' },
-              { href: '/invites', label: 'Invitations', icon: '📨' },
-            ]
-          },
-          {
-            title: 'Safety',
-            icon: '🛡️',
-            items: [
-              { href: '/safety/report', label: 'Report Problem', icon: '🚨' },
-              { href: '/safety/help', label: 'Get Help', icon: '🆘' },
-              { href: '/safety/rules', label: 'Safety Rules', icon: '📜' },
-            ]
-          },
-        ];
-      case 'teens':
-        return [
-          {
-            title: 'Library',
-            icon: '📚',
-            items: [
-              { href: '/my-stories', label: 'My Stories', icon: '📖' },
-              { href: '/collaborations', label: 'Collaborations', icon: '🤝' },
-              { href: '/drafts', label: 'Drafts', icon: '📝' },
-              { href: '/published', label: 'Published', icon: '🌟' },
-            ]
-          },
-          {
-            title: 'Create',
-            icon: '✍️',
-            items: [
-              { href: '/create/story', label: 'New Story', icon: '📝' },
-              { href: '/create/series', label: 'Story Series', icon: '📚' },
-              { href: '/create/world', label: 'World Building', icon: '🌍' },
-            ]
-          },
-          {
-            title: 'Community',
-            icon: '👥',
-            items: [
-              { href: '/community/feed', label: 'Community Feed', icon: '📰' },
-              { href: '/community/groups', label: 'Writing Groups', icon: '👥' },
-              { href: '/community/challenges', label: 'Challenges', icon: '🏆' },
-            ]
-          },
-          {
-            title: 'Tools',
-            icon: '🛠️',
-            items: [
-              { href: '/tools/editor', label: 'Advanced Editor', icon: '✏️' },
-              { href: '/tools/analytics', label: 'Story Analytics', icon: '📊' },
-              { href: '/tools/export', label: 'Export Stories', icon: '📤' },
-            ]
-          },
-        ];
-      case 'adults':
-        return [
-          {
-            title: 'Content',
-            icon: '📚',
-            items: [
-              { href: '/library', label: 'Library', icon: '📖' },
-              { href: '/projects', label: 'Projects', icon: '📁' },
-              { href: '/collaborations', label: 'Collaborations', icon: '🤝' },
-              { href: '/published', label: 'Published Works', icon: '🌟' },
-            ]
-          },
-          {
-            title: 'Creation',
-            icon: '✍️',
-            items: [
-              { href: '/create/story', label: 'New Story', icon: '📝' },
-              { href: '/create/series', label: 'Story Series', icon: '📚' },
-              { href: '/create/universe', label: 'Universe Builder', icon: '🌌' },
-              { href: '/create/template', label: 'Custom Templates', icon: '📋' },
-            ]
-          },
-          {
-            title: 'Professional',
-            icon: '💼',
-            items: [
-              { href: '/analytics', label: 'Analytics Dashboard', icon: '📊' },
-              { href: '/monetization', label: 'Monetization', icon: '💰' },
-              { href: '/publishing', label: 'Publishing Tools', icon: '📤' },
-              { href: '/api', label: 'API Access', icon: '🔌' },
-            ]
-          },
-          {
-            title: 'Community',
-            icon: '👥',
-            items: [
-              { href: '/network', label: 'Professional Network', icon: '🌐' },
-              { href: '/mentorship', label: 'Mentorship', icon: '🎓' },
-              { href: '/workshops', label: 'Workshops', icon: '🎪' },
-            ]
-          },
-        ];
-      default:
-        return baseSections;
+    if (user) {
+      baseItems.push(
+        {
+          name: 'My Stories',
+          href: '/my-stories',
+          icon: (
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          ),
+          description: 'Your created stories'
+        },
+        {
+          name: 'Favorites',
+          href: '/favorites',
+          icon: (
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          ),
+          description: 'Stories you love'
+        },
+        {
+          name: 'Reading List',
+          href: '/reading-list',
+          icon: (
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+          ),
+          description: 'Stories to read later'
+        }
+      );
+    }
+
+    // Add age-appropriate items
+    if (ageTier === 'kids') {
+      baseItems.push({
+        name: 'Safety Center',
+        href: '/safety',
+        icon: (
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        ),
+        description: 'Stay safe online'
+      });
+    }
+
+    return baseItems;
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      onClose();
+    } catch (error) {
+      console.error('Logout failed:', error);
     }
   };
 
-  const sections = getAgeAppropriateSections();
-
-  const toggleSection = (sectionTitle: string) => {
-    setActiveSection(activeSection === sectionTitle ? '' : sectionTitle);
+  const formatTimeAgo = (date: string) => {
+    const now = new Date();
+    const storyDate = new Date(date);
+    const diffInHours = Math.floor((now.getTime() - storyDate.getTime()) / (1000 * 60 * 60));
+    
+    if (diffInHours < 1) return 'Just now';
+    if (diffInHours < 24) return `${diffInHours}h ago`;
+    if (diffInHours < 168) return `${Math.floor(diffInHours / 24)}d ago`;
+    return `${Math.floor(diffInHours / 168)}w ago`;
   };
 
-  const getSidebarStyles = () => {
-    switch (ageTier) {
-      case 'kids':
-        return {
-          background: 'bg-gradient-to-b from-yellow-50 to-pink-50',
-          sectionHeader: 'text-purple-700 font-bold',
-          itemHover: 'hover:bg-yellow-100 hover:text-purple-800',
-          activeItem: 'bg-yellow-200 text-purple-800 font-medium',
-          border: 'border-r border-yellow-200',
-        };
-      case 'teens':
-        return {
-          background: 'bg-gradient-to-b from-blue-50 to-purple-50',
-          sectionHeader: 'text-blue-700 font-semibold',
-          itemHover: 'hover:bg-blue-100 hover:text-blue-800',
-          activeItem: 'bg-blue-200 text-blue-800 font-medium',
-          border: 'border-r border-blue-200',
-        };
-      case 'adults':
-        return {
-          background: 'bg-white',
-          sectionHeader: 'text-gray-700 font-semibold',
-          itemHover: 'hover:bg-gray-100 hover:text-gray-900',
-          activeItem: 'bg-gray-200 text-gray-900 font-medium',
-          border: 'border-r border-gray-200',
-        };
-      default:
-        return {
-          background: 'bg-white',
-          sectionHeader: 'text-gray-700 font-semibold',
-          itemHover: 'hover:bg-gray-100 hover:text-gray-900',
-          activeItem: 'bg-gray-200 text-gray-900 font-medium',
-          border: 'border-r border-gray-200',
-        };
-    }
-  };
-
-  const styles = getSidebarStyles();
-
-  if (!user) {
-    return null;
-  }
+  if (!isOpen) return null;
 
   return (
-    <aside className={`${styles.background} ${styles.border} h-full overflow-y-auto ${className}`}>
-      <div className="p-4">
-        {/* User Info */}
-        <div className="mb-6 p-3 bg-white bg-opacity-50 rounded-lg">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span className="text-sm font-medium">
-                {user.firstName?.[0] || user.username?.[0] || '?'}
-              </span>
+    <>
+      {/* Backdrop */}
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+        onClick={onClose}
+      />
+      
+      {/* Sidebar */}
+      <div className="fixed inset-y-0 left-0 z-50 w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0">
+        <div className="flex flex-col h-full">
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b border-gray-200">
+            <div className="flex items-center space-x-3">
+              <div className="h-8 w-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">W</span>
+              </div>
+              <span className="text-xl font-bold text-gray-900">Wove</span>
             </div>
-            <div>
-              <p className="text-sm font-medium text-gray-800">
-                {user.firstName || user.username}
-              </p>
-              <p className="text-xs text-gray-600 capitalize">
-                {ageTier} Account
-              </p>
-            </div>
+            <button
+              onClick={onClose}
+              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-        </div>
 
-        {/* Navigation Sections */}
-        <nav className="space-y-2">
-          {sections.map((section) => (
-            <div key={section.title}>
-              <button
-                onClick={() => toggleSection(section.title)}
-                className={`w-full flex items-center justify-between p-2 text-left ${styles.sectionHeader} ${styles.itemHover} rounded-md transition-colors`}
-              >
-                <div className="flex items-center space-x-2">
-                  <span>{section.icon}</span>
-                  <span className="text-sm">{section.title}</span>
+          {/* User Profile Section */}
+          {user && (
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="h-12 w-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-semibold text-lg">
+                    {user.firstName?.[0]?.toUpperCase() || 'U'}
+                  </span>
                 </div>
-                <span className={`text-xs transition-transform ${
-                  activeSection === section.title ? 'rotate-90' : ''
-                }`}>
-                  ▶
-                </span>
-              </button>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 truncate">
+                    {user.firstName} {user.lastName}
+                  </p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {user.email}
+                  </p>
+                </div>
+              </div>
               
-              {/* Section Items */}
-              {activeSection === section.title && (
-                <div className="ml-4 mt-1 space-y-1">
-                  {section.items.map((item) => (
+              {/* User Stats */}
+              <div className="grid grid-cols-3 gap-4 text-center">
+                <div>
+                  <p className="text-lg font-semibold text-gray-900">{stories.length}</p>
+                  <p className="text-xs text-gray-500">Stories</p>
+                </div>
+                <div>
+                  <p className="text-lg font-semibold text-gray-900">0</p>
+                  <p className="text-xs text-gray-500">Followers</p>
+                </div>
+                <div>
+                  <p className="text-lg font-semibold text-gray-900">0</p>
+                  <p className="text-xs text-gray-500">Following</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Navigation */}
+          <nav className="flex-1 px-6 py-4 space-y-2 overflow-y-auto">
+            <div className="space-y-1">
+              {getNavigationItems().map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={onClose}
+                  className="group flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-50 transition-all duration-200"
+                >
+                  <span className="text-gray-400 group-hover:text-purple-600 mr-3">
+                    {item.icon}
+                  </span>
+                  <div className="flex-1">
+                    <div className="font-medium">{item.name}</div>
+                    <div className="text-xs text-gray-500 group-hover:text-purple-600">
+                      {item.description}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            {/* Recent Stories Section */}
+            {user && recentStories.length > 0 && (
+              <div className="mt-8">
+                <h3 className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                  Recent Stories
+                </h3>
+                <div className="space-y-2">
+                  {recentStories.map((story) => (
                     <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`flex items-center space-x-2 p-2 text-sm text-gray-600 ${styles.itemHover} rounded-md transition-colors`}
+                      key={story.id}
+                      href={`/story/${story.id}`}
+                      onClick={onClose}
+                      className="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors"
                     >
-                      <span className="text-xs">{item.icon}</span>
-                      <span>{item.label}</span>
+                      <div className="flex items-start space-x-3">
+                        <div className="flex-shrink-0 h-10 w-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
+                          <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                          </svg>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-gray-900 truncate">
+                            {story.title}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            {formatTimeAgo(story.updatedAt || story.createdAt)}
+                          </p>
+                        </div>
+                      </div>
                     </Link>
                   ))}
                 </div>
-              )}
-            </div>
-          ))}
-        </nav>
+              </div>
+            )}
 
-        {/* Quick Actions */}
-        <div className="mt-8 pt-4 border-t border-gray-200">
-          <h3 className={`text-xs font-semibold ${styles.sectionHeader} mb-2`}>
-            Quick Actions
-          </h3>
-          <div className="space-y-1">
-            <Link
-              href="/create"
-              className={`flex items-center space-x-2 p-2 text-sm text-gray-600 ${styles.itemHover} rounded-md transition-colors`}
-            >
-              <span>➕</span>
-              <span>Create New</span>
-            </Link>
-            <Link
-              href="/search"
-              className={`flex items-center space-x-2 p-2 text-sm text-gray-600 ${styles.itemHover} rounded-md transition-colors`}
-            >
-              <span>🔍</span>
-              <span>Search</span>
-            </Link>
-            {ageTier === 'kids' && (
-              <Link
-                href="/help"
-                className={`flex items-center space-x-2 p-2 text-sm text-gray-600 ${styles.itemHover} rounded-md transition-colors`}
+            {/* Quick Actions */}
+            <div className="mt-8">
+              <h3 className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                Quick Actions
+              </h3>
+              <div className="space-y-2">
+                <button className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors">
+                  <svg className="h-4 w-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Settings
+                </button>
+                <button className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors">
+                  <svg className="h-4 w-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Help & Support
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          {/* Footer */}
+          <div className="p-6 border-t border-gray-200">
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center justify-center px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
               >
-                <span>🆘</span>
-                <span>Get Help</span>
-              </Link>
+                <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Sign Out
+              </button>
+            ) : (
+              <div className="space-y-2">
+                <Link
+                  href="/login"
+                  onClick={onClose}
+                  className="w-full flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={onClose}
+                  className="w-full flex items-center justify-center px-4 py-2 text-sm font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors"
+                >
+                  Create Account
+                </Link>
+              </div>
             )}
           </div>
         </div>
       </div>
-    </aside>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import "../styles/age-themes.css";
 import { AuthProvider } from "../contexts/AuthContext";
 import { StoryProvider } from "../contexts/StoryContext";
 import { ThemeProvider } from "../contexts/ThemeContext";
+import { NotificationProvider } from "../contexts/NotificationContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,9 +34,11 @@ export default function RootLayout({
       >
         <AuthProvider>
           <ThemeProvider>
-            <StoryProvider>
-              {children}
-            </StoryProvider>
+            <NotificationProvider>
+              <StoryProvider>
+                {children}
+              </StoryProvider>
+            </NotificationProvider>
           </ThemeProvider>
         </AuthProvider>
       </body>

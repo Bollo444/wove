@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { AgeTier } from '@shared/types/age-tier';
+import { AgeTier } from 'shared';
 import { ThemeConfig, getTheme, generateCSSVariables } from '../styles/themes';
 import { useAuth } from './AuthContext';
 

@@ -1,7 +1,8 @@
+'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStory } from '../../contexts/StoryContext';
-import { AgeTier } from '@shared/types/age-tier'; // Assuming shared types
+import { AgeTier } from 'shared';
 
 // Placeholder for available genres - in a real app, this might come from an API or config
 const availableGenres = [
@@ -22,6 +23,13 @@ interface StoryCreateFormData {
   coverImageUrl?: string; // Optional, could be added later or via a separate upload step
 }
 
+interface ValidationErrors {
+  title?: string;
+  description?: string;
+  ageTier?: string;
+  genreIds?: string;
+}
+
 const StoryCreateForm: React.FC = () => {
   const [formData, setFormData] = useState<StoryCreateFormData>({
     title: '',
@@ -31,9 +39,44 @@ const StoryCreateForm: React.FC = () => {
     isPrivate: false,
   });
   const [error, setError] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { createStory, isLoading } = useStory();
   const router = useRouter();
+
+  const validateForm = (): boolean => {
+    const errors: ValidationErrors = {};
+    
+    if (!formData.title.trim()) {
+      errors.title = 'Title is required';
+    } else if (formData.title.length < 3) {
+      errors.title = 'Title must be at least 3 characters long';
+    } else if (formData.title.length > 100) {
+      errors.title = 'Title must be less than 100 characters';
+    }
+    
+    if (!formData.description.trim()) {
+      errors.description = 'Description is required';
+    } else if (formData.description.length < 10) {
+      errors.description = 'Description must be at least 10 characters long';
+    } else if (formData.description.length > 500) {
+      errors.description = 'Description must be less than 500 characters';
+    }
+    
+    if (!formData.ageTier) {
+      errors.ageTier = 'Age tier is required';
+    }
+    
+    if (formData.genreIds.length === 0) {
+      errors.genreIds = 'Please select at least one genre';
+    } else if (formData.genreIds.length > 3) {
+      errors.genreIds = 'Please select no more than 3 genres';
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -44,15 +87,27 @@ const StoryCreateForm: React.FC = () => {
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
     }
+    
+    // Clear validation error for this field when user starts typing
+    if (validationErrors[name as keyof ValidationErrors]) {
+      setValidationErrors(prev => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleGenreChange = (genreId: string) => {
     setFormData(prev => {
-      const newGenreIds = prev.genreIds.includes(genreId)
+      const isSelected = prev.genreIds.includes(genreId);
+      const newGenreIds = isSelected
         ? prev.genreIds.filter(id => id !== genreId)
         : [...prev.genreIds, genreId];
+      
       return { ...prev, genreIds: newGenreIds };
     });
+    
+    // Clear genre validation error
+    if (validationErrors.genreIds) {
+      setValidationErrors(prev => ({ ...prev, genreIds: undefined }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,143 +115,222 @@ const StoryCreateForm: React.FC = () => {
     setError(null);
     setSuccessMessage(null);
     
-    if (!formData.title || !formData.ageTier) {
-      setError('Title and Age Tier are required.');
+    if (!validateForm()) {
       return;
     }
     
+    setIsSubmitting(true);
+    
     try {
-      const createdStory = await createStory({
-        title: formData.title,
-        description: formData.description,
-        ageTier: formData.ageTier as string,
-        isPrivate: formData.isPrivate,
+      const storyData = {
+        title: formData.title.trim(),
+        description: formData.description.trim(),
+        ageTier: formData.ageTier as AgeTier,
         genreIds: formData.genreIds,
-      });
+        isPrivate: formData.isPrivate,
+        coverImageUrl: formData.coverImageUrl,
+      };
       
-      setSuccessMessage(`Story "${createdStory.title}" created successfully! Redirecting...`);
+      const newStory = await createStory(storyData);
+      setSuccessMessage('Story created successfully! Redirecting...');
       
-      // Redirect to the story page after a short delay
+      // Redirect to the new story after a brief delay
       setTimeout(() => {
-        router.push(`/story/${createdStory.id}`);
+        router.push(`/story/${newStory.id}`);
       }, 1500);
-    } catch (err: any) {
-      setError(err.message || 'Failed to create story.');
+      
+    } catch (error: any) {
+      setError(error.message || 'Failed to create story. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">Create a New Story</h1>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-        {successMessage && <p className="text-green-500 text-sm text-center">{successMessage}</p>}
+  const isFormDisabled = isLoading || isSubmitting;
 
+  return (
+    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-xl">
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        Create Your Story
+      </h2>
+      
+      {successMessage && (
+        <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+          <div className="flex items-center">
+            <span className="text-green-500 mr-2">✓</span>
+            {successMessage}
+          </div>
+        </div>
+      )}
+      
+      {error && (
+        <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+          <div className="flex items-center">
+            <span className="text-red-500 mr-2">⚠</span>
+            {error}
+          </div>
+        </div>
+      )}
+      
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Title Field */}
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
-            Title
+          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+            Story Title *
           </label>
           <input
             type="text"
-            name="title"
             id="title"
+            name="title"
             value={formData.title}
             onChange={handleChange}
-            required
-            className="input-field"
-            disabled={isLoading}
+            disabled={isFormDisabled}
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
+              validationErrors.title
+                ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
+            } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+            placeholder="Enter an engaging title for your story"
+            maxLength={100}
           />
+          {validationErrors.title && (
+            <p className="mt-1 text-sm text-red-600">{validationErrors.title}</p>
+          )}
+          <p className="mt-1 text-sm text-gray-500">
+            {formData.title.length}/100 characters
+          </p>
         </div>
 
+        {/* Description Field */}
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
-            Brief Description (Optional)
+          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+            Description *
           </label>
           <textarea
-            name="description"
             id="description"
-            rows={4}
+            name="description"
             value={formData.description}
             onChange={handleChange}
-            className="input-field"
-            disabled={isLoading}
-          ></textarea>
+            disabled={isFormDisabled}
+            rows={4}
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors resize-vertical ${
+              validationErrors.description
+                ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
+            } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+            placeholder="Describe your story to attract readers..."
+            maxLength={500}
+          />
+          {validationErrors.description && (
+            <p className="mt-1 text-sm text-red-600">{validationErrors.description}</p>
+          )}
+          <p className="mt-1 text-sm text-gray-500">
+            {formData.description.length}/500 characters
+          </p>
         </div>
 
+        {/* Age Tier Field */}
         <div>
-          <label htmlFor="ageTier" className="block text-sm font-medium text-gray-700 mb-1">
-            Target Age Tier
+          <label htmlFor="ageTier" className="block text-sm font-medium text-gray-700 mb-2">
+            Target Age Group *
           </label>
           <select
-            name="ageTier"
             id="ageTier"
+            name="ageTier"
             value={formData.ageTier}
             onChange={handleChange}
-            required
-            className="input-field"
-            disabled={isLoading}
+            disabled={isFormDisabled}
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
+              validationErrors.ageTier
+                ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
+            } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
           >
-            <option value="" disabled>
-              Select an age tier
-            </option>
-            <option value={AgeTier.KIDS}>Kids (Under 13)</option>
-            <option value={AgeTier.TEENS}>Teens (13-17)</option>
+            <option value="">Select target age group</option>
+            <option value={AgeTier.KIDS}>Kids (6-12)</option>
+            <option value={AgeTier.TEENS_U16}>Young Teens (13-15)</option>
+            <option value={AgeTier.TEENS_16_PLUS}>Older Teens (16-17)</option>
             <option value={AgeTier.ADULTS}>Adults (18+)</option>
-            <option value={AgeTier.UNVERIFIED}>Unverified/All Ages</option>
           </select>
+          {validationErrors.ageTier && (
+            <p className="mt-1 text-sm text-red-600">{validationErrors.ageTier}</p>
+          )}
         </div>
 
+        {/* Genres Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Genres (Select up to 3)
+          <label className="block text-sm font-medium text-gray-700 mb-3">
+            Genres * (Select 1-3)
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-1">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {availableGenres.map(genre => (
               <label
                 key={genre.id}
-                className="flex items-center space-x-2 p-2 border border-gray-300 rounded-md hover:bg-gray-50 cursor-pointer"
+                className={`flex items-center p-3 border rounded-lg cursor-pointer transition-colors ${
+                  formData.genreIds.includes(genre.id)
+                    ? 'border-purple-500 bg-purple-50 text-purple-700'
+                    : 'border-gray-300 hover:border-gray-400'
+                } ${isFormDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
               >
                 <input
                   type="checkbox"
-                  name="genreIds"
-                  value={genre.id}
                   checked={formData.genreIds.includes(genre.id)}
                   onChange={() => handleGenreChange(genre.id)}
-                  disabled={
-                    isLoading ||
-                    (formData.genreIds.length >= 3 && !formData.genreIds.includes(genre.id))
-                  }
-                  className="h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+                  disabled={isFormDisabled}
+                  className="sr-only"
                 />
-                <span className="text-sm text-gray-700">{genre.name}</span>
+                <span className="text-sm font-medium">{genre.name}</span>
               </label>
             ))}
           </div>
+          {validationErrors.genreIds && (
+            <p className="mt-2 text-sm text-red-600">{validationErrors.genreIds}</p>
+          )}
+          <p className="mt-2 text-sm text-gray-500">
+            {formData.genreIds.length}/3 genres selected
+          </p>
         </div>
 
+        {/* Privacy Setting */}
         <div className="flex items-center">
           <input
+            type="checkbox"
             id="isPrivate"
             name="isPrivate"
-            type="checkbox"
             checked={formData.isPrivate}
             onChange={handleChange}
-            disabled={isLoading}
-            className="h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+            disabled={isFormDisabled}
+            className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
           />
-          <label htmlFor="isPrivate" className="ml-2 block text-sm text-gray-900">
-            Make this story private (only visible to you and collaborators)
+          <label htmlFor="isPrivate" className="ml-3 text-sm text-gray-700">
+            Make this story private (only you can see it)
           </label>
         </div>
 
-        <div>
-          <button type="submit" disabled={isLoading} className="w-full btn-primary">
-            {isLoading ? 'Creating Story...' : 'Create Story & Start Writing'}
+        {/* Submit Button */}
+        <div className="pt-4">
+          <button
+            type="submit"
+            disabled={isFormDisabled}
+            className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-colors ${
+              isFormDisabled
+                ? 'bg-gray-400 cursor-not-allowed'
+                : 'bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200'
+            }`}
+          >
+            {isSubmitting ? (
+              <div className="flex items-center justify-center">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                Creating Story...
+              </div>
+            ) : (
+              'Create Story'
+            )}
           </button>
         </div>
       </form>
     </div>
   );
 };
-// .input-field and .btn-primary should be in globals.css or a shared stylesheet
+
 export default StoryCreateForm;

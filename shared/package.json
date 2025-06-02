@@ -2,7 +2,6 @@
   "name": "shared",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +9,55 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./types/age-tier": {
+      "import": "./dist/types/age-tier.js",
+      "types": "./dist/types/age-tier.d.ts"
+    },
+    "./types/collaboration-role": {
+      "import": "./dist/types/collaboration-role.js",
+      "types": "./dist/types/collaboration-role.d.ts"
+    },
+    "./types/index": {
+      "import": "./dist/types/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./types/story-status": {
+      "import": "./dist/types/story-status.js",
+      "types": "./dist/types/story-status.d.ts"
+    },
+    "./types/user-role.enum": {
+      "import": "./dist/types/user-role.enum.js",
+      "types": "./dist/types/user-role.enum.d.ts"
+    },
+    "./types/user": {
+      "import": "./dist/types/user.js",
+      "types": "./dist/types/user.d.ts"
+    },
+    "./types/verification": {
+      "import": "./dist/types/verification.js",
+      "types": "./dist/types/verification.d.ts"
+    },
+    "./types/story": {
+      "import": "./dist/types/story.js",
+      "types": "./dist/types/story.d.ts"
+    },
+    "./constants/*": {
+      "import": "./dist/constants/*.js",
+      "types": "./dist/constants/*.d.ts"
+    },
+    "./utils/*": {
+      "import": "./dist/utils/*.js",
+      "types": "./dist/utils/*.d.ts"
+    }
+  },
   "devDependencies": {
     "@types/node": "^22.15.21",
     "@typescript-eslint/eslint-plugin": "^8.32.1",

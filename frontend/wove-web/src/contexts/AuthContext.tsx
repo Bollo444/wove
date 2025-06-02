@@ -1,190 +1,118 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
-
-interface User {
-  id: string;
-  email: string;
-  username: string;
-  ageTier: string;
-  isEmailVerified: boolean;
-  isAgeVerified: boolean;
-}
+import { User, AgeTier } from 'shared';
+import { apiService } from '../services/api.service';
 
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (userData: RegisterData) => Promise<void>;
-  logout: () => void;
-  refreshToken: () => Promise<void>;
-}
-
-interface RegisterData {
-  email: string;
-  password: string;
-  username: string;
-  ageTier: string;
+  register: (userData: {
+    email: string;
+    password: string;
+    username: string;
+    ageTier: AgeTier;
+  }) => Promise<void>;
+  logout: () => Promise<void>;
+  updateUser: (userData: Partial<User>) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const useAuth = () => {
+export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
 };
 
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
-  // Check for existing token on mount
   useEffect(() => {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      // Verify token and get user data
-      fetchUserProfile();
-    } else {
-      setIsLoading(false);
-    }
+    // Check for existing authentication on mount
+    const checkAuth = async () => {
+      try {
+        const token = apiService.getToken();
+        if (token) {
+          console.log('Token found, validating...');
+          const userData = await apiService.getCurrentUser();
+          setUser(userData);
+        }
+      } catch (error) {
+        console.error('Auth check failed:', error);
+        apiService.clearToken();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
   }, []);
 
-  const fetchUserProfile = async () => {
-    try {
-      const token = localStorage.getItem('accessToken');
-      const response = await fetch('/api/auth/profile', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const userData = await response.json();
-        setUser(userData);
-      } else {
-        // Token is invalid, clear it
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
-      }
-    } catch (error) {
-      console.error('Error fetching user profile:', error);
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string): Promise<void> => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem('accessToken', data.accessToken);
-        localStorage.setItem('refreshToken', data.refreshToken);
-        setUser(data.user);
-        router.push('/explore');
-      } else {
-        throw new Error(data.message || 'Login failed');
-      }
+      console.log('Attempting login with:', { email, password: '***' });
+      
+      const { user: userData } = await apiService.login({ email, password });
+      setUser(userData);
     } catch (error) {
+      console.error('Login error:', error);
       throw error;
     } finally {
       setIsLoading(false);
     }
   };
 
-  const register = async (userData: RegisterData) => {
+  const register = async (userData: {
+    email: string;
+    password: string;
+    username: string;
+    ageTier: AgeTier;
+  }): Promise<void> => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Registration successful, redirect to login or email verification
-        router.push('/login?message=Registration successful. Please check your email to verify your account.');
-      } else {
-        throw new Error(data.message || 'Registration failed');
-      }
+      console.log('Attempting registration with:', { ...userData, password: '***' });
+      
+      const { user: newUser } = await apiService.register(userData);
+      setUser(newUser);
     } catch (error) {
+      console.error('Registration error:', error);
       throw error;
     } finally {
       setIsLoading(false);
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    setUser(null);
-    router.push('/login');
-  };
-
-  const refreshToken = async () => {
+  const logout = async (): Promise<void> => {
     try {
-      const refreshToken = localStorage.getItem('refreshToken');
-      if (!refreshToken) {
-        throw new Error('No refresh token available');
-      }
-
-      const response = await fetch('/api/auth/refresh-token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-        body: JSON.stringify({ refreshToken }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem('accessToken', data.accessToken);
-        if (data.refreshToken) {
-          localStorage.setItem('refreshToken', data.refreshToken);
-        }
-      } else {
-        // Refresh failed, logout user
-        logout();
-      }
+      await apiService.logout();
     } catch (error) {
-      console.error('Error refreshing token:', error);
-      logout();
+      console.error('Logout error:', error);
+      // Still clear local state even if API call fails
+    } finally {
+      setUser(null);
+      console.log('User logged out');
     }
   };
 
-  const value = {
+  const updateUser = (userData: Partial<User>): void => {
+    if (user) {
+      setUser({ ...user, ...userData });
+    }
+  };
+
+  const value: AuthContextType = {
     user,
     isLoading,
     login,
     register,
     logout,
-    refreshToken,
+    updateUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
