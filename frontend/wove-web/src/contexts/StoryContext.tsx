@@ -169,7 +169,7 @@ export const StoryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   return (
-    <StoryContext.Provider value={value} data-oid="r5-zi--">
+    <StoryContext.Provider value={value} data-oid="p3bfbxr">
       {children}
     </StoryContext.Provider>
   );

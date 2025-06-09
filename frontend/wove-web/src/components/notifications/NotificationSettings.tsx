@@ -199,35 +199,35 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
   const hasChanges = JSON.stringify(localPreferences) !== JSON.stringify(preferences);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden" data-oid="c2vy2-9">
+    <div className="fixed inset-0 z-50 overflow-hidden" data-oid="w1egx._">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black bg-opacity-50"
         onClick={onClose}
-        data-oid="5aekb.w"
+        data-oid="ppupn3c"
       />
 
       {/* Settings Panel */}
       <div
         className="absolute right-0 top-0 h-full w-full max-w-lg bg-surface shadow-xl"
-        data-oid="id.a052"
+        data-oid="dajurad"
       >
-        <div className="flex h-full flex-col" data-oid="7dp:c19">
+        <div className="flex h-full flex-col" data-oid="cv5k4zn">
           {/* Header */}
-          <div className="border-b border-default p-6" data-oid="vn4n5:8">
-            <div className="flex items-center justify-between" data-oid="314by8o">
-              <div data-oid="72j9q-1">
-                <h2 className="text-xl font-semibold text-primary" data-oid="crlna03">
+          <div className="border-b border-default p-6" data-oid="g9dgbx.">
+            <div className="flex items-center justify-between" data-oid="q2mkc65">
+              <div data-oid="ugm:3s0">
+                <h2 className="text-xl font-semibold text-primary" data-oid="2b79mn7">
                   {content.title}
                 </h2>
-                <p className="mt-1 text-sm text-secondary" data-oid="j35v:dv">
+                <p className="mt-1 text-sm text-secondary" data-oid="0jq6u9d">
                   {content.description}
                 </p>
               </div>
               <button
                 onClick={onClose}
                 className="text-secondary hover:text-primary transition-colors p-2"
-                data-oid="_md7chl"
+                data-oid="75fahma"
               >
                 ✕
               </button>
@@ -235,25 +235,25 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
           </div>
 
           {/* Settings Content */}
-          <div className="flex-1 overflow-y-auto p-6" data-oid="-ftl3-k">
+          <div className="flex-1 overflow-y-auto p-6" data-oid="ajaosic">
             {/* Delivery Methods */}
-            <div className="mb-8" data-oid="-0h2v45">
+            <div className="mb-8" data-oid="a1j3zng">
               <h3
                 className="text-lg font-medium text-primary mb-4 flex items-center"
-                data-oid="-:cpi8-"
+                data-oid="6rs6o_."
               >
                 📱 Delivery Methods
               </h3>
-              <div className="space-y-4" data-oid="-vvv1jx">
+              <div className="space-y-4" data-oid="._7hhoy">
                 <div
                   className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
-                  data-oid="dk.xpd0"
+                  data-oid="vec7gs:"
                 >
-                  <div data-oid="hh:_5jz">
-                    <label className="text-sm font-medium text-primary" data-oid="cedr88m">
+                  <div data-oid=".vs9v4b">
+                    <label className="text-sm font-medium text-primary" data-oid="w84q4-a">
                       Email Notifications
                     </label>
-                    <p className="text-xs text-secondary" data-oid="-do6fl5">
+                    <p className="text-xs text-secondary" data-oid="w7g:6n2">
                       Receive notifications via email
                     </p>
                   </div>
@@ -262,26 +262,26 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                       localPreferences.emailNotifications ? 'bg-blue-600' : 'bg-gray-300'
                     }`}
-                    data-oid="tk93-v7"
+                    data-oid="8hjy_.6"
                   >
                     <span
                       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
                         localPreferences.emailNotifications ? 'translate-x-6' : 'translate-x-1'
                       }`}
-                      data-oid="qe7q.r6"
+                      data-oid="pngai8h"
                     />
                   </button>
                 </div>
 
                 <div
                   className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
-                  data-oid="a58psth"
+                  data-oid="1-2p::w"
                 >
-                  <div data-oid="2t3rxbl">
-                    <label className="text-sm font-medium text-primary" data-oid="kelkuke">
+                  <div data-oid="33yvypl">
+                    <label className="text-sm font-medium text-primary" data-oid="1jpn97a">
                       Push Notifications
                     </label>
-                    <p className="text-xs text-secondary" data-oid="hmqi5.:">
+                    <p className="text-xs text-secondary" data-oid="r9pnq1c">
                       Receive notifications in your browser
                     </p>
                   </div>
@@ -290,13 +290,13 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                       localPreferences.pushNotifications ? 'bg-blue-600' : 'bg-gray-300'
                     }`}
-                    data-oid="zrubiy4"
+                    data-oid="czlsi_v"
                   >
                     <span
                       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
                         localPreferences.pushNotifications ? 'translate-x-6' : 'translate-x-1'
                       }`}
-                      data-oid="-c3d:9d"
+                      data-oid="r-jag5:"
                     />
                   </button>
                 </div>
@@ -305,28 +305,28 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
 
             {/* Notification Categories */}
             {Object.entries(content.sections).map(([sectionKey, section]) => (
-              <div key={sectionKey} className="mb-8" data-oid="u2f0q22">
+              <div key={sectionKey} className="mb-8" data-oid="_cj:oor">
                 <h3
                   className="text-lg font-medium text-primary mb-4 flex items-center"
-                  data-oid="k2od70b"
+                  data-oid="88gus5m"
                 >
-                  <span className="mr-2" data-oid="le9mppu">
+                  <span className="mr-2" data-oid="-t3l99z">
                     {section.icon}
                   </span>
                   {section.title}
                 </h3>
-                <div className="space-y-3" data-oid="9rck741">
+                <div className="space-y-3" data-oid="x3lg9a:">
                   {section.items.map(item => (
                     <div
                       key={item.key}
                       className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
-                      data-oid="l0achtp"
+                      data-oid="m6i:u41"
                     >
-                      <div className="flex-1" data-oid="id5te_n">
-                        <label className="text-sm font-medium text-primary" data-oid="kg:vfyk">
+                      <div className="flex-1" data-oid="v7-_:vp">
+                        <label className="text-sm font-medium text-primary" data-oid="d1-z8fz">
                           {item.label}
                         </label>
-                        <p className="text-xs text-secondary mt-1" data-oid="d:up2-t">
+                        <p className="text-xs text-secondary mt-1" data-oid="u61f8cq">
                           {item.description}
                         </p>
                       </div>
@@ -337,7 +337,7 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
                             ? 'bg-blue-600'
                             : 'bg-gray-300'
                         }`}
-                        data-oid="j4giktg"
+                        data-oid="z069om7"
                       >
                         <span
                           className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
@@ -345,7 +345,7 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
                               ? 'translate-x-6'
                               : 'translate-x-1'
                           }`}
-                          data-oid="b2rjhq:"
+                          data-oid="anyy8i6"
                         />
                       </button>
                     </div>
@@ -356,20 +356,20 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
           </div>
 
           {/* Footer */}
-          <div className="border-t border-default p-6" data-oid="m2e-6i.">
-            <div className="flex items-center justify-between" data-oid="rq-iuz3">
+          <div className="border-t border-default p-6" data-oid="2y4pben">
+            <div className="flex items-center justify-between" data-oid="cdc9q.6">
               <button
                 onClick={handleReset}
                 disabled={!hasChanges || saving}
                 className="px-4 py-2 text-sm text-secondary hover:text-primary transition-colors disabled:opacity-50"
-                data-oid="-d73vq1"
+                data-oid="xhpjtnt"
               >
                 Reset
               </button>
 
-              <div className="flex items-center space-x-3" data-oid="kgpt3vz">
+              <div className="flex items-center space-x-3" data-oid="fl9vmt-">
                 {saved && (
-                  <span className="text-sm text-green-600 flex items-center" data-oid="77jeam9">
+                  <span className="text-sm text-green-600 flex items-center" data-oid="0hwnc:e">
                     ✓ Saved
                   </span>
                 )}
@@ -381,7 +381,7 @@ const NotificationSettings: React.FC<NotificationSettingsProps> = ({ isOpen, onC
                       ? 'bg-blue-600 text-white hover:bg-blue-700'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
-                  data-oid="21j_bxo"
+                  data-oid="weku2p6"
                 >
                   {saving ? 'Saving...' : 'Save Changes'}
                 </button>

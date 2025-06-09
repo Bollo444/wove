@@ -18,14 +18,14 @@ const CreateStoryPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <Layout title="Loading..." data-oid="lrzsb00">
-        <div className="flex justify-center items-center min-h-[60vh]" data-oid="xucty7:">
-          <div className="text-center" data-oid="gt3vvrj">
+      <Layout title="Loading..." data-oid="ypgceec">
+        <div className="flex justify-center items-center min-h-[60vh]" data-oid="1b3ckqh">
+          <div className="text-center" data-oid="385x.:l">
             <div
               className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"
-              data-oid="db9_e6g"
+              data-oid="3lqx.vs"
             ></div>
-            <p className="text-gray-600" data-oid="k4r.s9_">
+            <p className="text-gray-600" data-oid="t:4z98_">
               Loading...
             </p>
           </div>
@@ -39,9 +39,9 @@ const CreateStoryPage: React.FC = () => {
   }
 
   return (
-    <Layout title="Create New Story - Wove" data-oid="g_eyo3p">
-      <div className="container mx-auto py-8 px-4" data-oid="zuysx:y">
-        <StoryCreateForm data-oid="x8p8c9f" />
+    <Layout title="Create New Story - Wove" data-oid="4kuqul-">
+      <div className="container mx-auto py-8 px-4" data-oid="xagq757">
+        <StoryCreateForm data-oid="1eq:_ri" />
       </div>
     </Layout>
   );

@@ -30,7 +30,7 @@ const VideoDisplay: React.FC<VideoDisplayProps> = ({
   if (!src) return null;
 
   return (
-    <figure className={`my-4 ${className || ''}`} data-oid="jz1ojbi">
+    <figure className={`my-4 ${className || ''}`} data-oid="38vrbwp">
       <video
         src={src}
         width={width}
@@ -42,13 +42,13 @@ const VideoDisplay: React.FC<VideoDisplayProps> = ({
         poster={poster}
         className="w-full h-auto rounded-md shadow-md bg-black" // bg-black for letterboxing
         aria-label={alt || 'Video content'}
-        data-oid="qr3rm4x"
+        data-oid="l71sntw"
       >
         Your browser does not support the video tag.
         {/* TODO: Add <track> elements for subtitles, captions, descriptions */}
       </video>
       {caption && (
-        <figcaption className="mt-2 text-xs text-center text-gray-500 italic" data-oid="l8fvhvs">
+        <figcaption className="mt-2 text-xs text-center text-gray-500 italic" data-oid="61vv8qc">
           {caption}
         </figcaption>
       )}

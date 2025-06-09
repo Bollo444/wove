@@ -108,40 +108,40 @@ const UserSettingsForm: React.FC = () => {
 
   if (!user) {
     return (
-      <div className="text-center p-8" data-oid="93:h9_m">
+      <div className="text-center p-8" data-oid="7kwx7k2">
         Please log in to view settings.
       </div>
     );
   }
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6" data-oid="bavs1.1">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8" data-oid="g_u6ex5">
+    <div className="max-w-2xl mx-auto mt-10 p-6" data-oid="x7:t62.">
+      <h1 className="text-3xl font-bold text-gray-800 mb-8" data-oid="sy55blh">
         Account Settings
       </h1>
 
       {/* Profile Information Form */}
-      <section className="mb-12 p-6 bg-white rounded-lg shadow-xl" data-oid="f24uok3">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4" data-oid="1ipe6_j">
+      <section className="mb-12 p-6 bg-white rounded-lg shadow-xl" data-oid="6ik96cs">
+        <h2 className="text-xl font-semibold text-gray-700 mb-4" data-oid="x6xli-z">
           Profile Information
         </h2>
         {profileError && (
-          <p className="text-red-500 text-sm mb-4" data-oid="e1859t8">
+          <p className="text-red-500 text-sm mb-4" data-oid="t7nfdun">
             {profileError}
           </p>
         )}
         {profileSuccess && (
-          <p className="text-green-500 text-sm mb-4" data-oid="hxvvf3v">
+          <p className="text-green-500 text-sm mb-4" data-oid="70ssgfk">
             {profileSuccess}
           </p>
         )}
-        <form onSubmit={handleProfileSubmit} data-oid="it3e6b4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4" data-oid="hgj_17x">
-            <div data-oid="z7m57b1">
+        <form onSubmit={handleProfileSubmit} data-oid="k:r37gl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4" data-oid="u.712mn">
+            <div data-oid="-0jqj81">
               <label
                 htmlFor="firstName"
                 className="block text-sm font-medium text-gray-700 mb-1"
-                data-oid="ax747k-"
+                data-oid="lipvuku"
               >
                 First Name
               </label>
@@ -153,14 +153,14 @@ const UserSettingsForm: React.FC = () => {
                 onChange={handleProfileChange}
                 className="input-field"
                 disabled={isProfileLoading}
-                data-oid=".9ym3mp"
+                data-oid="j7g3ci9"
               />
             </div>
-            <div data-oid="ctjgqal">
+            <div data-oid=".ivamgs">
               <label
                 htmlFor="lastName"
                 className="block text-sm font-medium text-gray-700 mb-1"
-                data-oid="h82thir"
+                data-oid="p:7z7ji"
               >
                 Last Name
               </label>
@@ -172,15 +172,15 @@ const UserSettingsForm: React.FC = () => {
                 onChange={handleProfileChange}
                 className="input-field"
                 disabled={isProfileLoading}
-                data-oid="iyeyzuj"
+                data-oid="b_fs19:"
               />
             </div>
           </div>
-          <div className="mb-4" data-oid="2s0sg9k">
+          <div className="mb-4" data-oid=":ha:8-3">
             <label
               htmlFor="displayName"
               className="block text-sm font-medium text-gray-700 mb-1"
-              data-oid="lt0:tsx"
+              data-oid="do_sr32"
             >
               Display Name
             </label>
@@ -192,14 +192,14 @@ const UserSettingsForm: React.FC = () => {
               onChange={handleProfileChange}
               className="input-field"
               disabled={isProfileLoading}
-              data-oid="2enqnbr"
+              data-oid="7kb6jyo"
             />
           </div>
-          <div className="mb-4" data-oid="9jo__tp">
+          <div className="mb-4" data-oid="50-:-ta">
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700 mb-1"
-              data-oid="36wqgbh"
+              data-oid="tl-e_mn"
             >
               Email (cannot be changed)
             </label>
@@ -210,14 +210,14 @@ const UserSettingsForm: React.FC = () => {
               value={formData.email}
               readOnly
               className="input-field bg-gray-100 cursor-not-allowed"
-              data-oid="f:mxan3"
+              data-oid="cb8b036"
             />
           </div>
-          <div className="mb-6" data-oid=".ke-90r">
+          <div className="mb-6" data-oid="-o3zdz-">
             <label
               htmlFor="bio"
               className="block text-sm font-medium text-gray-700 mb-1"
-              data-oid="daf733_"
+              data-oid="-jr2fq3"
             >
               Bio
             </label>
@@ -229,14 +229,14 @@ const UserSettingsForm: React.FC = () => {
               onChange={handleProfileChange}
               className="input-field"
               disabled={isProfileLoading}
-              data-oid="g88._6k"
+              data-oid="fhk.ve5"
             ></textarea>
           </div>
           <button
             type="submit"
             disabled={isProfileLoading}
             className="btn-primary"
-            data-oid=".mkb:uz"
+            data-oid="hnm19f-"
           >
             {isProfileLoading ? 'Saving Profile...' : 'Save Profile Changes'}
           </button>
@@ -244,26 +244,26 @@ const UserSettingsForm: React.FC = () => {
       </section>
 
       {/* Change Password Form */}
-      <section className="p-6 bg-white rounded-lg shadow-xl" data-oid="uvmfc:_">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4" data-oid="qo5hcn0">
+      <section className="p-6 bg-white rounded-lg shadow-xl" data-oid="qzf2_eh">
+        <h2 className="text-xl font-semibold text-gray-700 mb-4" data-oid="-mg6cvu">
           Change Password
         </h2>
         {passwordError && (
-          <p className="text-red-500 text-sm mb-4" data-oid="8smdm:h">
+          <p className="text-red-500 text-sm mb-4" data-oid="7cvyyc2">
             {passwordError}
           </p>
         )}
         {passwordSuccess && (
-          <p className="text-green-500 text-sm mb-4" data-oid="8320o2e">
+          <p className="text-green-500 text-sm mb-4" data-oid="6siimg_">
             {passwordSuccess}
           </p>
         )}
-        <form onSubmit={handlePasswordSubmit} data-oid="05ni9f-">
-          <div className="mb-4" data-oid="7p94n_0">
+        <form onSubmit={handlePasswordSubmit} data-oid="9v20.fy">
+          <div className="mb-4" data-oid="na7sfk_">
             <label
               htmlFor="currentPassword"
               className="block text-sm font-medium text-gray-700 mb-1"
-              data-oid="95oqpqv"
+              data-oid="48r5lj4"
             >
               Current Password
             </label>
@@ -275,14 +275,14 @@ const UserSettingsForm: React.FC = () => {
               onChange={handlePasswordChange}
               className="input-field"
               disabled={isPasswordLoading}
-              data-oid="48p4vfh"
+              data-oid="w4uo8.b"
             />
           </div>
-          <div className="mb-4" data-oid="zi95tnr">
+          <div className="mb-4" data-oid="b.hjoq1">
             <label
               htmlFor="newPassword"
               className="block text-sm font-medium text-gray-700 mb-1"
-              data-oid="cuty0jg"
+              data-oid="6110izy"
             >
               New Password
             </label>
@@ -294,14 +294,14 @@ const UserSettingsForm: React.FC = () => {
               onChange={handlePasswordChange}
               className="input-field"
               disabled={isPasswordLoading}
-              data-oid="b0g.t4d"
+              data-oid="ieb7x-9"
             />
           </div>
-          <div className="mb-6" data-oid="ud.f-5y">
+          <div className="mb-6" data-oid="m0vl3ae">
             <label
               htmlFor="confirmNewPassword"
               className="block text-sm font-medium text-gray-700 mb-1"
-              data-oid="11eqogo"
+              data-oid="6bl-539"
             >
               Confirm New Password
             </label>
@@ -313,14 +313,14 @@ const UserSettingsForm: React.FC = () => {
               onChange={handlePasswordChange}
               className="input-field"
               disabled={isPasswordLoading}
-              data-oid="m09vjcy"
+              data-oid="ipevyx8"
             />
           </div>
           <button
             type="submit"
             disabled={isPasswordLoading}
             className="btn-primary"
-            data-oid="qa.a6hw"
+            data-oid="7tc14y_"
           >
             {isPasswordLoading ? 'Changing Password...' : 'Change Password'}
           </button>

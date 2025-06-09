@@ -58,25 +58,25 @@ const AgeVerificationForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl" data-oid="n8ty16n">
-      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6" data-oid="r8qwq5f">
+    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl" data-oid="a_qye4i">
+      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6" data-oid="8k91853">
         Verify Your Age
       </h2>
 
       {error && (
-        <p className="text-red-500 text-sm text-center mb-4" data-oid="0yac2np">
+        <p className="text-red-500 text-sm text-center mb-4" data-oid="58fof7p">
           {error}
         </p>
       )}
       {successMessage && (
-        <p className="text-green-500 text-sm text-center mb-4" data-oid="r2jd8hi">
+        <p className="text-green-500 text-sm text-center mb-4" data-oid="v0nd_qw">
           {successMessage}
         </p>
       )}
 
-      <form onSubmit={handleSubmit} data-oid="-1jkm2.">
-        <div className="mb-4" data-oid="4q-5lbe">
-          <label className="block text-sm font-medium text-gray-700 mb-1" data-oid=".m6qcke">
+      <form onSubmit={handleSubmit} data-oid="cpxh:z-">
+        <div className="mb-4" data-oid=":7z9ax1">
+          <label className="block text-sm font-medium text-gray-700 mb-1" data-oid="oezzp7p">
             Verification Method
           </label>
           <select
@@ -84,26 +84,26 @@ const AgeVerificationForm: React.FC = () => {
             onChange={e => setVerificationType(e.target.value as any)}
             className="input-field"
             disabled={isLoading}
-            data-oid="lb0aof7"
+            data-oid="x476txa"
           >
-            <option value="id" data-oid="sq.wgmd">
+            <option value="id" data-oid="v53:0yn">
               Upload ID Document
             </option>
-            <option value="google" data-oid="2aev5tu">
+            <option value="google" data-oid="wpie802">
               Verify with Google
             </option>
-            <option value="parent_consent" data-oid="87rngh.">
+            <option value="parent_consent" data-oid="7_:uzrs">
               Request Parental Consent (if applicable)
             </option>
           </select>
         </div>
 
         {verificationType === 'id' && (
-          <div className="mb-4" data-oid="3ld:kq5">
+          <div className="mb-4" data-oid=".6z9al0">
             <label
               htmlFor="idDocument"
               className="block text-sm font-medium text-gray-700 mb-1"
-              data-oid="a7teje3"
+              data-oid="wi_d0p5"
             >
               ID Document (e.g., Driver's License, Passport)
             </label>
@@ -121,11 +121,11 @@ const AgeVerificationForm: React.FC = () => {
                          file:bg-purple-50 file:text-purple-700
                          hover:file:bg-purple-100"
               disabled={isLoading}
-              data-oid="o86x7tf"
+              data-oid="t31an1q"
             />
 
             {file && (
-              <p className="text-xs text-gray-500 mt-1" data-oid="vka8bh-">
+              <p className="text-xs text-gray-500 mt-1" data-oid="azsvp-k">
                 Selected: {file.name}
               </p>
             )}
@@ -133,14 +133,14 @@ const AgeVerificationForm: React.FC = () => {
         )}
 
         {verificationType === 'google' && (
-          <p className="text-sm text-gray-600 mb-4" data-oid="be8kabh">
+          <p className="text-sm text-gray-600 mb-4" data-oid="jukl.pe">
             You will be redirected to Google to verify your age using your Google account
             information.
           </p>
         )}
 
         {verificationType === 'parent_consent' && (
-          <p className="text-sm text-gray-600 mb-4" data-oid="b7ivbkm">
+          <p className="text-sm text-gray-600 mb-4" data-oid="ozjt.1:">
             This option is typically used if you are under a certain age and require a parent or
             guardian to consent. Further instructions would be provided based on your account
             status.
@@ -151,7 +151,7 @@ const AgeVerificationForm: React.FC = () => {
           type="submit"
           disabled={isLoading}
           className="w-full btn-primary"
-          data-oid="81mhy_w"
+          data-oid="zxp0x09"
         >
           {isLoading
             ? 'Submitting...'
@@ -160,7 +160,7 @@ const AgeVerificationForm: React.FC = () => {
               : 'Submit for Verification'}
         </button>
       </form>
-      <p className="mt-4 text-xs text-gray-500 text-center" data-oid="hvitg94">
+      <p className="mt-4 text-xs text-gray-500 text-center" data-oid="os66m5q">
         Your information will be handled securely and in accordance with our privacy policy.
       </p>
     </div>

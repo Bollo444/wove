@@ -53,11 +53,11 @@ const StoryEndingOptions: React.FC<StoryEndingOptionsProps> = ({
   };
 
   return (
-    <div className="my-6 p-4 bg-gray-50 rounded-lg shadow" data-oid="cici4ct">
-      <h3 className="text-lg font-semibold text-gray-700 mb-3" data-oid="aw87a:u">
+    <div className="my-6 p-4 bg-gray-50 rounded-lg shadow" data-oid="9e:-7zw">
+      <h3 className="text-lg font-semibold text-gray-700 mb-3" data-oid="ntd3u-t">
         Choose a Story Ending Style
       </h3>
-      <div className="space-y-3" data-oid="nkd_mgg">
+      <div className="space-y-3" data-oid="xnk.x_1">
         {predefinedEndingTypes.map(option => (
           <button
             key={option.value}
@@ -70,26 +70,26 @@ const StoryEndingOptions: React.FC<StoryEndingOptionsProps> = ({
                             : 'bg-white border-gray-300 hover:bg-purple-50 hover:border-purple-300'
                         }
                         disabled:opacity-50 disabled:cursor-not-allowed`}
-            data-oid="o.oww63"
+            data-oid="gi7d2gr"
           >
-            <p className="font-medium text-gray-800" data-oid="xijrks1">
+            <p className="font-medium text-gray-800" data-oid="30-9l4k">
               {option.label}
             </p>
-            <p className="text-xs text-gray-500" data-oid="44.k57v">
+            <p className="text-xs text-gray-500" data-oid="k6j7vy_">
               {option.description}
             </p>
           </button>
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t" data-oid="36tns0k">
-        <p className="text-sm font-medium text-gray-700 mb-1" data-oid="6zuxl72">
+      <div className="mt-4 pt-4 border-t" data-oid="n_nh_og">
+        <p className="text-sm font-medium text-gray-700 mb-1" data-oid="8lqiu9u">
           Or, describe your own ending style:
         </p>
         <form
           onSubmit={handleCustomSubmit}
           className="flex items-center space-x-2"
-          data-oid="yylt:n."
+          data-oid="zr8cm4a"
         >
           <input
             type="text"
@@ -101,14 +101,14 @@ const StoryEndingOptions: React.FC<StoryEndingOptionsProps> = ({
             placeholder="e.g., 'a mysterious discovery', 'a peaceful resolution'"
             className="input-field flex-grow"
             disabled={isLoading}
-            data-oid="s0sd9um"
+            data-oid="xhh5e02"
           />
 
           <button
             type="submit"
             disabled={isLoading || !customPrompt.trim()}
             className={`btn-secondary px-3 py-2 text-sm ${selectedType === 'custom' && customPrompt.trim() ? 'ring-2 ring-purple-500' : ''}`}
-            data-oid="gbtiiwy"
+            data-oid="axrjdi5"
           >
             Use Custom
           </button>

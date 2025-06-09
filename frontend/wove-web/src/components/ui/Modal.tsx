@@ -91,16 +91,16 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto" data-oid="8gaxha4">
+    <div className="fixed inset-0 z-50 overflow-y-auto" data-oid="2de0jhp">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
         onClick={handleOverlayClick}
-        data-oid="nh:phzo"
+        data-oid="zx:he16"
       />
 
       {/* Modal */}
-      <div className="flex min-h-full items-center justify-center p-4" data-oid="c:dsu30">
+      <div className="flex min-h-full items-center justify-center p-4" data-oid="ldz7b60">
         <div
           className={`
             relative w-full ${getSizeStyles()} ${getAgeThemeStyles()}
@@ -110,14 +110,14 @@ const Modal: React.FC<ModalProps> = ({
             backgroundColor: currentTheme.colors.surface,
             borderColor: currentTheme.colors.border,
           }}
-          data-oid=":kg8wja"
+          data-oid="-zlqp.v"
         >
           {/* Header */}
           {(title || showCloseButton) && (
             <div
               className="flex items-center justify-between p-6 border-b"
               style={{ borderColor: currentTheme.colors.border }}
-              data-oid="umb:w95"
+              data-oid="z3_9r85"
             >
               {title && (
                 <h2
@@ -125,7 +125,7 @@ const Modal: React.FC<ModalProps> = ({
                     ageTier === 'kids' ? 'text-2xl font-bold' : ''
                   }`}
                   style={{ color: currentTheme.colors.text.primary }}
-                  data-oid="wl.xsba"
+                  data-oid="b_52n:d"
                 >
                   {title}
                 </h2>
@@ -137,21 +137,21 @@ const Modal: React.FC<ModalProps> = ({
                   size="sm"
                   onClick={onClose}
                   className="ml-auto"
-                  data-oid="vhq8m0f"
+                  data-oid="kk.0u:y"
                 >
                   <svg
                     className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    data-oid="0mr606-"
+                    data-oid="gv-vzo-"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
                       d="M6 18L18 6M6 6l12 12"
-                      data-oid="7.:b5bn"
+                      data-oid="e8u1b-u"
                     />
                   </svg>
                 </Button>
@@ -160,7 +160,7 @@ const Modal: React.FC<ModalProps> = ({
           )}
 
           {/* Content */}
-          <div className="p-6" data-oid="jhzsoen">
+          <div className="p-6" data-oid="241wu24">
             {children}
           </div>
 
@@ -169,7 +169,7 @@ const Modal: React.FC<ModalProps> = ({
             <div
               className="flex items-center justify-end gap-3 p-6 border-t"
               style={{ borderColor: currentTheme.colors.border }}
-              data-oid="fmk27wb"
+              data-oid="y.2ycka"
             >
               {footer}
             </div>

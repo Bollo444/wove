@@ -19,108 +19,108 @@ export default function UIShowcase() {
     <div
       className="min-h-screen p-8"
       style={{ backgroundColor: currentTheme.colors.background }}
-      data-oid="zrjpca2"
+      data-oid="rhpjiy4"
     >
-      <div className="max-w-6xl mx-auto" data-oid="z.fetr.">
+      <div className="max-w-6xl mx-auto" data-oid="9mn0gj8">
         {/* Header */}
-        <div className="text-center mb-12" data-oid="5dfs8aw">
-          <Badge variant="primary" size="lg" className="mb-4" data-oid="1wfbprc">
+        <div className="text-center mb-12" data-oid="sfqifo9">
+          <Badge variant="primary" size="lg" className="mb-4" data-oid="ir.zbz6">
             UI Showcase - {ageTier?.replace('_', ' ').toUpperCase() || 'DEFAULT'} Theme
           </Badge>
           <h1
             className="text-4xl font-bold mb-4"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="lx-tm3e"
+            data-oid="xrv3e3_"
           >
             Wove Design System
           </h1>
           <p
             className="text-xl max-w-2xl mx-auto"
             style={{ color: currentTheme.colors.text.secondary }}
-            data-oid="75e1kw9"
+            data-oid="qbh5d43"
           >
             Explore our age-adaptive UI components and theming system designed for all users.
           </p>
         </div>
 
         {/* Buttons Section */}
-        <Card variant="elevated" className="mb-8 p-6" data-oid="vrc4o7v">
+        <Card variant="elevated" className="mb-8 p-6" data-oid="-gxgeb7">
           <h2
             className="text-2xl font-semibold mb-6"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="k36pc0k"
+            data-oid="60d52q8"
           >
             Buttons
           </h2>
 
-          <div className="space-y-6" data-oid="eqjtjy-">
+          <div className="space-y-6" data-oid="1t7w3-c">
             {/* Button Variants */}
-            <div data-oid=".x15xj4">
+            <div data-oid="m.q58tw">
               <h3
                 className="text-lg font-medium mb-3"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid="jzt:1kx"
+                data-oid="0bi5vi:"
               >
                 Variants
               </h3>
-              <div className="flex flex-wrap gap-3" data-oid="6ze0nm2">
-                <Button variant="primary" data-oid="svu13j3">
+              <div className="flex flex-wrap gap-3" data-oid="3g1yl8b">
+                <Button variant="primary" data-oid="o:jof51">
                   Primary
                 </Button>
-                <Button variant="secondary" data-oid="qmt3177">
+                <Button variant="secondary" data-oid="z5ddq4q">
                   Secondary
                 </Button>
-                <Button variant="outline" data-oid="etgp2ia">
+                <Button variant="outline" data-oid="wiu4umg">
                   Outline
                 </Button>
-                <Button variant="ghost" data-oid="6obmn32">
+                <Button variant="ghost" data-oid="7qgir7z">
                   Ghost
                 </Button>
-                <Button variant="danger" data-oid="77owg.d">
+                <Button variant="danger" data-oid="hh7g:ly">
                   Danger
                 </Button>
               </div>
             </div>
 
             {/* Button Sizes */}
-            <div data-oid=".jxs9lu">
+            <div data-oid="9x3cbuq">
               <h3
                 className="text-lg font-medium mb-3"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid="46yqtf5"
+                data-oid="g3qsy0l"
               >
                 Sizes
               </h3>
-              <div className="flex flex-wrap items-center gap-3" data-oid="9j:eoxs">
-                <Button variant="primary" size="sm" data-oid="d48x2_e">
+              <div className="flex flex-wrap items-center gap-3" data-oid="hhhb0zb">
+                <Button variant="primary" size="sm" data-oid="1c::7qe">
                   Small
                 </Button>
-                <Button variant="primary" size="md" data-oid="-mzn.3b">
+                <Button variant="primary" size="md" data-oid="k_a7n_h">
                   Medium
                 </Button>
-                <Button variant="primary" size="lg" data-oid="2byaogs">
+                <Button variant="primary" size="lg" data-oid="21ygxyp">
                   Large
                 </Button>
               </div>
             </div>
 
             {/* Button States */}
-            <div data-oid="s:ykhz0">
+            <div data-oid="ky4z7.m">
               <h3
                 className="text-lg font-medium mb-3"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid="2um0pyw"
+                data-oid="pe9mwmt"
               >
                 States
               </h3>
-              <div className="flex flex-wrap gap-3" data-oid="ht1g5j9">
-                <Button variant="primary" isLoading data-oid="k6.np4e">
+              <div className="flex flex-wrap gap-3" data-oid="mr5l-vr">
+                <Button variant="primary" isLoading data-oid="j:8j5lj">
                   Loading
                 </Button>
-                <Button variant="primary" disabled data-oid="dpv0ky2">
+                <Button variant="primary" disabled data-oid="vj5k5ux">
                   Disabled
                 </Button>
-                <Button variant="primary" fullWidth className="max-w-xs" data-oid="_09jzpf">
+                <Button variant="primary" fullWidth className="max-w-xs" data-oid="66x6018">
                   Full Width
                 </Button>
               </div>
@@ -129,45 +129,45 @@ export default function UIShowcase() {
         </Card>
 
         {/* Cards Section */}
-        <Card variant="elevated" className="mb-8 p-6" data-oid="-dqhtgk">
+        <Card variant="elevated" className="mb-8 p-6" data-oid="61kd4nw">
           <h2
             className="text-2xl font-semibold mb-6"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="wt2vuwf"
+            data-oid="ow8:qa4"
           >
             Cards
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-6" data-oid="56mwt4z">
-            <Card variant="default" padding="md" data-oid="wjefw6l">
+          <div className="grid md:grid-cols-3 gap-6" data-oid="phpfs36">
+            <Card variant="default" padding="md" data-oid="qior0f8">
               <h3
                 className="font-semibold mb-2"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid="p6_0wtg"
+                data-oid="s_i_z-8"
               >
                 Default Card
               </h3>
               <p
                 className="text-sm"
                 style={{ color: currentTheme.colors.text.secondary }}
-                data-oid="ax_:.0g"
+                data-oid="v6srlc1"
               >
                 A simple card with default styling.
               </p>
             </Card>
 
-            <Card variant="elevated" padding="md" hover data-oid=":-nagii">
+            <Card variant="elevated" padding="md" hover data-oid="o0:etwk">
               <h3
                 className="font-semibold mb-2"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid="1o.m4k9"
+                data-oid="ti-p4pe"
               >
                 Elevated Card
               </h3>
               <p
                 className="text-sm"
                 style={{ color: currentTheme.colors.text.secondary }}
-                data-oid="4ahfkn8"
+                data-oid="ldvp.0z"
               >
                 An elevated card with hover effects.
               </p>
@@ -178,19 +178,19 @@ export default function UIShowcase() {
               padding="md"
               clickable
               onClick={() => alert('Card clicked!')}
-              data-oid="1wbhtc1"
+              data-oid="ht3j9tj"
             >
               <h3
                 className="font-semibold mb-2"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid="3cu9hhc"
+                data-oid="rt_5.11"
               >
                 Clickable Card
               </h3>
               <p
                 className="text-sm"
                 style={{ color: currentTheme.colors.text.secondary }}
-                data-oid="_p5jmkh"
+                data-oid="b36h9rp"
               >
                 Click me to see the interaction!
               </p>
@@ -199,65 +199,65 @@ export default function UIShowcase() {
         </Card>
 
         {/* Badges Section */}
-        <Card variant="elevated" className="mb-8 p-6" data-oid="z60j4ed">
+        <Card variant="elevated" className="mb-8 p-6" data-oid="lo.m6g_">
           <h2
             className="text-2xl font-semibold mb-6"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="ym_t.dv"
+            data-oid="yg1d3dy"
           >
             Badges
           </h2>
 
-          <div className="space-y-4" data-oid="2x._rw5">
-            <div data-oid="::iu9v:">
+          <div className="space-y-4" data-oid="mjlxuen">
+            <div data-oid="61n048i">
               <h3
                 className="text-lg font-medium mb-3"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid="c0h0azb"
+                data-oid="4jlog1b"
               >
                 Variants
               </h3>
-              <div className="flex flex-wrap gap-2" data-oid="r72o2pb">
-                <Badge variant="default" data-oid="2:xg654">
+              <div className="flex flex-wrap gap-2" data-oid="22hou:f">
+                <Badge variant="default" data-oid="prj8dgt">
                   Default
                 </Badge>
-                <Badge variant="primary" data-oid="f:.37tc">
+                <Badge variant="primary" data-oid="cuklr3-">
                   Primary
                 </Badge>
-                <Badge variant="secondary" data-oid="hhyw9n1">
+                <Badge variant="secondary" data-oid="cnh1c:-">
                   Secondary
                 </Badge>
-                <Badge variant="success" data-oid="o.y8zw3">
+                <Badge variant="success" data-oid="o1p1ojb">
                   Success
                 </Badge>
-                <Badge variant="warning" data-oid="iey75:h">
+                <Badge variant="warning" data-oid="2m9ob3o">
                   Warning
                 </Badge>
-                <Badge variant="error" data-oid="0-tp7g4">
+                <Badge variant="error" data-oid="9u5j-rn">
                   Error
                 </Badge>
-                <Badge variant="info" data-oid="8r4zgq1">
+                <Badge variant="info" data-oid="yviyrgz">
                   Info
                 </Badge>
               </div>
             </div>
 
-            <div data-oid="2mi_590">
+            <div data-oid="ob7ibw3">
               <h3
                 className="text-lg font-medium mb-3"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid="2f95ads"
+                data-oid="3-_idr8"
               >
                 With Dots
               </h3>
-              <div className="flex flex-wrap gap-3" data-oid="kp4znw:">
-                <Badge dot variant="success" data-oid=".c7n0vn">
+              <div className="flex flex-wrap gap-3" data-oid="7imxmbk">
+                <Badge dot variant="success" data-oid="-y1ozoc">
                   Online
                 </Badge>
-                <Badge dot variant="warning" data-oid="aqypqh2">
+                <Badge dot variant="warning" data-oid="f96eq__">
                   Away
                 </Badge>
-                <Badge dot variant="error" data-oid="8tjb-7e">
+                <Badge dot variant="error" data-oid="fn4b6ne">
                   Offline
                 </Badge>
               </div>
@@ -266,47 +266,47 @@ export default function UIShowcase() {
         </Card>
 
         {/* Input Section */}
-        <Card variant="elevated" className="mb-8 p-6" data-oid="u35uspp">
+        <Card variant="elevated" className="mb-8 p-6" data-oid="wfa:7h5">
           <h2
             className="text-2xl font-semibold mb-6"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="lcgm8p."
+            data-oid="lskaks5"
           >
             Input Fields
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6" data-oid="pzp8zlw">
-            <div className="space-y-4" data-oid="zkbjejj">
+          <div className="grid md:grid-cols-2 gap-6" data-oid="p7ttagu">
+            <div className="space-y-4" data-oid="s.teuem">
               <Input
                 label="Default Input"
                 placeholder="Enter some text..."
                 value={inputValue}
                 onChange={e => setInputValue(e.target.value)}
-                data-oid="ecgq.29"
+                data-oid="hq_uepq"
               />
 
               <Input
                 label="With Helper Text"
                 placeholder="Username"
                 helperText="Choose a unique username"
-                data-oid="kg2wo9d"
+                data-oid="79hjsaq"
               />
 
               <Input
                 label="With Error"
                 placeholder="Email"
                 error="Please enter a valid email address"
-                data-oid="dxei74a"
+                data-oid="p3wosjb"
               />
             </div>
 
-            <div className="space-y-4" data-oid="_xk3txw">
+            <div className="space-y-4" data-oid="aneem:x">
               <Input
                 label="Filled Variant"
                 variant="filled"
                 placeholder="Search..."
-                leftIcon={<span data-oid="0a1os9r">🔍</span>}
-                data-oid="dz.h-l9"
+                leftIcon={<span data-oid="zucu0_i">🔍</span>}
+                data-oid="hig1.m-"
               />
 
               <Input
@@ -314,104 +314,104 @@ export default function UIShowcase() {
                 variant="outlined"
                 placeholder="Password"
                 type="password"
-                rightIcon={<span data-oid="-g.yezf">👁️</span>}
-                data-oid="z.:wylb"
+                rightIcon={<span data-oid=".-:rhua">👁️</span>}
+                data-oid="fi_t80y"
               />
 
               <Input
                 label="Large Size"
                 inputSize="lg"
                 placeholder="Large input field"
-                data-oid="sk6omz8"
+                data-oid="b1kiox5"
               />
             </div>
           </div>
         </Card>
 
         {/* Loading Section */}
-        <Card variant="elevated" className="mb-8 p-6" data-oid=":a9mudy">
+        <Card variant="elevated" className="mb-8 p-6" data-oid="la36ol9">
           <h2
             className="text-2xl font-semibold mb-6"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="baozzm_"
+            data-oid="86e:lzv"
           >
             Loading States
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8" data-oid="ywsbs9r">
-            <div className="space-y-6" data-oid="afqip91">
-              <div data-oid="yualacz">
+          <div className="grid md:grid-cols-2 gap-8" data-oid="ubefkwa">
+            <div className="space-y-6" data-oid="y198r0g">
+              <div data-oid="s4gftb0">
                 <h3
                   className="text-lg font-medium mb-3"
                   style={{ color: currentTheme.colors.text.primary }}
-                  data-oid="1p2gnf-"
+                  data-oid="._.x68_"
                 >
                   Spinner Variants
                 </h3>
-                <div className="flex items-center gap-6" data-oid="d58o45c">
-                  <Loading variant="spinner" size="sm" data-oid="dt3yef." />
-                  <Loading variant="spinner" size="md" data-oid="s6_ds5e" />
-                  <Loading variant="spinner" size="lg" data-oid="4a9wmo9" />
+                <div className="flex items-center gap-6" data-oid="m0igb:m">
+                  <Loading variant="spinner" size="sm" data-oid="muzfbmu" />
+                  <Loading variant="spinner" size="md" data-oid="gn30nh_" />
+                  <Loading variant="spinner" size="lg" data-oid="e26g4xv" />
                 </div>
               </div>
 
-              <div data-oid="7mwgzpc">
+              <div data-oid="cysp3am">
                 <h3
                   className="text-lg font-medium mb-3"
                   style={{ color: currentTheme.colors.text.primary }}
-                  data-oid="1xcma64"
+                  data-oid="uqel2t0"
                 >
                   Dots Variant
                 </h3>
-                <Loading variant="dots" text="Loading content..." data-oid="d9x9cz3" />
+                <Loading variant="dots" text="Loading content..." data-oid="4jzr:gc" />
               </div>
             </div>
 
-            <div className="space-y-6" data-oid="ij43r.i">
-              <div data-oid="7_09j7.">
+            <div className="space-y-6" data-oid="xmb7s2t">
+              <div data-oid=":9g7_vc">
                 <h3
                   className="text-lg font-medium mb-3"
                   style={{ color: currentTheme.colors.text.primary }}
-                  data-oid="zsduer."
+                  data-oid="4.v7kt9"
                 >
                   Pulse Variant
                 </h3>
-                <Loading variant="pulse" size="lg" data-oid="wmjxqux" />
+                <Loading variant="pulse" size="lg" data-oid="s5vdp89" />
               </div>
 
-              <div data-oid="jf0sjut">
+              <div data-oid="86-0zda">
                 <h3
                   className="text-lg font-medium mb-3"
                   style={{ color: currentTheme.colors.text.primary }}
-                  data-oid=".f-b3cy"
+                  data-oid="y0zex85"
                 >
                   Bars Variant
                 </h3>
-                <Loading variant="bars" text="Processing..." data-oid="pelt8dx" />
+                <Loading variant="bars" text="Processing..." data-oid="rwxe65w" />
               </div>
             </div>
           </div>
 
-          <div className="mt-6" data-oid="0z4:-fs">
-            <Button onClick={simulateLoading} disabled={isLoading} data-oid="69j1h:s">
+          <div className="mt-6" data-oid="jqz.7pb">
+            <Button onClick={simulateLoading} disabled={isLoading} data-oid="0_rrmaf">
               {isLoading ? 'Loading...' : 'Test Full Screen Loading'}
             </Button>
           </div>
         </Card>
 
         {/* Tooltips Section */}
-        <Card variant="elevated" className="mb-8 p-6" data-oid="em9wk88">
+        <Card variant="elevated" className="mb-8 p-6" data-oid="e4yl3qk">
           <h2
             className="text-2xl font-semibold mb-6"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="iv.j7c2"
+            data-oid=".f6hdx1"
           >
             Tooltips
           </h2>
 
-          <div className="flex flex-wrap gap-4" data-oid="wft7m-s">
-            <Tooltip content="This tooltip appears on top" position="top" data-oid="qu6ix35">
-              <Button variant="outline" data-oid="q9c9o9q">
+          <div className="flex flex-wrap gap-4" data-oid="j:a49tp">
+            <Tooltip content="This tooltip appears on top" position="top" data-oid="4.fyaqr">
+              <Button variant="outline" data-oid="d7z5a2.">
                 Hover me (Top)
               </Button>
             </Tooltip>
@@ -419,9 +419,9 @@ export default function UIShowcase() {
             <Tooltip
               content="This tooltip appears on the right"
               position="right"
-              data-oid="t4pev6q"
+              data-oid="43ypmdl"
             >
-              <Button variant="outline" data-oid="d2lut1i">
+              <Button variant="outline" data-oid="mryc1lk">
                 Hover me (Right)
               </Button>
             </Tooltip>
@@ -429,15 +429,15 @@ export default function UIShowcase() {
             <Tooltip
               content="This tooltip appears on the bottom"
               position="bottom"
-              data-oid="ujftcxo"
+              data-oid="3ytyimc"
             >
-              <Button variant="outline" data-oid="6z_1uql">
+              <Button variant="outline" data-oid="_ozmwuf">
                 Hover me (Bottom)
               </Button>
             </Tooltip>
 
-            <Tooltip content="This tooltip appears on the left" position="left" data-oid="0m0m3x-">
-              <Button variant="outline" data-oid="om4mnlr">
+            <Tooltip content="This tooltip appears on the left" position="left" data-oid="tw8sy75">
+              <Button variant="outline" data-oid="s4e:f9r">
                 Hover me (Left)
               </Button>
             </Tooltip>
@@ -446,9 +446,9 @@ export default function UIShowcase() {
               content="Click to toggle this tooltip"
               trigger="click"
               position="top"
-              data-oid="f.aantj"
+              data-oid="o_p3-xx"
             >
-              <Button variant="secondary" data-oid="vgn_-hh">
+              <Button variant="secondary" data-oid="2-gnq0c">
                 Click me
               </Button>
             </Tooltip>
@@ -456,43 +456,43 @@ export default function UIShowcase() {
         </Card>
 
         {/* Modal Section */}
-        <Card variant="elevated" className="mb-8 p-6" data-oid="tpnbzgv">
+        <Card variant="elevated" className="mb-8 p-6" data-oid="4jmortl">
           <h2
             className="text-2xl font-semibold mb-6"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="wcdhgey"
+            data-oid="2pehp.c"
           >
             Modals
           </h2>
 
-          <Button onClick={() => setShowModal(true)} variant="primary" data-oid="xmhf3f7">
+          <Button onClick={() => setShowModal(true)} variant="primary" data-oid="_r.f.-d">
             Open Modal Demo
           </Button>
         </Card>
 
         {/* Age-Specific Features */}
-        <Card variant="elevated" className="mb-8 p-6" data-oid="fmrcyf8">
+        <Card variant="elevated" className="mb-8 p-6" data-oid="9hgd-3k">
           <h2
             className="text-2xl font-semibold mb-6"
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid=":bnb771"
+            data-oid="v_05cc7"
           >
             Age-Specific Features
           </h2>
 
-          <div className="space-y-4" data-oid="mqf614.">
-            <div data-oid="8cese0e">
+          <div className="space-y-4" data-oid="okj50ya">
+            <div data-oid=".5p0edg">
               <h3
                 className="text-lg font-medium mb-2"
                 style={{ color: currentTheme.colors.text.primary }}
-                data-oid=":d9:t5n"
+                data-oid="poluv4m"
               >
                 Current Age Tier: {ageTier?.replace('_', ' ').toUpperCase() || 'DEFAULT'}
               </h3>
               <p
                 className="text-sm"
                 style={{ color: currentTheme.colors.text.secondary }}
-                data-oid="nw8:7gt"
+                data-oid="g.l_8mt"
               >
                 {ageTier === 'kids' &&
                   'Enhanced animations, larger buttons, playful design elements'}
@@ -505,58 +505,58 @@ export default function UIShowcase() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4" data-oid="0yi00it">
-              <div data-oid="ep:zwdh">
+            <div className="grid md:grid-cols-2 gap-4" data-oid="9usb4l_">
+              <div data-oid="oh0ay-s">
                 <h4
                   className="font-medium mb-2"
                   style={{ color: currentTheme.colors.text.primary }}
-                  data-oid="xpa1zx7"
+                  data-oid="2u6aczi"
                 >
                   Theme Colors
                 </h4>
-                <div className="flex gap-2" data-oid="t.b0j9p">
+                <div className="flex gap-2" data-oid=".tzg6qa">
                   <div
                     className="w-8 h-8 rounded"
                     style={{ backgroundColor: currentTheme.colors.primary }}
                     title="Primary"
-                    data-oid=".2-0d.m"
+                    data-oid="2:0flmi"
                   />
 
                   <div
                     className="w-8 h-8 rounded"
                     style={{ backgroundColor: currentTheme.colors.secondary }}
                     title="Secondary"
-                    data-oid="0f148jk"
+                    data-oid="cph7:rl"
                   />
 
                   <div
                     className="w-8 h-8 rounded border"
                     style={{ backgroundColor: currentTheme.colors.surface }}
                     title="Surface"
-                    data-oid="u:b3.-h"
+                    data-oid="_frgbfx"
                   />
 
                   <div
                     className="w-8 h-8 rounded border"
                     style={{ backgroundColor: currentTheme.colors.background }}
                     title="Background"
-                    data-oid="_lllk2q"
+                    data-oid="0uju6l4"
                   />
                 </div>
               </div>
 
-              <div data-oid="i58z_j3">
+              <div data-oid="tuw0-ee">
                 <h4
                   className="font-medium mb-2"
                   style={{ color: currentTheme.colors.text.primary }}
-                  data-oid="8mc5d5w"
+                  data-oid=".5i_5ds"
                 >
                   Interactive Elements
                 </h4>
                 <p
                   className="text-sm"
                   style={{ color: currentTheme.colors.text.secondary }}
-                  data-oid="2dcz2-p"
+                  data-oid="allrt48"
                 >
                   Button size:{' '}
                   {ageTier === 'kids'
@@ -564,7 +564,7 @@ export default function UIShowcase() {
                     : ageTier === 'teens_u16'
                       ? 'Medium-Large'
                       : 'Standard'}
-                  <br data-oid="uee-cer" />
+                  <br data-oid="_iowch_" />
                   Animation style:{' '}
                   {ageTier === 'kids' ? 'Playful' : ageTier === 'teens_u16' ? 'Smooth' : 'Subtle'}
                 </p>
@@ -582,28 +582,28 @@ export default function UIShowcase() {
         size="md"
         footer={
           <>
-            <Button variant="ghost" onClick={() => setShowModal(false)} data-oid="z8rk-j2">
+            <Button variant="ghost" onClick={() => setShowModal(false)} data-oid=".bufhro">
               Cancel
             </Button>
-            <Button variant="primary" onClick={() => setShowModal(false)} data-oid="egm20q5">
+            <Button variant="primary" onClick={() => setShowModal(false)} data-oid="7y-u9--">
               Confirm
             </Button>
           </>
         }
-        data-oid="n8:0uz4"
+        data-oid="l._07dh"
       >
-        <div className="space-y-4" data-oid="a9.gz:j">
-          <p style={{ color: currentTheme.colors.text.primary }} data-oid="es41fvg">
+        <div className="space-y-4" data-oid="jfbc35i">
+          <p style={{ color: currentTheme.colors.text.primary }} data-oid="nwiwmop">
             This is a demo modal showcasing the modal component with age-appropriate styling.
           </p>
 
-          <Input label="Sample Input" placeholder="Type something..." data-oid=":kba-x6" />
+          <Input label="Sample Input" placeholder="Type something..." data-oid="11c4p:w" />
 
-          <div className="flex gap-2" data-oid="86bvxlq">
-            <Badge variant="info" data-oid="y-j0hgq">
+          <div className="flex gap-2" data-oid="y0q3tmk">
+            <Badge variant="info" data-oid="dlvvzfe">
               Modal Content
             </Badge>
-            <Badge variant="success" data-oid="-4mbb13">
+            <Badge variant="success" data-oid="82iuhrx">
               Interactive
             </Badge>
           </div>
@@ -617,7 +617,7 @@ export default function UIShowcase() {
           size="xl"
           variant={ageTier === 'kids' ? 'dots' : 'spinner'}
           text={ageTier === 'kids' ? 'Creating something magical...' : 'Loading...'}
-          data-oid="kmr5r4v"
+          data-oid="9bcqaj9"
         />
       )}
     </div>

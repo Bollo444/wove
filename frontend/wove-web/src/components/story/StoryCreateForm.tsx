@@ -148,18 +148,18 @@ const StoryCreateForm: React.FC = () => {
   const isFormDisabled = isLoading || isSubmitting;
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-xl" data-oid="u4h_x8q">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8" data-oid="9g6gfsj">
+    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-xl" data-oid="eve-w_r">
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8" data-oid="nf3n-ea">
         Create Your Story
       </h2>
 
       {successMessage && (
         <div
           className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
-          data-oid="0n2e4o_"
+          data-oid="501y8hh"
         >
-          <div className="flex items-center" data-oid=".96tw1d">
-            <span className="text-green-500 mr-2" data-oid="o-jr46v">
+          <div className="flex items-center" data-oid="tqwe9h:">
+            <span className="text-green-500 mr-2" data-oid="oug:udn">
               ✓
             </span>
             {successMessage}
@@ -170,10 +170,10 @@ const StoryCreateForm: React.FC = () => {
       {error && (
         <div
           className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
-          data-oid="xn8ox6n"
+          data-oid="7gtilng"
         >
-          <div className="flex items-center" data-oid="pd1b:sg">
-            <span className="text-red-500 mr-2" data-oid="2muz8_-">
+          <div className="flex items-center" data-oid="kthg64k">
+            <span className="text-red-500 mr-2" data-oid="tkxh:a5">
               ⚠
             </span>
             {error}
@@ -181,13 +181,13 @@ const StoryCreateForm: React.FC = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6" data-oid="ibid6hk">
+      <form onSubmit={handleSubmit} className="space-y-6" data-oid="vylcts:">
         {/* Title Field */}
-        <div data-oid="1vl:zwx">
+        <div data-oid="es:8.s3">
           <label
             htmlFor="title"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="jlo0428"
+            data-oid="ul.f5at"
           >
             Story Title *
           </label>
@@ -205,25 +205,25 @@ const StoryCreateForm: React.FC = () => {
             } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
             placeholder="Enter an engaging title for your story"
             maxLength={100}
-            data-oid="f.g:hdq"
+            data-oid="0kacjux"
           />
 
           {validationErrors.title && (
-            <p className="mt-1 text-sm text-red-600" data-oid="ctta2zr">
+            <p className="mt-1 text-sm text-red-600" data-oid="gnd:wd9">
               {validationErrors.title}
             </p>
           )}
-          <p className="mt-1 text-sm text-gray-500" data-oid="qs-ggho">
+          <p className="mt-1 text-sm text-gray-500" data-oid="6b9.s8j">
             {formData.title.length}/100 characters
           </p>
         </div>
 
         {/* Description Field */}
-        <div data-oid="4m_h_wg">
+        <div data-oid="mop4f6h">
           <label
             htmlFor="description"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="p6loy8o"
+            data-oid="zl4isxz"
           >
             Description *
           </label>
@@ -241,25 +241,25 @@ const StoryCreateForm: React.FC = () => {
             } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
             placeholder="Describe your story to attract readers..."
             maxLength={500}
-            data-oid="14pkyiv"
+            data-oid="do:m5:6"
           />
 
           {validationErrors.description && (
-            <p className="mt-1 text-sm text-red-600" data-oid="uevvv9p">
+            <p className="mt-1 text-sm text-red-600" data-oid=".zloneb">
               {validationErrors.description}
             </p>
           )}
-          <p className="mt-1 text-sm text-gray-500" data-oid="msha6ml">
+          <p className="mt-1 text-sm text-gray-500" data-oid="urjie8y">
             {formData.description.length}/500 characters
           </p>
         </div>
 
         {/* Age Tier Field */}
-        <div data-oid="7r:p0v7">
+        <div data-oid="-g2rt1x">
           <label
             htmlFor="ageTier"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="s-4dq97"
+            data-oid="izuhw4d"
           >
             Target Age Group *
           </label>
@@ -274,37 +274,37 @@ const StoryCreateForm: React.FC = () => {
                 ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
                 : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
             } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-            data-oid="lhhe1gn"
+            data-oid="ih19b59"
           >
-            <option value="" data-oid="q1eg3pv">
+            <option value="" data-oid="mq1611i">
               Select target age group
             </option>
-            <option value={AgeTier.KIDS} data-oid="hx.3w18">
+            <option value={AgeTier.KIDS} data-oid="g4yc8pn">
               Kids (6-12)
             </option>
-            <option value={AgeTier.TEENS_U16} data-oid="mp3cjvi">
+            <option value={AgeTier.TEENS_U16} data-oid="fo1y13-">
               Young Teens (13-15)
             </option>
-            <option value={AgeTier.TEENS_16_PLUS} data-oid="bl:m3.o">
+            <option value={AgeTier.TEENS_16_PLUS} data-oid="n7wb6xt">
               Older Teens (16-17)
             </option>
-            <option value={AgeTier.ADULTS} data-oid="77-vn6s">
+            <option value={AgeTier.ADULTS} data-oid="054wuue">
               Adults (18+)
             </option>
           </select>
           {validationErrors.ageTier && (
-            <p className="mt-1 text-sm text-red-600" data-oid="9kc480k">
+            <p className="mt-1 text-sm text-red-600" data-oid="i:82y.1">
               {validationErrors.ageTier}
             </p>
           )}
         </div>
 
         {/* Genres Field */}
-        <div data-oid="i1-c2r9">
-          <label className="block text-sm font-medium text-gray-700 mb-3" data-oid="jxbgb6_">
+        <div data-oid="-.16o1h">
+          <label className="block text-sm font-medium text-gray-700 mb-3" data-oid="o6eyy3z">
             Genres * (Select 1-3)
           </label>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3" data-oid="d055xe.">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3" data-oid="-yq6k49">
             {availableGenres.map(genre => (
               <label
                 key={genre.id}
@@ -313,7 +313,7 @@ const StoryCreateForm: React.FC = () => {
                     ? 'border-purple-500 bg-purple-50 text-purple-700'
                     : 'border-gray-300 hover:border-gray-400'
                 } ${isFormDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
-                data-oid="v_zq-ph"
+                data-oid="l3.sjqa"
               >
                 <input
                   type="checkbox"
@@ -321,27 +321,27 @@ const StoryCreateForm: React.FC = () => {
                   onChange={() => handleGenreChange(genre.id)}
                   disabled={isFormDisabled}
                   className="sr-only"
-                  data-oid="oetc.x_"
+                  data-oid="s29hwcy"
                 />
 
-                <span className="text-sm font-medium" data-oid="-v7115q">
+                <span className="text-sm font-medium" data-oid="ra6v34_">
                   {genre.name}
                 </span>
               </label>
             ))}
           </div>
           {validationErrors.genreIds && (
-            <p className="mt-2 text-sm text-red-600" data-oid="j:lt:1-">
+            <p className="mt-2 text-sm text-red-600" data-oid="jb7o-wz">
               {validationErrors.genreIds}
             </p>
           )}
-          <p className="mt-2 text-sm text-gray-500" data-oid="lvn8b7n">
+          <p className="mt-2 text-sm text-gray-500" data-oid="_pfbx1l">
             {formData.genreIds.length}/3 genres selected
           </p>
         </div>
 
         {/* Privacy Setting */}
-        <div className="flex items-center" data-oid="uody3y8">
+        <div className="flex items-center" data-oid="o4wixf2">
           <input
             type="checkbox"
             id="isPrivate"
@@ -350,16 +350,16 @@ const StoryCreateForm: React.FC = () => {
             onChange={handleChange}
             disabled={isFormDisabled}
             className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
-            data-oid="azxyp_h"
+            data-oid="vj7_pnv"
           />
 
-          <label htmlFor="isPrivate" className="ml-3 text-sm text-gray-700" data-oid="f0uuwao">
+          <label htmlFor="isPrivate" className="ml-3 text-sm text-gray-700" data-oid="i-e-0-1">
             Make this story private (only you can see it)
           </label>
         </div>
 
         {/* Submit Button */}
-        <div className="pt-4" data-oid="1hs2.e5">
+        <div className="pt-4" data-oid="35q7tya">
           <button
             type="submit"
             disabled={isFormDisabled}
@@ -368,13 +368,13 @@ const StoryCreateForm: React.FC = () => {
                 ? 'bg-gray-400 cursor-not-allowed'
                 : 'bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200'
             }`}
-            data-oid="m5d22vi"
+            data-oid=".2vl0to"
           >
             {isSubmitting ? (
-              <div className="flex items-center justify-center" data-oid="ni8hel6">
+              <div className="flex items-center justify-center" data-oid="2zcpptl">
                 <div
                   className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"
-                  data-oid="o6d1ula"
+                  data-oid="spplgdo"
                 ></div>
                 Creating Story...
               </div>

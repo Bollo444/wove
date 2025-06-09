@@ -75,7 +75,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   };
 
   return (
-    <ThemeContext.Provider value={value} data-oid="w511zta">
+    <ThemeContext.Provider value={value} data-oid="rw:e:-l">
       {children}
     </ThemeContext.Provider>
   );

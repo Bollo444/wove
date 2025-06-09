@@ -26,16 +26,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-oid="219fygd">
+    <html lang="en" data-oid="ynxw55r">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        data-oid="2s5qrja"
+        data-oid="ruef8pl"
       >
-        <AuthProvider data-oid="hji-j6:">
-          <DarkModeProvider data-oid="eym7pn2">
-            <ThemeProvider data-oid="ambr1ve">
-              <NotificationProvider data-oid="8x2-9g2">
-                <StoryProvider data-oid="7jvnsva">{children}</StoryProvider>
+        <AuthProvider data-oid="bfylvnt">
+          <DarkModeProvider data-oid="naufvxu">
+            <ThemeProvider data-oid="o::vlw1">
+              <NotificationProvider data-oid="7b_h48n">
+                <StoryProvider data-oid="1e:9n5n">{children}</StoryProvider>
               </NotificationProvider>
             </ThemeProvider>
           </DarkModeProvider>

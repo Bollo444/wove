@@ -69,14 +69,14 @@ const Header: React.FC = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            data-oid="4f8p60r"
+            data-oid="--z4mwk"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              data-oid="273iz.7"
+              data-oid="2p2gmay"
             />
           </svg>
         );
@@ -88,14 +88,14 @@ const Header: React.FC = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            data-oid="ojc1l0e"
+            data-oid="i4egg.x"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
               d="M12 4v16m8-8H4"
-              data-oid="99k:wtf"
+              data-oid="dm36j68"
             />
           </svg>
         );
@@ -107,14 +107,14 @@ const Header: React.FC = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            data-oid="3qbslgb"
+            data-oid="9ayu5-1"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
               d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
-              data-oid="vs2-zlv"
+              data-oid="nxn3_fk"
             />
           </svg>
         );
@@ -126,14 +126,14 @@ const Header: React.FC = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            data-oid="2rpo0qf"
+            data-oid=":z0677p"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
               d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-              data-oid="s3h0ij:"
+              data-oid="f4q7_nd"
             />
           </svg>
         );
@@ -145,14 +145,14 @@ const Header: React.FC = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            data-oid=".el9my1"
+            data-oid="vjd1mhl"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
               d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              data-oid="_3w4cyr"
+              data-oid="fqczb2j"
             />
           </svg>
         );
@@ -164,14 +164,14 @@ const Header: React.FC = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            data-oid="4v3emcv"
+            data-oid="h8i.0_g"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
               d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              data-oid="2w5hvy8"
+              data-oid="eqh.fiv"
             />
           </svg>
         );
@@ -192,16 +192,16 @@ const Header: React.FC = () => {
 
   if (isLoading) {
     return (
-      <header className="bg-white shadow-sm border-b border-gray-200" data-oid="zybjl-q">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-oid="pddow5x">
-          <div className="flex justify-between items-center h-16" data-oid=":ardfsu">
-            <div className="flex items-center" data-oid="kydyy0h">
-              <div className="h-8 w-32 bg-gray-200 rounded animate-pulse" data-oid="xlthgs6"></div>
+      <header className="bg-white shadow-sm border-b border-gray-200" data-oid="vgnbvob">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-oid="ct5fvg1">
+          <div className="flex justify-between items-center h-16" data-oid="pn0vv2.">
+            <div className="flex items-center" data-oid="iym9rh6">
+              <div className="h-8 w-32 bg-gray-200 rounded animate-pulse" data-oid="362b7ub"></div>
             </div>
-            <div className="flex items-center space-x-4" data-oid="nuf0gr-">
+            <div className="flex items-center space-x-4" data-oid="qur2:rl">
               <div
                 className="h-8 w-8 bg-gray-200 rounded-full animate-pulse"
-                data-oid="utlmx7c"
+                data-oid=":f9qf:h"
               ></div>
             </div>
           </div>
@@ -215,36 +215,36 @@ const Header: React.FC = () => {
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white shadow-sm'
       } border-b border-gray-200`}
-      data-oid="q3teo12"
+      data-oid="v5by801"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-oid="x-zc.4d">
-        <div className="flex justify-between items-center h-16" data-oid="wmznw1d">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-oid="s0r2k2x">
+        <div className="flex justify-between items-center h-16" data-oid="hagirc.">
           {/* Logo */}
-          <div className="flex items-center" data-oid="7pg8mos">
-            <Link href="/" className="flex items-center space-x-2 group" data-oid="t_l0999">
+          <div className="flex items-center" data-oid="my_muyx">
+            <Link href="/" className="flex items-center space-x-2 group" data-oid="zq23iqa">
               <div
                 className="bg-gradient-to-r from-purple-600 to-pink-600 p-2 rounded-lg group-hover:scale-105 transition-transform"
-                data-oid="of4x-rz"
+                data-oid="v0j_zcy"
               >
                 <svg
                   className="h-6 w-6 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  data-oid="rzbsb.l"
+                  data-oid="h.fo3nq"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    data-oid="aanox25"
+                    data-oid="vatapa-"
                   />
                 </svg>
               </div>
               <span
                 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
-                data-oid="9b-y6wp"
+                data-oid="_neuz:j"
               >
                 Wove
               </span>
@@ -252,18 +252,18 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1" data-oid="bsdergg">
+          <nav className="hidden md:flex items-center space-x-1" data-oid="xwno90k">
             {getNavigationLinks().map(link => (
               <Link
                 key={link.href}
                 href={link.href}
                 className="flex items-center space-x-2 px-3 py-2 rounded-lg text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all duration-200 group"
-                data-oid="xvdk_r."
+                data-oid="zv-7lyp"
               >
-                <span className="group-hover:scale-110 transition-transform" data-oid="v4x_ee8">
+                <span className="group-hover:scale-110 transition-transform" data-oid="-ci8qoc">
                   {getIcon(link.icon)}
                 </span>
-                <span className="font-medium" data-oid="ebs1pyt">
+                <span className="font-medium" data-oid="jt1.tpo">
                   {link.label}
                 </span>
               </Link>
@@ -271,28 +271,28 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Right Side */}
-          <div className="flex items-center space-x-4" data-oid="d_sd9fh">
-            <ThemeToggle data-oid=":ng7mbc" />
+          <div className="flex items-center space-x-4" data-oid=":z:w_my">
+            <ThemeToggle data-oid="g26l7yt" />
             {user ? (
               <>
                 {/* Search Button */}
                 <button
                   className="p-2 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all duration-200"
-                  data-oid="3:do_.e"
+                  data-oid="xsn_ch-"
                 >
                   <svg
                     className="h-5 w-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    data-oid=".evfqvg"
+                    data-oid="nn4a8-3"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      data-oid="-bmlf9y"
+                      data-oid="1.ncvzd"
                     />
                   </svg>
                 </button>
@@ -300,27 +300,27 @@ const Header: React.FC = () => {
                 {/* Notifications */}
                 <button
                   className="relative p-2 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all duration-200"
-                  data-oid="1_gp.dl"
+                  data-oid="rq65g9y"
                 >
                   <svg
                     className="h-5 w-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    data-oid="y3zovp0"
+                    data-oid="ebhiies"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
                       d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                      data-oid="n:o18x6"
+                      data-oid="8v893u9"
                     />
                   </svg>
                   {notifications > 0 && (
                     <span
                       className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse"
-                      data-oid="ruv_lf6"
+                      data-oid="6dbs5xc"
                     >
                       {notifications > 9 ? '9+' : notifications}
                     </span>
@@ -328,23 +328,23 @@ const Header: React.FC = () => {
                 </button>
 
                 {/* Profile Menu */}
-                <div className="relative" onClick={e => e.stopPropagation()} data-oid=".pb7bzd">
+                <div className="relative" onClick={e => e.stopPropagation()} data-oid="qhnz0up">
                   <button
                     onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                     className="flex items-center space-x-2 p-1 rounded-lg hover:bg-gray-50 transition-all duration-200"
-                    data-oid="0hm-c4f"
+                    data-oid="h7k4bg-"
                   >
                     {user.profilePictureUrl ? (
                       <img
                         src={user.profilePictureUrl}
                         alt={`${user.firstName} ${user.lastName}`}
                         className="h-8 w-8 rounded-full object-cover border-2 border-purple-200"
-                        data-oid="owx-b:3"
+                        data-oid="oqh:dr5"
                       />
                     ) : (
                       <div
                         className="h-8 w-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-medium text-sm"
-                        data-oid="3c6f7n3"
+                        data-oid="9shuupc"
                       >
                         {user.firstName?.[0]}
                         {user.lastName?.[0]}
@@ -355,14 +355,14 @@ const Header: React.FC = () => {
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
-                      data-oid="qyraq64"
+                      data-oid="98bshh1"
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
                         d="M19 9l-7 7-7-7"
-                        data-oid=".kvfo0y"
+                        data-oid="jikbyzz"
                       />
                     </svg>
                   </button>
@@ -371,18 +371,18 @@ const Header: React.FC = () => {
                   {isProfileMenuOpen && (
                     <div
                       className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-50"
-                      data-oid="zb0jhwl"
+                      data-oid="chczhue"
                     >
-                      <div className="px-4 py-3 border-b border-gray-100" data-oid="ul24k28">
-                        <p className="text-sm font-medium text-gray-900" data-oid="erfz8_m">
+                      <div className="px-4 py-3 border-b border-gray-100" data-oid="8cu4:mg">
+                        <p className="text-sm font-medium text-gray-900" data-oid="b_3.xut">
                           {user.firstName} {user.lastName}
                         </p>
-                        <p className="text-xs text-gray-500" data-oid="ps1wkap">
+                        <p className="text-xs text-gray-500" data-oid="0i..nf8">
                           {user.email}
                         </p>
                         <span
                           className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mt-1"
-                          data-oid="vxad4w:"
+                          data-oid="cxjxd83"
                         >
                           {user.ageTier === AgeTier.KIDS && 'Kids (6-12)'}
                           {user.ageTier === AgeTier.TEENS_U16 && 'Teens (13-15)'}
@@ -391,26 +391,26 @@ const Header: React.FC = () => {
                         </span>
                       </div>
 
-                      <div className="py-1" data-oid="mj9-uh6">
+                      <div className="py-1" data-oid="eh2xadj">
                         <Link
                           href="/profile"
                           className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
                           onClick={() => setIsProfileMenuOpen(false)}
-                          data-oid="n:xr0o2"
+                          data-oid="yaru8ie"
                         >
                           <svg
                             className="h-4 w-4 mr-3"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
-                            data-oid="y0mnnby"
+                            data-oid="vgg.dwj"
                           >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth={2}
                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                              data-oid="kx1kg83"
+                              data-oid=".ey-.y-"
                             />
                           </svg>
                           Profile
@@ -420,28 +420,29 @@ const Header: React.FC = () => {
                           href="/settings"
                           className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
                           onClick={() => setIsProfileMenuOpen(false)}
-                          data-oid="ay5kfg5"
+                          data-oid="dr1ka_y"
                         >
                           <svg
                             className="h-4 w-4 mr-3"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
-                            data-oid="mw_jy9g"
+                            data-oid="vtm7rho"
                           >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth={2}
                               d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                              data-oid="t9txou-"
+                              data-oid="u969wjn"
                             />
+
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth={2}
                               d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                              data-oid="ro1jwxo"
+                              data-oid="vl6f4yf"
                             />
                           </svg>
                           Settings
@@ -451,46 +452,46 @@ const Header: React.FC = () => {
                           href="/help"
                           className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
                           onClick={() => setIsProfileMenuOpen(false)}
-                          data-oid="av-slpr"
+                          data-oid=".f.vxhv"
                         >
                           <svg
                             className="h-4 w-4 mr-3"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
-                            data-oid="w-087we"
+                            data-oid="v5hu824"
                           >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth={2}
                               d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                              data-oid="z6hkgct"
+                              data-oid="ruqx-ud"
                             />
                           </svg>
                           Help & Support
                         </Link>
                       </div>
 
-                      <div className="border-t border-gray-100 py-1" data-oid="d_attz7">
+                      <div className="border-t border-gray-100 py-1" data-oid="a0dgesp">
                         <button
                           onClick={handleLogout}
                           className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
-                          data-oid="4.0ngmj"
+                          data-oid="gslbh6f"
                         >
                           <svg
                             className="h-4 w-4 mr-3"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
-                            data-oid="4r2waxf"
+                            data-oid="2j2njvw"
                           >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth={2}
                               d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                              data-oid="93260ys"
+                              data-oid="m1mfmty"
                             />
                           </svg>
                           Sign Out
@@ -501,18 +502,18 @@ const Header: React.FC = () => {
                 </div>
               </>
             ) : (
-              <div className="flex items-center space-x-3" data-oid="jxxbmo2">
+              <div className="flex items-center space-x-3" data-oid="2msozo3">
                 <Link
                   href="/login"
                   className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
-                  data-oid="om-i5rt"
+                  data-oid="vxphhpw"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/register"
                   className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
-                  data-oid="b1viu9m"
+                  data-oid="u:i:-.z"
                 >
                   Get Started
                 </Link>
@@ -526,14 +527,14 @@ const Header: React.FC = () => {
                 setIsMenuOpen(!isMenuOpen);
               }}
               className="md:hidden p-2 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all duration-200"
-              data-oid="4f1m32_"
+              data-oid="vpsd_rj"
             >
               <svg
                 className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                data-oid="7-b2vo_"
+                data-oid="0t47f9_"
               >
                 {isMenuOpen ? (
                   <path
@@ -541,7 +542,7 @@ const Header: React.FC = () => {
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M6 18L18 6M6 6l12 12"
-                    data-oid="_k..48-"
+                    data-oid="nfji8:r"
                   />
                 ) : (
                   <path
@@ -549,7 +550,7 @@ const Header: React.FC = () => {
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M4 6h16M4 12h16M4 18h16"
-                    data-oid="_t1a1qe"
+                    data-oid="0byqwuq"
                   />
                 )}
               </svg>
@@ -559,30 +560,30 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-4" data-oid="vv-a2ih">
-            <nav className="flex flex-col space-y-2" data-oid="hbvhkyo">
+          <div className="md:hidden border-t border-gray-200 py-4" data-oid="uxll_tz">
+            <nav className="flex flex-col space-y-2" data-oid="_xl-iva">
               {getNavigationLinks().map(link => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all duration-200"
                   onClick={() => setIsMenuOpen(false)}
-                  data-oid=".7hm6wd"
+                  data-oid="q7_.g94"
                 >
                   {getIcon(link.icon)}
-                  <span className="font-medium" data-oid="4nus60s">
+                  <span className="font-medium" data-oid="sizil-h">
                     {link.label}
                   </span>
                 </Link>
               ))}
 
               {!user && (
-                <div className="pt-4 border-t border-gray-200 space-y-2" data-oid="6kq5xy5">
+                <div className="pt-4 border-t border-gray-200 space-y-2" data-oid="iv::u32">
                   <Link
                     href="/login"
                     className="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors"
                     onClick={() => setIsMenuOpen(false)}
-                    data-oid=".npa-0t"
+                    data-oid="y-a3eft"
                   >
                     Sign In
                   </Link>
@@ -590,7 +591,7 @@ const Header: React.FC = () => {
                     href="/register"
                     className="block bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-lg font-medium transition-colors text-center"
                     onClick={() => setIsMenuOpen(false)}
-                    data-oid="n0dponb"
+                    data-oid="zb_v231"
                   >
                     Get Started
                   </Link>

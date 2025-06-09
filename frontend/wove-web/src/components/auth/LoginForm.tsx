@@ -67,24 +67,24 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl" data-oid="_1fpi55">
-      <div className="text-center mb-6" data-oid="4vstpfk">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2" data-oid="g7sye0f">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl" data-oid="6h5txjd">
+      <div className="text-center mb-6" data-oid="_pil5dp">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2" data-oid="fx5ws.b">
           Welcome Back
         </h2>
-        <p className="text-gray-600" data-oid="2m0:.1a">
+        <p className="text-gray-600" data-oid="jnvayy3">
           Sign in to continue your storytelling journey
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6" data-oid="-6xm3:5">
+      <form onSubmit={handleSubmit} className="space-y-6" data-oid=":_q12a.">
         {error && (
           <div
             className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
-            data-oid="k_ey_-m"
+            data-oid=":1ycha2"
           >
-            <div className="flex items-center" data-oid="a757eqf">
-              <span className="text-red-500 mr-2" data-oid="i1s330:">
+            <div className="flex items-center" data-oid="qbojrnc">
+              <span className="text-red-500 mr-2" data-oid="xnua7od">
                 ⚠
               </span>
               {error}
@@ -93,11 +93,11 @@ const LoginForm: React.FC = () => {
         )}
 
         {/* Email Field */}
-        <div data-oid="sdirlqa">
+        <div data-oid="9lclkrz">
           <label
             htmlFor="email"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="t1:9s9q"
+            data-oid="w5sj74f"
           >
             Email Address
           </label>
@@ -115,26 +115,26 @@ const LoginForm: React.FC = () => {
             } ${isLoading ? 'bg-gray-100 cursor-not-allowed' : ''}`}
             placeholder="Enter your email address"
             autoComplete="email"
-            data-oid="_c8f..k"
+            data-oid="r1z:i8k"
           />
 
           {validationErrors.email && (
-            <p className="mt-1 text-sm text-red-600" data-oid="0b:ud5.">
+            <p className="mt-1 text-sm text-red-600" data-oid="3ilwc:-">
               {validationErrors.email}
             </p>
           )}
         </div>
 
         {/* Password Field */}
-        <div data-oid="4zw2xe8">
+        <div data-oid="e0slboa">
           <label
             htmlFor="password"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="y0md..d"
+            data-oid=":2c2tn2"
           >
             Password
           </label>
-          <div className="relative" data-oid="jt08n8e">
+          <div className="relative" data-oid="7_jjuxb">
             <input
               type={showPassword ? 'text' : 'password'}
               id="password"
@@ -149,7 +149,7 @@ const LoginForm: React.FC = () => {
               } ${isLoading ? 'bg-gray-100 cursor-not-allowed' : ''}`}
               placeholder="Enter your password"
               autoComplete="current-password"
-              data-oid="pp9zj9i"
+              data-oid="0gohy1j"
             />
 
             <button
@@ -157,7 +157,7 @@ const LoginForm: React.FC = () => {
               onClick={() => setShowPassword(!showPassword)}
               disabled={isLoading}
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 focus:outline-none"
-              data-oid="a6:lj5h"
+              data-oid="o.0ij:c"
             >
               {showPassword ? (
                 <svg
@@ -165,14 +165,14 @@ const LoginForm: React.FC = () => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  data-oid="ylp:abj"
+                  data-oid="1a1q1d0"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
-                    data-oid="_fhk4cu"
+                    data-oid="j6zd_-r"
                   />
                 </svg>
               ) : (
@@ -181,58 +181,59 @@ const LoginForm: React.FC = () => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  data-oid=".4k9e-d"
+                  data-oid="mjuq-fp"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    data-oid="8l-cq5j"
+                    data-oid="yacu045"
                   />
+
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    data-oid="6h0vnpj"
+                    data-oid="8uavk2w"
                   />
                 </svg>
               )}
             </button>
           </div>
           {validationErrors.password && (
-            <p className="mt-1 text-sm text-red-600" data-oid="3ugtoug">
+            <p className="mt-1 text-sm text-red-600" data-oid="5nd8y74">
               {validationErrors.password}
             </p>
           )}
         </div>
 
         {/* Remember Me & Forgot Password */}
-        <div className="flex items-center justify-between" data-oid="rifmw94">
-          <div className="flex items-center" data-oid="hihg-xq">
+        <div className="flex items-center justify-between" data-oid="3_tqxcy">
+          <div className="flex items-center" data-oid="rdhho__">
             <input
               id="remember-me"
               name="remember-me"
               type="checkbox"
               className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
               disabled={isLoading}
-              data-oid="pv_9k-h"
+              data-oid="rclfjv5"
             />
 
             <label
               htmlFor="remember-me"
               className="ml-2 block text-sm text-gray-700"
-              data-oid="6re5t6n"
+              data-oid="bdx2vnt"
             >
               Remember me
             </label>
           </div>
-          <div className="text-sm" data-oid="x7cmlnf">
+          <div className="text-sm" data-oid="zz:lc9:">
             <Link
               href="/forgot-password"
               className="font-medium text-purple-600 hover:text-purple-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-              data-oid=":b6eo:c"
+              data-oid="10nw_83"
             >
               Forgot your password?
             </Link>
@@ -240,7 +241,7 @@ const LoginForm: React.FC = () => {
         </div>
 
         {/* Submit Button */}
-        <div data-oid="9fk31yy">
+        <div data-oid="admbyow">
           <button
             type="submit"
             disabled={isLoading}
@@ -249,13 +250,13 @@ const LoginForm: React.FC = () => {
                 ? 'bg-gray-400 cursor-not-allowed'
                 : 'bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200'
             }`}
-            data-oid="vyecd0k"
+            data-oid="cqgshiv"
           >
             {isLoading ? (
-              <div className="flex items-center justify-center" data-oid="qaax9-h">
+              <div className="flex items-center justify-center" data-oid="bwj5o_e">
                 <div
                   className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"
-                  data-oid="3vfb0pb"
+                  data-oid="on94587"
                 ></div>
                 Signing In...
               </div>
@@ -266,13 +267,13 @@ const LoginForm: React.FC = () => {
         </div>
 
         {/* Sign Up Link */}
-        <div className="text-center" data-oid="8too6x-">
-          <p className="text-sm text-gray-600" data-oid="0:jnj9q">
+        <div className="text-center" data-oid="m_zh7he">
+          <p className="text-sm text-gray-600" data-oid="5knuyc-">
             Don't have an account?{' '}
             <Link
               href="/register"
               className="font-medium text-purple-600 hover:text-purple-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-              data-oid="vk7.qxz"
+              data-oid="5v8f478"
             >
               Create one here
             </Link>

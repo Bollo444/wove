@@ -37,30 +37,30 @@ const StorySegmentDisplay: React.FC<StorySegmentDisplayProps> = ({
   return (
     <div
       className="mb-8 p-4 md:p-6 bg-white rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl"
-      data-oid="o:1ye00"
+      data-oid="qb2zvjh"
     >
       {/* Display Media Assets (e.g., image at the top of the segment) */}
       {segment.mediaAssets?.map(asset => (
-        <div key={asset.id} className="mb-4" data-oid="p7.y8sz">
+        <div key={asset.id} className="mb-4" data-oid="sp4hjp4">
           {asset.type === 'image' && (
             <ImageDisplay
               src={asset.url}
               alt={asset.altText || `Image for segment ${segment.id}`}
-              data-oid="2ok2trx"
+              data-oid="cit0-.n"
             />
           )}
           {asset.type === 'video' && (
             <VideoDisplay
               src={asset.url}
               alt={asset.altText || `Video for segment ${segment.id}`}
-              data-oid="wh7pd3s"
+              data-oid=".371.f4"
             />
           )}
           {asset.type === 'audio' && (
             <AudioDisplay
               src={asset.url}
               title={asset.altText || `Audio for segment ${segment.id}`}
-              data-oid=".k2qd_:"
+              data-oid="le9sud_"
             />
           )}
         </div>
@@ -71,24 +71,24 @@ const StorySegmentDisplay: React.FC<StorySegmentDisplayProps> = ({
       <div
         className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none text-gray-700 leading-relaxed"
         dangerouslySetInnerHTML={{ __html: segment.content }} // Assuming content might be HTML from a rich text editor
-        data-oid="xdp5di7"
+        data-oid=".annhpk"
       />
 
       {segment.authorName && (
-        <p className="text-xs text-gray-500 mt-3 text-right italic" data-oid="zpjg2y9">
+        <p className="text-xs text-gray-500 mt-3 text-right italic" data-oid="72l1nwn">
           - {segment.authorName}
         </p>
       )}
 
       {/* Placeholder for interactive elements / choices / editing tools */}
       {(onEdit || onAddChoice) && isCurrentUserTurn && (
-        <div className="mt-4 pt-3 border-t border-gray-200 flex space-x-2" data-oid=":-r61r2">
+        <div className="mt-4 pt-3 border-t border-gray-200 flex space-x-2" data-oid="fe-a2l7">
           {onEdit && (
             <button
               onClick={() => onEdit(segment.id)}
               className="btn-secondary text-xs"
               aria-label={`Edit segment ${segment.position + 1}`}
-              data-oid="-_uqlkw"
+              data-oid="z2f2wh-"
             >
               Edit Segment
             </button>
@@ -98,7 +98,7 @@ const StorySegmentDisplay: React.FC<StorySegmentDisplayProps> = ({
               onClick={() => onAddChoice(segment.id)}
               className="btn-secondary text-xs"
               aria-label={`Add choice after segment ${segment.position + 1}`}
-              data-oid="391g2e2"
+              data-oid="z26:vmk"
             >
               Add Choice/Next Segment
             </button>

@@ -69,7 +69,7 @@ const Badge: React.FC<BadgeProps> = ({
 
   if (dot) {
     return (
-      <span className={`inline-flex items-center gap-1.5 ${className}`} data-oid="qsq3ue_">
+      <span className={`inline-flex items-center gap-1.5 ${className}`} data-oid="a0gijxh">
         <span
           className={`w-2 h-2 rounded-full ${
             variant === 'primary'
@@ -84,10 +84,10 @@ const Badge: React.FC<BadgeProps> = ({
                       ? 'bg-blue-500'
                       : 'bg-gray-500'
           }`}
-          data-oid="1r_r.qw"
+          data-oid="v3agypp"
         />
 
-        <span style={{ color: currentTheme.colors.text.primary }} data-oid="jriuf6f">
+        <span style={{ color: currentTheme.colors.text.primary }} data-oid="h7wth0s">
           {children}
         </span>
       </span>
@@ -103,7 +103,7 @@ const Badge: React.FC<BadgeProps> = ({
         ${getAgeThemeStyles()}
         ${className}
       `}
-      data-oid="bs7ul-x"
+      data-oid="t-x7mup"
     >
       {children}
     </span>
