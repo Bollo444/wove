@@ -1,0 +1,21 @@
+{
+  "name": "shadcn-ui-server",
+  "description": "MCP server for shadcn/ui component references and installation guides",
+  "transport": {
+    "type": "sse",
+    "url": "http://localhost:3002/sse"
+  },
+  "capabilities": {
+    "tools": [
+      "get_component",
+      "get_component_demo"
+    ],
+    "resources": [
+      "get_components"
+    ],
+    "resource_templates": [
+      "get_install_script_for_component",
+      "get_installation_guide"
+    ]
+  }
+}

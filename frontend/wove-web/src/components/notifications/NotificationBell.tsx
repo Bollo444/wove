@@ -43,25 +43,25 @@ const NotificationBell: React.FC<NotificationBellProps> = ({ className = '' }) =
         return {
           button: 'hover:bg-yellow-100 focus:ring-yellow-300',
           badge: 'bg-red-500 text-white',
-          animation: 'hover:animate-bounce'
+          animation: 'hover:animate-bounce',
         };
       case 'teens':
         return {
           button: 'hover:bg-blue-100 focus:ring-blue-300',
           badge: 'bg-purple-500 text-white',
-          animation: 'hover:scale-110 transition-transform'
+          animation: 'hover:scale-110 transition-transform',
         };
       case 'adults':
         return {
           button: 'hover:bg-gray-100 focus:ring-gray-300',
           badge: 'bg-blue-600 text-white',
-          animation: 'hover:scale-105 transition-transform'
+          animation: 'hover:scale-105 transition-transform',
         };
       default:
         return {
           button: 'hover:bg-gray-100 focus:ring-gray-300',
           badge: 'bg-gray-600 text-white',
-          animation: 'hover:scale-105 transition-transform'
+          animation: 'hover:scale-105 transition-transform',
         };
     }
   };
@@ -70,7 +70,7 @@ const NotificationBell: React.FC<NotificationBellProps> = ({ className = '' }) =
 
   return (
     <>
-      <div className={`relative ${className}`}>
+      <div className={`relative ${className}`} data-oid="id5jv99">
         <button
           onClick={handleToggle}
           className={`
@@ -82,49 +82,58 @@ const NotificationBell: React.FC<NotificationBellProps> = ({ className = '' }) =
           `}
           aria-label={`Notifications${unreadCount > 0 ? ` (${unreadCount} unread)` : ''}`}
           disabled={loading}
+          data-oid="8vg0kqt"
         >
           {/* Bell Icon */}
-          <span className="text-xl">
+          <span className="text-xl" data-oid=".a3.gvp">
             {getBellIcon()}
           </span>
-          
+
           {/* Loading Indicator */}
           {loading && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-4 h-4 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            <div className="absolute inset-0 flex items-center justify-center" data-oid="025tm4l">
+              <div
+                className="w-4 h-4 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"
+                data-oid="qtof.7q"
+              ></div>
             </div>
           )}
-          
+
           {/* Unread Count Badge */}
           {unreadCount > 0 && !loading && (
-            <span className={`
+            <span
+              className={`
               absolute -top-1 -right-1 inline-flex items-center justify-center
               px-2 py-1 text-xs font-bold leading-none rounded-full
               ${styles.badge}
               min-w-[1.25rem] h-5
               animate-pulse
-            `}>
+            `}
+              data-oid="qn2v5xj"
+            >
               {unreadCount > 99 ? '99+' : unreadCount}
             </span>
           )}
-          
+
           {/* Active Indicator */}
           {isOpen && (
-            <div className="absolute inset-0 rounded-full border-2 border-blue-500 animate-pulse"></div>
+            <div
+              className="absolute inset-0 rounded-full border-2 border-blue-500 animate-pulse"
+              data-oid="zv9iqvx"
+            ></div>
           )}
         </button>
-        
+
         {/* Tooltip for accessibility */}
-        <div className="sr-only">
-          {unreadCount > 0 
+        <div className="sr-only" data-oid="fr0revk">
+          {unreadCount > 0
             ? `You have ${unreadCount} unread notification${unreadCount === 1 ? '' : 's'}`
-            : 'No unread notifications'
-          }
+            : 'No unread notifications'}
         </div>
       </div>
-      
+
       {/* Notification Center */}
-      <NotificationCenter isOpen={isOpen} onClose={handleClose} />
+      <NotificationCenter isOpen={isOpen} onClose={handleClose} data-oid="k-ct55p" />
     </>
   );
 };

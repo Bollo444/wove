@@ -1,9 +1,10 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { AgeTier } from 'shared';
-import { ThemeConfig, getTheme, generateCSSVariables } from '../styles/themes';
-import { useAuth } from './AuthContext';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { AgeTier } from 'shared'; // Assuming AgeTier is exported from a shared location
+import { ThemeConfig, generateCSSVariables, getTheme } from '../styles/themes'; // Corrected import path, removed unused themes, defaultTheme
+import { useAuth } from './AuthContext'; // Assuming useAuth is in the same directory or a sub-directory
+import { useDarkMode, ThemeMode } from '@/components/DarkModeProvider'; // Import useDarkMode and ThemeMode
 
 interface ThemeContextType {
   currentTheme: ThemeConfig;
@@ -27,62 +28,43 @@ interface ThemeProviderProps {
   defaultAgeTier?: AgeTier;
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ 
-  children, 
-  defaultAgeTier = AgeTier.UNVERIFIED 
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+  defaultAgeTier = AgeTier.UNVERIFIED,
 }) => {
   const { user, isLoading: authLoading } = useAuth();
   const [ageTier, setAgeTier] = useState<AgeTier>(defaultAgeTier);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentTheme, setCurrentTheme] = useState<ThemeConfig>(getTheme(defaultAgeTier));
+  // const { themeMode } = useDarkMode(); // Removed: DarkModeProvider handles dark mode
+  const [currentTheme, setCurrentTheme] = useState<ThemeConfig>(getTheme(defaultAgeTier)); // Removed themeMode from getTheme
 
-  // Update age tier based on authenticated user
   useEffect(() => {
     if (!authLoading) {
-      if (user?.ageTier) {
-        const userAgeTier = user.ageTier as AgeTier;
-        setAgeTier(userAgeTier);
-        setCurrentTheme(getTheme(userAgeTier));
-      } else {
-        // User not authenticated or no age tier, use default
-        setAgeTier(defaultAgeTier);
-        setCurrentTheme(getTheme(defaultAgeTier));
-      }
+      const newAgeTier = user?.ageTier || defaultAgeTier;
+      setAgeTier(newAgeTier);
+      const newTheme = getTheme(newAgeTier); // Removed themeMode from getTheme
+      setCurrentTheme(newTheme);
       setIsLoading(false);
-    }
-  }, [user, authLoading, defaultAgeTier]);
 
-  // Apply CSS variables when theme changes
-  useEffect(() => {
-    const root = document.documentElement;
-    const cssVariables = generateCSSVariables(currentTheme);
-    
-    // Create a style element to inject CSS variables
-    let styleElement = document.getElementById('theme-variables');
-    if (!styleElement) {
-      styleElement = document.createElement('style');
-      styleElement.id = 'theme-variables';
-      document.head.appendChild(styleElement);
+      // Apply theme as CSS variables to :root
+      const cssVariables = generateCSSVariables(newTheme);
+      const root = document.documentElement;
+      Object.entries(cssVariables).forEach(([key, value]) => {
+        root.style.setProperty(key, value);
+      });
+
+      // Add age tier class to body. Dark mode class is handled by DarkModeProvider.
+      document.body.className = ''; // Clear existing classes
+      document.body.classList.add(`age-tier-${newAgeTier.toLowerCase()}`);
+      // document.body.classList.add(themeMode); // REMOVED: DarkModeProvider handles this on <html>
+    } else {
+      setIsLoading(true);
     }
-    
-    styleElement.textContent = `:root { ${cssVariables} }`;
-    
-    // Add age tier class to body for additional styling
-    document.body.className = document.body.className.replace(/theme-\w+/g, '');
-    document.body.classList.add(`theme-${ageTier}`);
-    
-    return () => {
-      // Cleanup on unmount
-      const element = document.getElementById('theme-variables');
-      if (element) {
-        element.remove();
-      }
-    };
-  }, [currentTheme, ageTier]);
+  }, [user, authLoading, defaultAgeTier]); // Removed themeMode from dependencies
 
   const handleSetAgeTier = (newAgeTier: AgeTier) => {
     setAgeTier(newAgeTier);
-    setCurrentTheme(getTheme(newAgeTier));
+    setCurrentTheme(getTheme(newAgeTier)); // Removed themeMode from getTheme
   };
 
   const value: ThemeContextType = {
@@ -93,7 +75,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   };
 
   return (
-    <ThemeContext.Provider value={value}>
+    <ThemeContext.Provider value={value} data-oid="w511zta">
       {children}
     </ThemeContext.Provider>
   );

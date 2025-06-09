@@ -26,13 +26,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   const loadRecentStories = async () => {
     if (!user) return;
-    
+
     setIsLoading(true);
     try {
       await loadUserStories(user.id);
       // Get the 5 most recent stories
       const recent = stories
-        .sort((a, b) => new Date(b.updatedAt || b.createdAt).getTime() - new Date(a.updatedAt || a.createdAt).getTime())
+        .sort(
+          (a, b) =>
+            new Date(b.updatedAt || b.createdAt).getTime() -
+            new Date(a.updatedAt || a.createdAt).getTime(),
+        )
         .slice(0, 5);
       setRecentStories(recent);
     } catch (error) {
@@ -48,22 +52,48 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         name: 'Explore Stories',
         href: '/explore',
         icon: (
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            data-oid="lydf1pv"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              data-oid="lyvh3e2"
+            />
           </svg>
         ),
-        description: 'Discover amazing stories'
+
+        description: 'Discover amazing stories',
       },
       {
         name: 'Create Story',
         href: '/create',
         icon: (
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            data-oid="duvtrn:"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 4v16m8-8H4"
+              data-oid="qx3m4si"
+            />
           </svg>
         ),
-        description: 'Start a new adventure'
-      }
+
+        description: 'Start a new adventure',
+      },
     ];
 
     if (user) {
@@ -72,32 +102,71 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           name: 'My Stories',
           href: '/my-stories',
           icon: (
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              data-oid=".xngj38"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                data-oid="zagox6g"
+              />
             </svg>
           ),
-          description: 'Your created stories'
+
+          description: 'Your created stories',
         },
         {
           name: 'Favorites',
           href: '/favorites',
           icon: (
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              data-oid="jpafqg-"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                data-oid="6m6u0ap"
+              />
             </svg>
           ),
-          description: 'Stories you love'
+
+          description: 'Stories you love',
         },
         {
           name: 'Reading List',
           href: '/reading-list',
           icon: (
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              data-oid="6zwtosc"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                data-oid="dw6is2e"
+              />
             </svg>
           ),
-          description: 'Stories to read later'
-        }
+
+          description: 'Stories to read later',
+        },
       );
     }
 
@@ -107,11 +176,24 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         name: 'Safety Center',
         href: '/safety',
         icon: (
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            data-oid="qcge7fd"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              data-oid="pa79uon"
+            />
           </svg>
         ),
-        description: 'Stay safe online'
+
+        description: 'Stay safe online',
       });
     }
 
@@ -131,7 +213,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     const now = new Date();
     const storyDate = new Date(date);
     const diffInHours = Math.floor((now.getTime() - storyDate.getTime()) / (1000 * 60 * 60));
-    
+
     if (diffInHours < 1) return 'Just now';
     if (diffInHours < 24) return `${diffInHours}h ago`;
     if (diffInHours < 168) return `${Math.floor(diffInHours / 24)}d ago`;
@@ -143,85 +225,136 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
     <>
       {/* Backdrop */}
-      <div 
+      <div
         className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
         onClick={onClose}
+        data-oid="nkq31d2"
       />
-      
+
       {/* Sidebar */}
-      <div className="fixed inset-y-0 left-0 z-50 w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0">
-        <div className="flex flex-col h-full">
+      <div
+        className="fixed inset-y-0 left-0 z-50 w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0"
+        data-oid=":vgsxv2"
+      >
+        <div className="flex flex-col h-full" data-oid="5b:vh5k">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <div className="flex items-center space-x-3">
-              <div className="h-8 w-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">W</span>
+          <div
+            className="flex items-center justify-between p-6 border-b border-gray-200"
+            data-oid="occl88h"
+          >
+            <div className="flex items-center space-x-3" data-oid=".qltd_d">
+              <div
+                className="h-8 w-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center"
+                data-oid="_wemyta"
+              >
+                <span className="text-white font-bold text-lg" data-oid=":r98e8b">
+                  W
+                </span>
               </div>
-              <span className="text-xl font-bold text-gray-900">Wove</span>
+              <span className="text-xl font-bold text-gray-900" data-oid=":m3kwyl">
+                Wove
+              </span>
             </div>
             <button
               onClick={onClose}
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              data-oid="ftw0e3g"
             >
-              <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="h-5 w-5 text-gray-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                data-oid="-xvpqi4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                  data-oid="mxj1buo"
+                />
               </svg>
             </button>
           </div>
 
           {/* User Profile Section */}
           {user && (
-            <div className="p-6 border-b border-gray-200">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="h-12 w-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">
+            <div className="p-6 border-b border-gray-200" data-oid="iut57ix">
+              <div className="flex items-center space-x-3 mb-4" data-oid="89dudoq">
+                <div
+                  className="h-12 w-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center"
+                  data-oid="3wgj0kv"
+                >
+                  <span className="text-white font-semibold text-lg" data-oid="eu6n3-w">
                     {user.firstName?.[0]?.toUpperCase() || 'U'}
                   </span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                <div className="flex-1 min-w-0" data-oid="zq.a87i">
+                  <p className="text-sm font-medium text-gray-900 truncate" data-oid="6yffr0q">
                     {user.firstName} {user.lastName}
                   </p>
-                  <p className="text-xs text-gray-500 truncate">
+                  <p className="text-xs text-gray-500 truncate" data-oid=".ueukix">
                     {user.email}
                   </p>
                 </div>
               </div>
-              
+
               {/* User Stats */}
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div>
-                  <p className="text-lg font-semibold text-gray-900">{stories.length}</p>
-                  <p className="text-xs text-gray-500">Stories</p>
+              <div className="grid grid-cols-3 gap-4 text-center" data-oid="-gz5yyp">
+                <div data-oid=":y3jv5g">
+                  <p className="text-lg font-semibold text-gray-900" data-oid="m9.10e8">
+                    {stories.length}
+                  </p>
+                  <p className="text-xs text-gray-500" data-oid="7-oawgc">
+                    Stories
+                  </p>
                 </div>
-                <div>
-                  <p className="text-lg font-semibold text-gray-900">0</p>
-                  <p className="text-xs text-gray-500">Followers</p>
+                <div data-oid="5ri4zt4">
+                  <p className="text-lg font-semibold text-gray-900" data-oid="z.vgqk5">
+                    0
+                  </p>
+                  <p className="text-xs text-gray-500" data-oid="p_.hlnc">
+                    Followers
+                  </p>
                 </div>
-                <div>
-                  <p className="text-lg font-semibold text-gray-900">0</p>
-                  <p className="text-xs text-gray-500">Following</p>
+                <div data-oid="9tanycu">
+                  <p className="text-lg font-semibold text-gray-900" data-oid="v2st.a2">
+                    0
+                  </p>
+                  <p className="text-xs text-gray-500" data-oid="34xmgyp">
+                    Following
+                  </p>
                 </div>
               </div>
             </div>
           )}
 
           {/* Navigation */}
-          <nav className="flex-1 px-6 py-4 space-y-2 overflow-y-auto">
-            <div className="space-y-1">
-              {getNavigationItems().map((item) => (
+          <nav className="flex-1 px-6 py-4 space-y-2 overflow-y-auto" data-oid="wmgwz1f">
+            <div className="space-y-1" data-oid="fnmjv1r">
+              {getNavigationItems().map(item => (
                 <Link
                   key={item.name}
                   href={item.href}
                   onClick={onClose}
                   className="group flex items-center px-3 py-3 text-sm font-medium rounded-lg text-gray-700 hover:text-purple-700 hover:bg-purple-50 transition-all duration-200"
+                  data-oid="be_zl8d"
                 >
-                  <span className="text-gray-400 group-hover:text-purple-600 mr-3">
+                  <span
+                    className="text-gray-400 group-hover:text-purple-600 mr-3"
+                    data-oid="9nugkdr"
+                  >
                     {item.icon}
                   </span>
-                  <div className="flex-1">
-                    <div className="font-medium">{item.name}</div>
-                    <div className="text-xs text-gray-500 group-hover:text-purple-600">
+                  <div className="flex-1" data-oid="azeo:ra">
+                    <div className="font-medium" data-oid="e:wkqan">
+                      {item.name}
+                    </div>
+                    <div
+                      className="text-xs text-gray-500 group-hover:text-purple-600"
+                      data-oid="dpsba.0"
+                    >
                       {item.description}
                     </div>
                   </div>
@@ -231,29 +364,51 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
             {/* Recent Stories Section */}
             {user && recentStories.length > 0 && (
-              <div className="mt-8">
-                <h3 className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+              <div className="mt-8" data-oid="v9yhda.">
+                <h3
+                  className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3"
+                  data-oid="pyr9kkg"
+                >
                   Recent Stories
                 </h3>
-                <div className="space-y-2">
-                  {recentStories.map((story) => (
+                <div className="space-y-2" data-oid="myyf2h.">
+                  {recentStories.map(story => (
                     <Link
                       key={story.id}
                       href={`/story/${story.id}`}
                       onClick={onClose}
                       className="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+                      data-oid="r-r2a6w"
                     >
-                      <div className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 h-10 w-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
-                          <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      <div className="flex items-start space-x-3" data-oid="3qp0z.5">
+                        <div
+                          className="flex-shrink-0 h-10 w-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center"
+                          data-oid="oya2:88"
+                        >
+                          <svg
+                            className="h-5 w-5 text-gray-500"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            data-oid="1xlepiq"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                              data-oid="ru12-vq"
+                            />
                           </svg>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-gray-900 truncate">
+                        <div className="flex-1 min-w-0" data-oid="rfbs5lg">
+                          <p
+                            className="text-sm font-medium text-gray-900 truncate"
+                            data-oid="tl6rvu."
+                          >
                             {story.title}
                           </p>
-                          <p className="text-xs text-gray-500">
+                          <p className="text-xs text-gray-500" data-oid="nvlklxf">
                             {formatTimeAgo(story.updatedAt || story.createdAt)}
                           </p>
                         </div>
@@ -265,21 +420,60 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             )}
 
             {/* Quick Actions */}
-            <div className="mt-8">
-              <h3 className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            <div className="mt-8" data-oid="lz7m1qd">
+              <h3
+                className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3"
+                data-oid=".hlcj5n"
+              >
                 Quick Actions
               </h3>
-              <div className="space-y-2">
-                <button className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors">
-                  <svg className="h-4 w-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <div className="space-y-2" data-oid="mgr0v51">
+                <button
+                  className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors"
+                  data-oid="59n.ksb"
+                >
+                  <svg
+                    className="h-4 w-4 mr-3 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    data-oid="1972r6p"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                      data-oid="i0z_86c"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      data-oid="nqrssor"
+                    />
                   </svg>
                   Settings
                 </button>
-                <button className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors">
-                  <svg className="h-4 w-4 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <button
+                  className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors"
+                  data-oid="lgsy1ke"
+                >
+                  <svg
+                    className="h-4 w-4 mr-3 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    data-oid="xc.juyf"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      data-oid="v9fp6y9"
+                    />
                   </svg>
                   Help & Support
                 </button>
@@ -288,23 +482,37 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           </nav>
 
           {/* Footer */}
-          <div className="p-6 border-t border-gray-200">
+          <div className="p-6 border-t border-gray-200" data-oid="-eewq6s">
             {user ? (
               <button
                 onClick={handleLogout}
                 className="w-full flex items-center justify-center px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+                data-oid="3jkg.jz"
               >
-                <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                <svg
+                  className="h-4 w-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  data-oid="ss997zy"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    data-oid="ao6w.3r"
+                  />
                 </svg>
                 Sign Out
               </button>
             ) : (
-              <div className="space-y-2">
+              <div className="space-y-2" data-oid="m39sf28">
                 <Link
                   href="/login"
                   onClick={onClose}
                   className="w-full flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
+                  data-oid="9sf3:va"
                 >
                   Sign In
                 </Link>
@@ -312,6 +520,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                   href="/register"
                   onClick={onClose}
                   className="w-full flex items-center justify-center px-4 py-2 text-sm font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-colors"
+                  data-oid="jfyn.tr"
                 >
                   Create Account
                 </Link>

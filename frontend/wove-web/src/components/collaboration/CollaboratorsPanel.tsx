@@ -39,32 +39,45 @@ const CollaboratorsPanel: React.FC<CollaboratorsPanelProps> = ({
   onInviteCollaborator,
 }) => {
   return (
-    <div className="p-4 bg-gray-50 rounded-lg shadow">
-      <h3 className="text-lg font-semibold text-gray-700 mb-3">Collaborators</h3>
+    <div className="p-4 bg-gray-50 rounded-lg shadow" data-oid="nk95b3f">
+      <h3 className="text-lg font-semibold text-gray-700 mb-3" data-oid="36efw3r">
+        Collaborators
+      </h3>
       {collaborators.length === 0 ? (
-        <p className="text-sm text-gray-500">No collaborators yet. Invite someone!</p>
+        <p className="text-sm text-gray-500" data-oid="o160lj.">
+          No collaborators yet. Invite someone!
+        </p>
       ) : (
-        <ul className="space-y-2">
+        <ul className="space-y-2" data-oid="veflq7x">
           {collaborators.map(collab => (
             <li
               key={collab.id}
               className={`flex items-center p-2 rounded-md transition-colors ${collab.isCurrentTurn || collab.id === currentTurnUserId ? 'bg-purple-100 border border-purple-300' : 'hover:bg-gray-100'}`}
+              data-oid="_1sgck0"
             >
               <img
                 src={collab.avatarUrl || '/default-avatar.png'}
                 alt={collab.displayName}
                 className="w-8 h-8 rounded-full mr-2 object-cover"
+                data-oid="3_664nf"
               />
+
               <span
                 className={`text-sm ${collab.isCurrentTurn || collab.id === currentTurnUserId ? 'font-semibold text-purple-700' : 'text-gray-800'}`}
+                data-oid="dgng9yv"
               >
                 {collab.displayName}
               </span>
               {collab.isTyping && (
-                <span className="ml-auto text-xs text-purple-500 italic">typing...</span>
+                <span className="ml-auto text-xs text-purple-500 italic" data-oid="9cew-rk">
+                  typing...
+                </span>
               )}
               {(collab.isCurrentTurn || collab.id === currentTurnUserId) && (
-                <span className="ml-auto text-xs bg-purple-500 text-white px-2 py-0.5 rounded-full">
+                <span
+                  className="ml-auto text-xs bg-purple-500 text-white px-2 py-0.5 rounded-full"
+                  data-oid="a827sz2"
+                >
                   Turn
                 </span>
               )}
@@ -73,7 +86,11 @@ const CollaboratorsPanel: React.FC<CollaboratorsPanelProps> = ({
         </ul>
       )}
       {onInviteCollaborator && (
-        <button onClick={onInviteCollaborator} className="mt-4 w-full btn-secondary text-sm">
+        <button
+          onClick={onInviteCollaborator}
+          className="mt-4 w-full btn-secondary text-sm"
+          data-oid="o3fdher"
+        >
           Invite Collaborator
         </button>
       )}
@@ -81,6 +98,7 @@ const CollaboratorsPanel: React.FC<CollaboratorsPanelProps> = ({
         <button
           onClick={() => alert('Invite functionality not implemented.')}
           className="mt-4 w-full btn-secondary text-sm"
+          data-oid="tfaf71t"
         >
           Invite Collaborator (Placeholder)
         </button>

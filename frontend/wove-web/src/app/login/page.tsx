@@ -6,8 +6,8 @@ import LoginForm from '../../components/auth/LoginForm';
 
 const LoginPage: React.FC = () => {
   return (
-    <Layout title="Login - Wove">
-      <LoginForm />
+    <Layout title="Login - Wove" data-oid=":o9fkqh">
+      <LoginForm data-oid="ubrb_j." />
     </Layout>
   );
 };

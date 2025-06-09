@@ -89,22 +89,34 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ storyId }) => {
   };
 
   return (
-    <div className="p-4 bg-gray-100 rounded-lg shadow h-full flex flex-col">
-      <h3 className="text-lg font-semibold text-gray-700 mb-3 border-b pb-2">Story Chat</h3>
-      <div className="flex-grow overflow-y-auto mb-3 pr-2 space-y-3" style={{ maxHeight: '300px' }}>
+    <div className="p-4 bg-gray-100 rounded-lg shadow h-full flex flex-col" data-oid="4qjyzwo">
+      <h3 className="text-lg font-semibold text-gray-700 mb-3 border-b pb-2" data-oid="wtqx7g1">
+        Story Chat
+      </h3>
+      <div
+        className="flex-grow overflow-y-auto mb-3 pr-2 space-y-3"
+        style={{ maxHeight: '300px' }}
+        data-oid="x3mph9x"
+      >
         {' '}
         {/* Max height for scroll */}
         {currentMessages.map(msg => (
           <div
             key={msg.id}
             className={`flex ${msg.userId === 'currentUser' /*user?.id*/ ? 'justify-end' : 'justify-start'}`}
+            data-oid="jicer4r"
           >
             <div
               className={`max-w-xs lg:max-w-md px-3 py-2 rounded-lg shadow ${msg.userId === 'currentUser' /*user?.id*/ ? 'bg-purple-500 text-white' : 'bg-white text-gray-800'}`}
+              data-oid="kx7bw3d"
             >
-              <p className="text-xs font-semibold mb-0.5">{msg.userDisplayName}</p>
-              <p className="text-sm">{msg.text}</p>
-              <p className="text-xs opacity-70 mt-1 text-right">
+              <p className="text-xs font-semibold mb-0.5" data-oid="5ac-4vc">
+                {msg.userDisplayName}
+              </p>
+              <p className="text-sm" data-oid="4hgte.n">
+                {msg.text}
+              </p>
+              <p className="text-xs opacity-70 mt-1 text-right" data-oid="fsvb.sp">
                 {new Date(msg.timestamp).toLocaleTimeString([], {
                   hour: '2-digit',
                   minute: '2-digit',
@@ -113,9 +125,9 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ storyId }) => {
             </div>
           </div>
         ))}
-        <div ref={messagesEndRef} />
+        <div ref={messagesEndRef} data-oid="l-lp6jo" />
       </div>
-      <form onSubmit={handleSendMessage} className="flex">
+      <form onSubmit={handleSendMessage} className="flex" data-oid="u9jw6ct">
         <input
           type="text"
           value={newMessage}
@@ -123,10 +135,12 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ storyId }) => {
           placeholder="Type your message..."
           className="input-field flex-grow mr-2"
           // disabled={!user} // Disable if not logged in
+          data-oid="r0j:43h"
         />
         <button
           type="submit"
-          className="btn-primary px-4" /*disabled={!user || !newMessage.trim()}*/
+          className="btn-primary px-4"
+          /*disabled={!user || !newMessage.trim()}*/ data-oid="d03-:v4"
         >
           Send
         </button>

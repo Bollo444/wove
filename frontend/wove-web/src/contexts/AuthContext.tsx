@@ -57,7 +57,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setIsLoading(true);
     try {
       console.log('Attempting login with:', { email, password: '***' });
-      
+
       const { user: userData } = await apiService.login({ email, password });
       setUser(userData);
     } catch (error) {
@@ -77,7 +77,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setIsLoading(true);
     try {
       console.log('Attempting registration with:', { ...userData, password: '***' });
-      
+
       const { user: newUser } = await apiService.register(userData);
       setUser(newUser);
     } catch (error) {
@@ -115,5 +115,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     updateUser,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value} data-oid="iczblua">
+      {children}
+    </AuthContext.Provider>
+  );
 };

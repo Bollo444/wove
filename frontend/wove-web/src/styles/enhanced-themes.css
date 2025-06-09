@@ -1,0 +1,265 @@
+/* Enhanced Theme System for Wove */
+
+/* Base CSS Variables for Dynamic Theming */
+:root {
+  /* Animation Durations */
+  --animation-fast: 150ms;
+  --animation-normal: 200ms;
+  --animation-slow: 300ms;
+  
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  
+  /* Border Radius Scale */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Shadow Scale */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Kids Theme Enhancements */
+.theme-kids {
+  /* Enhanced animations for kids */
+  --animation-bounce: bounce 1s infinite;
+  --animation-wiggle: wiggle 0.5s ease-in-out;
+  --animation-pulse-slow: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  /* Larger interactive elements */
+  --button-min-height: 3rem;
+  --input-min-height: 3rem;
+  --card-padding: 1.5rem;
+  
+  /* Playful borders */
+  --border-width: 3px;
+  --border-style: solid;
+  
+  /* Enhanced shadows for depth */
+  --shadow-playful: 0 8px 16px -4px rgb(139 92 246 / 0.3), 0 4px 8px -2px rgb(139 92 246 / 0.1);
+}
+
+.theme-kids .ui-button {
+  transform: scale(1);
+  transition: transform var(--animation-normal) ease, box-shadow var(--animation-normal) ease;
+}
+
+.theme-kids .ui-button:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-playful);
+}
+
+.theme-kids .ui-button:active {
+  transform: scale(0.98);
+}
+
+.theme-kids .ui-card {
+  transition: transform var(--animation-normal) ease, box-shadow var(--animation-normal) ease;
+}
+
+.theme-kids .ui-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-playful);
+}
+
+/* Teens Under 16 Theme Enhancements */
+.theme-teens-u16 {
+  /* Smooth, modern animations */
+  --animation-slide: slideIn 0.3s ease-out;
+  --animation-fade: fadeIn 0.25s ease-out;
+  
+  /* Balanced sizing */
+  --button-min-height: 2.75rem;
+  --input-min-height: 2.75rem;
+  --card-padding: 1.25rem;
+  
+  /* Subtle borders */
+  --border-width: 2px;
+  --border-style: solid;
+  
+  /* Modern shadows */
+  --shadow-modern: 0 4px 12px -2px rgb(139 92 246 / 0.2), 0 2px 6px -1px rgb(139 92 246 / 0.05);
+}
+
+.theme-teens-u16 .ui-button {
+  transition: all var(--animation-normal) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-teens-u16 .ui-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-modern);
+}
+
+.theme-teens-u16 .ui-card {
+  transition: all var(--animation-normal) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-teens-u16 .ui-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-modern);
+}
+
+/* Teens 16+ Theme Enhancements */
+.theme-teens-16-plus {
+  /* Refined animations */
+  --animation-subtle: subtleMove 0.2s ease;
+  
+  /* Standard sizing */
+  --button-min-height: 2.5rem;
+  --input-min-height: 2.5rem;
+  --card-padding: 1rem;
+  
+  /* Clean borders */
+  --border-width: 1px;
+  --border-style: solid;
+  
+  /* Elegant shadows */
+  --shadow-elegant: 0 2px 8px -1px rgb(0 0 0 / 0.1), 0 1px 4px -1px rgb(0 0 0 / 0.06);
+}
+
+.theme-teens-16-plus .ui-button {
+  transition: all var(--animation-fast) ease;
+}
+
+.theme-teens-16-plus .ui-button:hover {
+  box-shadow: var(--shadow-elegant);
+}
+
+.theme-teens-16-plus .ui-card {
+  transition: all var(--animation-fast) ease;
+}
+
+.theme-teens-16-plus .ui-card:hover {
+  box-shadow: var(--shadow-elegant);
+}
+
+/* Adults Theme Enhancements */
+.theme-adults {
+  /* Minimal animations */
+  --animation-minimal: minimal 0.15s ease;
+  
+  /* Compact sizing */
+  --button-min-height: 2.25rem;
+  --input-min-height: 2.25rem;
+  --card-padding: 0.875rem;
+  
+  /* Subtle borders */
+  --border-width: 1px;
+  --border-style: solid;
+  
+  /* Professional shadows */
+  --shadow-professional: 0 1px 6px -1px rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+}
+
+.theme-adults .ui-button {
+  transition: all var(--animation-fast) ease;
+}
+
+.theme-adults .ui-button:hover {
+  box-shadow: var(--shadow-professional);
+}
+
+.theme-adults .ui-card {
+  transition: all var(--animation-fast) ease;
+}
+
+.theme-adults .ui-card:hover {
+  box-shadow: var(--shadow-professional);
+}
+
+/* Custom Animations */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes subtleMove {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes minimal {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  .theme-kids {
+    --button-min-height: 3.5rem;
+    --input-min-height: 3.5rem;
+    --card-padding: 1.25rem;
+  }
+  
+  .theme-teens-u16 {
+    --button-min-height: 3rem;
+    --input-min-height: 3rem;
+    --card-padding: 1rem;
+  }
+}
+
+/* Focus States for Accessibility */
+.ui-button:focus-visible,
+.ui-input:focus-visible,
+.ui-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --border-width: 2px;
+  }
+  
+  .theme-kids {
+    --border-width: 4px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+  }
+}

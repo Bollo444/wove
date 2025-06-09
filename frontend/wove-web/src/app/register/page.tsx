@@ -6,8 +6,8 @@ import RegistrationForm from '../../components/auth/RegistrationForm';
 
 const RegisterPage: React.FC = () => {
   return (
-    <Layout title="Register - Wove">
-      <RegistrationForm />
+    <Layout title="Register - Wove" data-oid="iggkwg-">
+      <RegistrationForm data-oid="1ypt:qj" />
     </Layout>
   );
 };

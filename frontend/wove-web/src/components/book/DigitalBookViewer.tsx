@@ -122,28 +122,53 @@ const DigitalBookViewer: React.FC<DigitalBookViewerProps> = ({ bookId }) => {
 
   const currentBookPage = book?.pages[currentPage];
 
-  if (isLoading) return <div className="text-center p-10">Loading book...</div>;
-  if (error) return <div className="text-center p-10 text-red-500">Error: {error}</div>;
+  if (isLoading)
+    return (
+      <div className="text-center p-10" data-oid="8droo-6">
+        Loading book...
+      </div>
+    );
+  if (error)
+    return (
+      <div className="text-center p-10 text-red-500" data-oid="t_2xxk7">
+        Error: {error}
+      </div>
+    );
   if (!book || !currentBookPage)
-    return <div className="text-center p-10">Book not found or page missing.</div>;
+    return (
+      <div className="text-center p-10" data-oid="ayfzfvg">
+        Book not found or page missing.
+      </div>
+    );
 
   return (
-    <div className="digital-book-viewer flex flex-col items-center p-4 bg-gray-100 rounded-lg shadow-xl">
-      <h2 className="text-2xl font-bold text-gray-800 mb-2">{book.title}</h2>
-      <p className="text-sm text-gray-600 mb-4">by {book.authorName}</p>
+    <div
+      className="digital-book-viewer flex flex-col items-center p-4 bg-gray-100 rounded-lg shadow-xl"
+      data-oid="omt4b3s"
+    >
+      <h2 className="text-2xl font-bold text-gray-800 mb-2" data-oid="dgyll-n">
+        {book.title}
+      </h2>
+      <p className="text-sm text-gray-600 mb-4" data-oid="nc_pnho">
+        by {book.authorName}
+      </p>
 
       {/* Page Display Area - Placeholder for actual book-like layout */}
-      <div className="book-page w-full max-w-2xl bg-white p-6 md:p-10 shadow-inner min-h-[60vh] overflow-y-auto border border-gray-300 rounded">
+      <div
+        className="book-page w-full max-w-2xl bg-white p-6 md:p-10 shadow-inner min-h-[60vh] overflow-y-auto border border-gray-300 rounded"
+        data-oid="1n8l-7a"
+      >
         {/* This would ideally use a more sophisticated page rendering, perhaps with columns or a flipbook library */}
         {currentBookPage.segments.map(segment => (
-          <div key={segment.id} className="mb-4">
+          <div key={segment.id} className="mb-4" data-oid="2fp86ep">
             {segment.mediaAssets?.map(asset => (
-              <div key={asset.id} className="my-2">
+              <div key={asset.id} className="my-2" data-oid="xzki63r">
                 {asset.type === 'image' && (
                   <img
                     src={asset.url}
                     alt={asset.altText}
                     className="max-w-full h-auto rounded mx-auto"
+                    data-oid="tzjj4qy"
                   />
                 )}
                 {/* Add video/audio display if needed in book format */}
@@ -152,22 +177,27 @@ const DigitalBookViewer: React.FC<DigitalBookViewerProps> = ({ bookId }) => {
             <div
               className="prose prose-sm sm:prose-base"
               dangerouslySetInnerHTML={{ __html: segment.content }}
+              data-oid="ctqv9fr"
             />
           </div>
         ))}
       </div>
 
       {/* Navigation Controls */}
-      <div className="navigation-controls flex justify-between items-center w-full max-w-2xl mt-6">
+      <div
+        className="navigation-controls flex justify-between items-center w-full max-w-2xl mt-6"
+        data-oid="d6ok.ej"
+      >
         <button
           onClick={goToPreviousPage}
           disabled={currentPage === 0}
           className="btn-secondary px-4 py-2 disabled:opacity-50"
           aria-label="Previous Page"
+          data-oid="c20qi.m"
         >
           &larr; Previous
         </button>
-        <span className="page-number text-gray-700">
+        <span className="page-number text-gray-700" data-oid="34zet:v">
           Page {currentPage + 1} of {book.pages.length}
         </span>
         <button
@@ -175,6 +205,7 @@ const DigitalBookViewer: React.FC<DigitalBookViewerProps> = ({ bookId }) => {
           disabled={currentPage >= book.pages.length - 1}
           className="btn-secondary px-4 py-2 disabled:opacity-50"
           aria-label="Next Page"
+          data-oid="viid0iv"
         >
           Next &rarr;
         </button>

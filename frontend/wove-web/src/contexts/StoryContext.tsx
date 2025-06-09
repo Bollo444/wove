@@ -101,7 +101,10 @@ export const StoryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }
   };
 
-  const addSegment = async (storyId: string, segmentData: CreateStorySegmentData): Promise<void> => {
+  const addSegment = async (
+    storyId: string,
+    segmentData: CreateStorySegmentData,
+  ): Promise<void> => {
     setIsLoading(true);
     try {
       await storyService.createStorySegment(storyId, segmentData);
@@ -125,7 +128,7 @@ export const StoryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       if (currentStory?.id === storyId) {
         setCurrentStory(updatedStory);
       }
-      setStories(prev => prev.map(story => story.id === storyId ? updatedStory : story));
+      setStories(prev => prev.map(story => (story.id === storyId ? updatedStory : story)));
     } catch (error) {
       console.error('Error updating story:', error);
       throw error;
@@ -165,5 +168,9 @@ export const StoryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     deleteStory,
   };
 
-  return <StoryContext.Provider value={value}>{children}</StoryContext.Provider>;
+  return (
+    <StoryContext.Provider value={value} data-oid="r5-zi--">
+      {children}
+    </StoryContext.Provider>
+  );
 };

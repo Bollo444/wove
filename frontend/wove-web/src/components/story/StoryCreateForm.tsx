@@ -47,7 +47,7 @@ const StoryCreateForm: React.FC = () => {
 
   const validateForm = (): boolean => {
     const errors: ValidationErrors = {};
-    
+
     if (!formData.title.trim()) {
       errors.title = 'Title is required';
     } else if (formData.title.length < 3) {
@@ -55,7 +55,7 @@ const StoryCreateForm: React.FC = () => {
     } else if (formData.title.length > 100) {
       errors.title = 'Title must be less than 100 characters';
     }
-    
+
     if (!formData.description.trim()) {
       errors.description = 'Description is required';
     } else if (formData.description.length < 10) {
@@ -63,17 +63,17 @@ const StoryCreateForm: React.FC = () => {
     } else if (formData.description.length > 500) {
       errors.description = 'Description must be less than 500 characters';
     }
-    
+
     if (!formData.ageTier) {
       errors.ageTier = 'Age tier is required';
     }
-    
+
     if (formData.genreIds.length === 0) {
       errors.genreIds = 'Please select at least one genre';
     } else if (formData.genreIds.length > 3) {
       errors.genreIds = 'Please select no more than 3 genres';
     }
-    
+
     setValidationErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -87,7 +87,7 @@ const StoryCreateForm: React.FC = () => {
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
     }
-    
+
     // Clear validation error for this field when user starts typing
     if (validationErrors[name as keyof ValidationErrors]) {
       setValidationErrors(prev => ({ ...prev, [name]: undefined }));
@@ -100,10 +100,10 @@ const StoryCreateForm: React.FC = () => {
       const newGenreIds = isSelected
         ? prev.genreIds.filter(id => id !== genreId)
         : [...prev.genreIds, genreId];
-      
+
       return { ...prev, genreIds: newGenreIds };
     });
-    
+
     // Clear genre validation error
     if (validationErrors.genreIds) {
       setValidationErrors(prev => ({ ...prev, genreIds: undefined }));
@@ -114,13 +114,13 @@ const StoryCreateForm: React.FC = () => {
     e.preventDefault();
     setError(null);
     setSuccessMessage(null);
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     try {
       const storyData = {
         title: formData.title.trim(),
@@ -130,15 +130,14 @@ const StoryCreateForm: React.FC = () => {
         isPrivate: formData.isPrivate,
         coverImageUrl: formData.coverImageUrl,
       };
-      
+
       const newStory = await createStory(storyData);
       setSuccessMessage('Story created successfully! Redirecting...');
-      
+
       // Redirect to the new story after a brief delay
       setTimeout(() => {
         router.push(`/story/${newStory.id}`);
       }, 1500);
-      
     } catch (error: any) {
       setError(error.message || 'Failed to create story. Please try again.');
     } finally {
@@ -149,33 +148,47 @@ const StoryCreateForm: React.FC = () => {
   const isFormDisabled = isLoading || isSubmitting;
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-xl">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-xl" data-oid="u4h_x8q">
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8" data-oid="9g6gfsj">
         Create Your Story
       </h2>
-      
+
       {successMessage && (
-        <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-          <div className="flex items-center">
-            <span className="text-green-500 mr-2">✓</span>
+        <div
+          className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
+          data-oid="0n2e4o_"
+        >
+          <div className="flex items-center" data-oid=".96tw1d">
+            <span className="text-green-500 mr-2" data-oid="o-jr46v">
+              ✓
+            </span>
             {successMessage}
           </div>
         </div>
       )}
-      
+
       {error && (
-        <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-          <div className="flex items-center">
-            <span className="text-red-500 mr-2">⚠</span>
+        <div
+          className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
+          data-oid="xn8ox6n"
+        >
+          <div className="flex items-center" data-oid="pd1b:sg">
+            <span className="text-red-500 mr-2" data-oid="2muz8_-">
+              ⚠
+            </span>
             {error}
           </div>
         </div>
       )}
-      
-      <form onSubmit={handleSubmit} className="space-y-6">
+
+      <form onSubmit={handleSubmit} className="space-y-6" data-oid="ibid6hk">
         {/* Title Field */}
-        <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+        <div data-oid="1vl:zwx">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700 mb-2"
+            data-oid="jlo0428"
+          >
             Story Title *
           </label>
           <input
@@ -192,18 +205,26 @@ const StoryCreateForm: React.FC = () => {
             } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
             placeholder="Enter an engaging title for your story"
             maxLength={100}
+            data-oid="f.g:hdq"
           />
+
           {validationErrors.title && (
-            <p className="mt-1 text-sm text-red-600">{validationErrors.title}</p>
+            <p className="mt-1 text-sm text-red-600" data-oid="ctta2zr">
+              {validationErrors.title}
+            </p>
           )}
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500" data-oid="qs-ggho">
             {formData.title.length}/100 characters
           </p>
         </div>
 
         {/* Description Field */}
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+        <div data-oid="4m_h_wg">
+          <label
+            htmlFor="description"
+            className="block text-sm font-medium text-gray-700 mb-2"
+            data-oid="p6loy8o"
+          >
             Description *
           </label>
           <textarea
@@ -220,18 +241,26 @@ const StoryCreateForm: React.FC = () => {
             } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
             placeholder="Describe your story to attract readers..."
             maxLength={500}
+            data-oid="14pkyiv"
           />
+
           {validationErrors.description && (
-            <p className="mt-1 text-sm text-red-600">{validationErrors.description}</p>
+            <p className="mt-1 text-sm text-red-600" data-oid="uevvv9p">
+              {validationErrors.description}
+            </p>
           )}
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500" data-oid="msha6ml">
             {formData.description.length}/500 characters
           </p>
         </div>
 
         {/* Age Tier Field */}
-        <div>
-          <label htmlFor="ageTier" className="block text-sm font-medium text-gray-700 mb-2">
+        <div data-oid="7r:p0v7">
+          <label
+            htmlFor="ageTier"
+            className="block text-sm font-medium text-gray-700 mb-2"
+            data-oid="s-4dq97"
+          >
             Target Age Group *
           </label>
           <select
@@ -245,24 +274,37 @@ const StoryCreateForm: React.FC = () => {
                 ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
                 : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
             } ${isFormDisabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+            data-oid="lhhe1gn"
           >
-            <option value="">Select target age group</option>
-            <option value={AgeTier.KIDS}>Kids (6-12)</option>
-            <option value={AgeTier.TEENS_U16}>Young Teens (13-15)</option>
-            <option value={AgeTier.TEENS_16_PLUS}>Older Teens (16-17)</option>
-            <option value={AgeTier.ADULTS}>Adults (18+)</option>
+            <option value="" data-oid="q1eg3pv">
+              Select target age group
+            </option>
+            <option value={AgeTier.KIDS} data-oid="hx.3w18">
+              Kids (6-12)
+            </option>
+            <option value={AgeTier.TEENS_U16} data-oid="mp3cjvi">
+              Young Teens (13-15)
+            </option>
+            <option value={AgeTier.TEENS_16_PLUS} data-oid="bl:m3.o">
+              Older Teens (16-17)
+            </option>
+            <option value={AgeTier.ADULTS} data-oid="77-vn6s">
+              Adults (18+)
+            </option>
           </select>
           {validationErrors.ageTier && (
-            <p className="mt-1 text-sm text-red-600">{validationErrors.ageTier}</p>
+            <p className="mt-1 text-sm text-red-600" data-oid="9kc480k">
+              {validationErrors.ageTier}
+            </p>
           )}
         </div>
 
         {/* Genres Field */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
+        <div data-oid="i1-c2r9">
+          <label className="block text-sm font-medium text-gray-700 mb-3" data-oid="jxbgb6_">
             Genres * (Select 1-3)
           </label>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3" data-oid="d055xe.">
             {availableGenres.map(genre => (
               <label
                 key={genre.id}
@@ -271,6 +313,7 @@ const StoryCreateForm: React.FC = () => {
                     ? 'border-purple-500 bg-purple-50 text-purple-700'
                     : 'border-gray-300 hover:border-gray-400'
                 } ${isFormDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
+                data-oid="v_zq-ph"
               >
                 <input
                   type="checkbox"
@@ -278,21 +321,27 @@ const StoryCreateForm: React.FC = () => {
                   onChange={() => handleGenreChange(genre.id)}
                   disabled={isFormDisabled}
                   className="sr-only"
+                  data-oid="oetc.x_"
                 />
-                <span className="text-sm font-medium">{genre.name}</span>
+
+                <span className="text-sm font-medium" data-oid="-v7115q">
+                  {genre.name}
+                </span>
               </label>
             ))}
           </div>
           {validationErrors.genreIds && (
-            <p className="mt-2 text-sm text-red-600">{validationErrors.genreIds}</p>
+            <p className="mt-2 text-sm text-red-600" data-oid="j:lt:1-">
+              {validationErrors.genreIds}
+            </p>
           )}
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-gray-500" data-oid="lvn8b7n">
             {formData.genreIds.length}/3 genres selected
           </p>
         </div>
 
         {/* Privacy Setting */}
-        <div className="flex items-center">
+        <div className="flex items-center" data-oid="uody3y8">
           <input
             type="checkbox"
             id="isPrivate"
@@ -301,14 +350,16 @@ const StoryCreateForm: React.FC = () => {
             onChange={handleChange}
             disabled={isFormDisabled}
             className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+            data-oid="azxyp_h"
           />
-          <label htmlFor="isPrivate" className="ml-3 text-sm text-gray-700">
+
+          <label htmlFor="isPrivate" className="ml-3 text-sm text-gray-700" data-oid="f0uuwao">
             Make this story private (only you can see it)
           </label>
         </div>
 
         {/* Submit Button */}
-        <div className="pt-4">
+        <div className="pt-4" data-oid="1hs2.e5">
           <button
             type="submit"
             disabled={isFormDisabled}
@@ -317,10 +368,14 @@ const StoryCreateForm: React.FC = () => {
                 ? 'bg-gray-400 cursor-not-allowed'
                 : 'bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200'
             }`}
+            data-oid="m5d22vi"
           >
             {isSubmitting ? (
-              <div className="flex items-center justify-center">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+              <div className="flex items-center justify-center" data-oid="ni8hel6">
+                <div
+                  className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"
+                  data-oid="o6d1ula"
+                ></div>
                 Creating Story...
               </div>
             ) : (
