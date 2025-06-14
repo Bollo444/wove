@@ -3,13 +3,18 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY package*.json ./
+COPY frontend/wove-web/package*.json ./
+
+# Copy shared directory
+COPY shared ./shared
 
 # Install dependencies
-RUN npm install
+RUN rm -rf node_modules package-lock.json
+RUN npm cache clean --force
+RUN npm install --legacy-peer-deps
 
-# Copy the rest of the application code
-COPY . .
+# Copy the rest of the application code from frontend/wove-web
+COPY frontend/wove-web/ .
 
 # Expose the port the app runs on
 EXPOSE 3000

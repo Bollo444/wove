@@ -124,21 +124,21 @@ const DigitalBookViewer: React.FC<DigitalBookViewerProps> = ({ bookId }) => {
 
   if (isLoading)
     return (
-      <div className="text-center p-10" data-oid="3wrgnov">
+      <div className="text-center p-10" data-oid="pyc.v76">
         Loading book...
       </div>
     );
 
   if (error)
     return (
-      <div className="text-center p-10 text-red-500" data-oid="5lme1eu">
+      <div className="text-center p-10 text-red-500" data-oid="dvr6p3m">
         Error: {error}
       </div>
     );
 
   if (!book || !currentBookPage)
     return (
-      <div className="text-center p-10" data-oid="i62.z9l">
+      <div className="text-center p-10" data-oid="3in9q6n">
         Book not found or page missing.
       </div>
     );
@@ -146,31 +146,31 @@ const DigitalBookViewer: React.FC<DigitalBookViewerProps> = ({ bookId }) => {
   return (
     <div
       className="digital-book-viewer flex flex-col items-center p-4 bg-gray-100 rounded-lg shadow-xl"
-      data-oid="d-n8aio"
+      data-oid="4kblfc2"
     >
-      <h2 className="text-2xl font-bold text-gray-800 mb-2" data-oid="voxwwj7">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2" data-oid="8b:2ayk">
         {book.title}
       </h2>
-      <p className="text-sm text-gray-600 mb-4" data-oid="frmxusl">
+      <p className="text-sm text-gray-600 mb-4" data-oid="f.xlk5w">
         by {book.authorName}
       </p>
 
       {/* Page Display Area - Placeholder for actual book-like layout */}
       <div
         className="book-page w-full max-w-2xl bg-white p-6 md:p-10 shadow-inner min-h-[60vh] overflow-y-auto border border-gray-300 rounded"
-        data-oid="-.lwev:"
+        data-oid="r9hrs86"
       >
         {/* This would ideally use a more sophisticated page rendering, perhaps with columns or a flipbook library */}
         {currentBookPage.segments.map(segment => (
-          <div key={segment.id} className="mb-4" data-oid="izsull7">
+          <div key={segment.id} className="mb-4" data-oid="qf-n140">
             {segment.mediaAssets?.map(asset => (
-              <div key={asset.id} className="my-2" data-oid="wbf1g85">
+              <div key={asset.id} className="my-2" data-oid="bx4fpu.">
                 {asset.type === 'image' && (
                   <img
                     src={asset.url}
                     alt={asset.altText}
                     className="max-w-full h-auto rounded mx-auto"
-                    data-oid="a-qylmj"
+                    data-oid="6-d9zqf"
                   />
                 )}
                 {/* Add video/audio display if needed in book format */}
@@ -179,7 +179,7 @@ const DigitalBookViewer: React.FC<DigitalBookViewerProps> = ({ bookId }) => {
             <div
               className="prose prose-sm sm:prose-base"
               dangerouslySetInnerHTML={{ __html: segment.content }}
-              data-oid="dfbvita"
+              data-oid="a3h0gkl"
             />
           </div>
         ))}
@@ -188,18 +188,18 @@ const DigitalBookViewer: React.FC<DigitalBookViewerProps> = ({ bookId }) => {
       {/* Navigation Controls */}
       <div
         className="navigation-controls flex justify-between items-center w-full max-w-2xl mt-6"
-        data-oid="zfc:mje"
+        data-oid="d59i6p:"
       >
         <button
           onClick={goToPreviousPage}
           disabled={currentPage === 0}
           className="btn-secondary px-4 py-2 disabled:opacity-50"
           aria-label="Previous Page"
-          data-oid="1x-qug3"
+          data-oid="1x:-z.b"
         >
           &larr; Previous
         </button>
-        <span className="page-number text-gray-700" data-oid=":x6.5ur">
+        <span className="page-number text-gray-700" data-oid="fv:1jdp">
           Page {currentPage + 1} of {book.pages.length}
         </span>
         <button
@@ -207,7 +207,7 @@ const DigitalBookViewer: React.FC<DigitalBookViewerProps> = ({ bookId }) => {
           disabled={currentPage >= book.pages.length - 1}
           className="btn-secondary px-4 py-2 disabled:opacity-50"
           aria-label="Next Page"
-          data-oid="v_06t_e"
+          data-oid="3:xyq-7"
         >
           Next &rarr;
         </button>

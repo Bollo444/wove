@@ -5,7 +5,8 @@ WORKDIR /app
 # Copy package.json only (avoid package-lock.json issues)
 COPY package.json ./
 
-# Clear npm cache and install dependencies
+# Clear npm cache, remove old modules/lockfile, and install dependencies
+RUN rm -rf node_modules package-lock.json
 RUN npm cache clean --force
 RUN npm install --legacy-peer-deps
 

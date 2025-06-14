@@ -70,7 +70,7 @@ const NotificationBell: React.FC<NotificationBellProps> = ({ className = '' }) =
 
   return (
     <>
-      <div className={`relative ${className}`} data-oid="3eq6552">
+      <div className={`relative ${className}`} data-oid="m9kh.vh">
         <button
           onClick={handleToggle}
           className={`
@@ -82,19 +82,19 @@ const NotificationBell: React.FC<NotificationBellProps> = ({ className = '' }) =
           `}
           aria-label={`Notifications${unreadCount > 0 ? ` (${unreadCount} unread)` : ''}`}
           disabled={loading}
-          data-oid="xlr5btp"
+          data-oid="271wkc7"
         >
           {/* Bell Icon */}
-          <span className="text-xl" data-oid="zqm0_zq">
+          <span className="text-xl" data-oid="ihu.qg0">
             {getBellIcon()}
           </span>
 
           {/* Loading Indicator */}
           {loading && (
-            <div className="absolute inset-0 flex items-center justify-center" data-oid="uw5a.h0">
+            <div className="absolute inset-0 flex items-center justify-center" data-oid="-t8aao2">
               <div
                 className="w-4 h-4 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"
-                data-oid="7:li-.7"
+                data-oid="-h8yp_1"
               ></div>
             </div>
           )}
@@ -109,7 +109,7 @@ const NotificationBell: React.FC<NotificationBellProps> = ({ className = '' }) =
               min-w-[1.25rem] h-5
               animate-pulse
             `}
-              data-oid=":zv89yq"
+              data-oid="x6w_7fi"
             >
               {unreadCount > 99 ? '99+' : unreadCount}
             </span>
@@ -119,13 +119,13 @@ const NotificationBell: React.FC<NotificationBellProps> = ({ className = '' }) =
           {isOpen && (
             <div
               className="absolute inset-0 rounded-full border-2 border-blue-500 animate-pulse"
-              data-oid="3f94gn6"
+              data-oid="67oykyi"
             ></div>
           )}
         </button>
 
         {/* Tooltip for accessibility */}
-        <div className="sr-only" data-oid="2sg:545">
+        <div className="sr-only" data-oid="2v0cj6:">
           {unreadCount > 0
             ? `You have ${unreadCount} unread notification${unreadCount === 1 ? '' : 's'}`
             : 'No unread notifications'}
@@ -133,7 +133,7 @@ const NotificationBell: React.FC<NotificationBellProps> = ({ className = '' }) =
       </div>
 
       {/* Notification Center */}
-      <NotificationCenter isOpen={isOpen} onClose={handleClose} data-oid="un4chg:" />
+      <NotificationCenter isOpen={isOpen} onClose={handleClose} data-oid="4ref_on" />
     </>
   );
 };

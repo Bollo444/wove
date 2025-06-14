@@ -65,12 +65,12 @@ const Loading: React.FC<LoadingProps> = ({
     <div
       className={`${getSizeStyles()} ${getAgeThemeAnimation()} border-2 border-gray-300 border-t-purple-600 rounded-full`}
       style={{ borderTopColor: currentTheme.colors.primary }}
-      data-oid="-xhm:8t"
+      data-oid="68eb.1g"
     />
   );
 
   const renderDots = () => (
-    <div className="flex space-x-1" data-oid=":8v5cq6">
+    <div className="flex space-x-1" data-oid="p7ftomr">
       {[0, 1, 2].map(i => (
         <div
           key={i}
@@ -80,7 +80,7 @@ const Loading: React.FC<LoadingProps> = ({
             animationDelay: `${i * 0.2}s`,
             animationDuration: '1s',
           }}
-          data-oid="l4o91v."
+          data-oid="_1_biqv"
         />
       ))}
     </div>
@@ -90,12 +90,12 @@ const Loading: React.FC<LoadingProps> = ({
     <div
       className={`${getSizeStyles()} animate-pulse rounded-full`}
       style={{ backgroundColor: currentTheme.colors.primary }}
-      data-oid="_nh6apb"
+      data-oid="vsedglq"
     />
   );
 
   const renderBars = () => (
-    <div className="flex space-x-1 items-end" data-oid="r5o9tcz">
+    <div className="flex space-x-1 items-end" data-oid="31frt:q">
       {[0, 1, 2, 3].map(i => (
         <div
           key={i}
@@ -106,7 +106,7 @@ const Loading: React.FC<LoadingProps> = ({
             animationDelay: `${i * 0.15}s`,
             animationDuration: '1.2s',
           }}
-          data-oid=":97yg18"
+          data-oid="1jpjg9d"
         />
       ))}
     </div>
@@ -128,14 +128,14 @@ const Loading: React.FC<LoadingProps> = ({
   const content = (
     <div
       className={`flex flex-col items-center justify-center gap-3 ${className}`}
-      data-oid="hndu8xi"
+      data-oid="qetmekk"
     >
       {renderLoader()}
       {text && (
         <p
           className={`${getTextSize()} font-medium ${ageTier === 'kids' ? 'font-bold' : ''}`}
           style={{ color: currentTheme.colors.text.secondary }}
-          data-oid="7vw1la4"
+          data-oid="7q-28s2"
         >
           {text}
         </p>
@@ -148,7 +148,7 @@ const Loading: React.FC<LoadingProps> = ({
       <div
         className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm"
         style={{ backgroundColor: `${currentTheme.colors.background}CC` }}
-        data-oid="lcwhnxz"
+        data-oid="c8svgov"
       >
         {content}
       </div>

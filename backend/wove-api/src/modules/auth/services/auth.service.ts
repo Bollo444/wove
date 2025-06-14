@@ -15,8 +15,9 @@ import { RegistrationDto } from '../dtos/registration.dto';
 import { AgeTier, UserRole } from '@shared/types';
 import { ConfigService } from '@nestjs/config';
 import { VerificationTokenType } from '../../../database/entities/email-verification-token.entity'; // Import enum
+import { ParentalControlService } from '../../users/services/parental-control.service'; // Import ParentalControlService
 import { v4 as uuidv4 } from 'uuid'; // For token generation
-// import { MailerService } from '@nestjs-modules/mailer'; // Placeholder for email service
+import { MailService } from '../../mail/mail.service'; // Import MailService
 
 @Injectable()
 export class AuthService {
@@ -29,7 +30,8 @@ export class AuthService {
     private tokenRepository: Repository<EmailVerificationToken>,
     private jwtService: JwtService,
     private configService: ConfigService,
-    // private readonly mailerService: MailerService, // Placeholder
+    private parentalControlService: ParentalControlService, // Inject ParentalControlService
+    private readonly mailService: MailService, // Inject MailService
   ) {}
 
   // Add logger if not already present
@@ -181,23 +183,44 @@ export class AuthService {
     user.isEmailVerified = false;
     user.parentalMonitoringEnabled = parentalMonitoringEnabled || false;
 
-    if (parentalMonitoringEnabled && parentEmail) {
-      user.parentEmail = parentEmail;
-      // TODO: Here you might trigger sending a consent email to the parent
-      // await this.sendParentalConsentEmail(user, parentEmail);
-    }
-
     if (dateOfBirth) {
       user.dateOfBirth = new Date(dateOfBirth);
+      // Potentially set isParentalApprovalRequired based on age here if not already handled
+      // For now, assuming claimedAgeTier or other logic sets this flag if needed
     }
 
-    // Save the user to the database
+    // Save the user to the database first to get an ID
     const savedUser = await this.usersRepository.save(user);
 
-    // TODO: Send email verification for the user's own email if not handled by parental consent flow
-    // if (!parentalMonitoringEnabled) {
-    //  await this.sendUserEmailVerification(savedUser);
-    // }
+    if (parentalMonitoringEnabled && parentEmail) {
+      savedUser.parentEmail = parentEmail;
+      // Assuming Kids tier always requires parental approval
+      if (savedUser.currentAgeTier === AgeTier.KIDS) {
+        savedUser.isParentalApprovalRequired = true;
+      }
+      await this.usersRepository.save(savedUser); // Save again if parentEmail or isParentalApprovalRequired changed
+
+      try {
+        // Create the link request. This might throw if parent/child conditions aren't met.
+        // The ParentalControlService.createParentalLink itself doesn't send an email.
+        // It sets up the link to be approved by the child (or parent, depending on flow).
+        // For direct parental consent via email, we'll use requestParentalConsent.
+        this.logger.log(`Attempting to create parental link for child ${savedUser.email} with parent ${parentEmail}`);
+        // We might not need to create a formal 'ParentalLink' entity here if the consent email
+        // directly leads to approval. The current ParentalControlService.createParentalLink
+        // is more for a child-initiated or parent-dashboard initiated link.
+        // For now, let's assume the primary action is sending the consent email.
+        await this.requestParentalConsent(savedUser, parentEmail);
+      } catch (error) {
+        this.logger.error(`Failed to initiate parental consent for ${savedUser.email} with parent ${parentEmail}: ${error.message}`, error.stack);
+        // Decide if registration should fail or proceed with user's email verification only
+        // For now, let's log and proceed with user's own email verification as a fallback.
+        await this.createAndSendVerificationEmail(savedUser, savedUser.email, VerificationTokenType.EMAIL_VERIFICATION);
+      }
+    } else {
+      // Send email verification for the user's own email if not under parental consent flow
+      await this.createAndSendVerificationEmail(savedUser, savedUser.email, VerificationTokenType.EMAIL_VERIFICATION);
+    }
 
     // Remove the password hash before returning the user
     const { password: _, ...userWithoutPassword } = savedUser; // Corrected field name
@@ -391,20 +414,48 @@ export class AuthService {
     this.logger.log(
       `Generated verification link for ${emailToVerify} (${tokenType}): ${verificationLink}`,
     );
-    // Placeholder for sending email
-    // await this.mailerService.sendMail({
-    //   to: emailToVerify,
-    //   subject: `Verify your email for Wove (${tokenType})`,
-    //   template: 'email-verification', // or use HTML content directly
-    //   context: {
-    //     username: user.displayName || user.firstName || user.username,
-    //     verificationLink,
-    //     tokenType,
-    //   },
-    // });
-    this.logger.warn(
-      `Email sending is mocked. Verification link for ${emailToVerify}: ${verificationLink}`,
-    );
+
+    let emailSubject: string;
+    let templateName: string;
+    let emailContext: any = {
+        username: user.displayName || user.firstName || user.username,
+        verificationLink,
+        tokenType,
+    };
+
+    if (tokenType === VerificationTokenType.PARENTAL_CONSENT) {
+        emailSubject = 'Wove: Parental Consent Required';
+        templateName = 'parental-consent'; // Assuming parent's name is not directly available here, template might need adjustment
+        // Context for parental consent might be different, e.g. child's name/email
+        emailContext = {
+            parentName: 'Guardian', // Placeholder, ideally get parent's name if available
+            childEmail: user.email, // Child's email
+            consentLink: verificationLink,
+        };
+    } else if (tokenType === VerificationTokenType.EMAIL_VERIFICATION) {
+        emailSubject = 'Verify your email for Wove';
+        templateName = 'email-verification';
+    } else {
+        // Fallback or error for unhandled token types
+        this.logger.error(`Unhandled token type for email sending: ${tokenType}`);
+        return; // Or throw an error
+    }
+
+    try {
+      await this.mailService.sendEmail(
+        emailToVerify,
+        emailSubject,
+        templateName,
+        emailContext,
+      );
+      this.logger.log(`Verification email sent to ${emailToVerify} for token type ${tokenType}.`);
+    } catch (error) {
+      this.logger.error(
+        `Failed to send verification email to ${emailToVerify} for token type ${tokenType}: ${error.message}`,
+        error.stack,
+      );
+      // Optionally, re-throw or handle the error appropriately
+    }
   }
 
   /**
@@ -478,16 +529,35 @@ export class AuthService {
    * @param dateOfBirth - User's date of birth
    * @returns AgeTier enum value
    */
-  private calculateAgeTier(dateOfBirth: Date): AgeTier {
+  private calculateAgeTier(dateOfBirth: Date | string): AgeTier {
+    if (!dateOfBirth) {
+        this.logger.warn('calculateAgeTier called with no dateOfBirth, returning UNVERIFIED.');
+        return AgeTier.UNVERIFIED;
+    }
+
+    const dob = new Date(dateOfBirth);
+    if (isNaN(dob.getTime())) {
+      this.logger.warn(`Invalid dateOfBirth provided to calculateAgeTier: ${dateOfBirth}, returning UNVERIFIED.`);
+      return AgeTier.UNVERIFIED;
+    }
+
     const today = new Date();
-    const birthDate = new Date(dateOfBirth);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDifference = today.getMonth() - dob.getMonth();
+
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && today.getDate() < dob.getDate())
+    ) {
       age--;
     }
 
+    this.logger.log(`Calculated age: ${age} for DOB: ${dob.toISOString()}`);
+
+    if (age < 0) {
+        this.logger.warn(`Calculated negative age: ${age} for DOB: ${dob.toISOString()}. Returning UNVERIFIED.`);
+        return AgeTier.UNVERIFIED; // Should not happen with valid DOB from reliable source like Google
+    }
     if (age < 13) {
       return AgeTier.KIDS;
     } else if (age < 18) {

@@ -63,11 +63,11 @@ const StoryPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <Layout title="Loading Story..." data-oid="yt885th">
-        <div className="flex justify-center items-center min-h-screen" data-oid="k29bj3g">
+      <Layout title="Loading Story..." data-oid="g4l.syl">
+        <div className="flex justify-center items-center min-h-screen" data-oid="486ouei">
           <div
             className="animate-spin rounded-full h-32 w-32 border-b-2 border-purple-600"
-            data-oid="xx0wb_b"
+            data-oid="n2lrrpa"
           ></div>
         </div>
       </Layout>
@@ -76,19 +76,19 @@ const StoryPage: React.FC = () => {
 
   if (error) {
     return (
-      <Layout title="Error" data-oid="qxxm_ln">
-        <div className="max-w-4xl mx-auto px-4 py-8" data-oid="_2ijcez">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-6" data-oid="ircwhlu">
-            <h2 className="text-xl font-semibold text-red-800 mb-2" data-oid="kbgn:cg">
+      <Layout title="Error" data-oid="tma3eq7">
+        <div className="max-w-4xl mx-auto px-4 py-8" data-oid="_s_ujoy">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6" data-oid="rz.v:0a">
+            <h2 className="text-xl font-semibold text-red-800 mb-2" data-oid="6ypmd2b">
               Error Loading Story
             </h2>
-            <p className="text-red-600" data-oid="cr52lc3">
+            <p className="text-red-600" data-oid="nkpenwu">
               {error}
             </p>
             <button
               onClick={() => router.push('/explore')}
               className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
-              data-oid="1j.tomj"
+              data-oid="d4k9oc."
             >
               Back to Explore
             </button>
@@ -100,19 +100,19 @@ const StoryPage: React.FC = () => {
 
   if (!currentStory) {
     return (
-      <Layout title="Story Not Found" data-oid="t3w_68q">
-        <div className="max-w-4xl mx-auto px-4 py-8" data-oid="mzh9bjk">
-          <div className="text-center" data-oid="-3:68an">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4" data-oid="m79pwe9">
+      <Layout title="Story Not Found" data-oid="i-hnsa8">
+        <div className="max-w-4xl mx-auto px-4 py-8" data-oid="lbk:dcp">
+          <div className="text-center" data-oid="0mua_qe">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4" data-oid="g5r7l17">
               Story Not Found
             </h2>
-            <p className="text-gray-600 mb-6" data-oid="se7wp_6">
+            <p className="text-gray-600 mb-6" data-oid="pdv_ybn">
               The story you're looking for doesn't exist or you don't have permission to view it.
             </p>
             <button
               onClick={() => router.push('/explore')}
               className="bg-purple-600 text-white px-6 py-2 rounded hover:bg-purple-700 transition-colors"
-              data-oid="zo7epr8"
+              data-oid="m2_:wg6"
             >
               Back to Explore
             </button>
@@ -132,46 +132,46 @@ const StoryPage: React.FC = () => {
       !currentStory.isPrivate);
 
   return (
-    <Layout title={currentStory.title} data-oid="pikh0ur">
-      <div className="max-w-4xl mx-auto px-4 py-8" data-oid="zg4hc0s">
+    <Layout title={currentStory.title} data-oid="g.pwlyo">
+      <div className="max-w-4xl mx-auto px-4 py-8" data-oid="yzgm.gf">
         {/* Story Header */}
-        <div className="mb-8" data-oid="u5_wk-2">
-          <div className="flex items-center justify-between mb-4" data-oid="u--f7:k">
+        <div className="mb-8" data-oid="z4-su:_">
+          <div className="flex items-center justify-between mb-4" data-oid="d-0:n7z">
             <button
               onClick={() => router.push('/explore')}
               className="text-purple-600 hover:text-purple-700 flex items-center"
-              data-oid="a8zd:25"
+              data-oid="f45cd6e"
             >
               ← Back to Explore
             </button>
             <span
               className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded"
-              data-oid="d9ec9wv"
+              data-oid="opefizh"
             >
               {currentStory.ageTier}
             </span>
           </div>
 
-          <h1 className="text-3xl font-bold text-gray-800 mb-2" data-oid="k2mia_i">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2" data-oid="eh4_ijd">
             {currentStory.title}
           </h1>
           {currentStory.description && (
-            <p className="text-gray-600 text-lg mb-4" data-oid="ulda74p">
+            <p className="text-gray-600 text-lg mb-4" data-oid=":z138yl">
               {currentStory.description}
             </p>
           )}
 
-          <div className="flex items-center space-x-4 text-sm text-gray-500" data-oid="jmhcad4">
-            <span data-oid="ex7.4dn">Status: {currentStory.status}</span>
-            <span data-oid=":5q00e0">•</span>
-            <span data-oid=":2gdyz3">{currentStory.segments?.length || 0} segments</span>
-            <span data-oid="61h6ung">•</span>
-            <span data-oid="_a85ett">{currentStory.collaborators?.length || 0} collaborators</span>
+          <div className="flex items-center space-x-4 text-sm text-gray-500" data-oid=".kh59g_">
+            <span data-oid="m6v78-m">Status: {currentStory.status}</span>
+            <span data-oid="aa2cns:">•</span>
+            <span data-oid="p6gxrqb">{currentStory.segments?.length || 0} segments</span>
+            <span data-oid="u8jq87i">•</span>
+            <span data-oid="fbtz4ov">{currentStory.collaborators?.length || 0} collaborators</span>
           </div>
         </div>
 
         {/* Story Segments */}
-        <div className="space-y-6 mb-8" data-oid="nsbp-xq">
+        <div className="space-y-6 mb-8" data-oid=".47fpfe">
           {currentStory.segments && currentStory.segments.length > 0 ? (
             currentStory.segments
               .sort((a, b) => a.position - b.position)
@@ -182,19 +182,19 @@ const StoryPage: React.FC = () => {
                   isCurrentUserTurn={canContribute}
                   onEdit={handleEditSegment}
                   onAddChoice={handleAddChoiceToSegment}
-                  data-oid="rl.fy6f"
+                  data-oid="yn-zxpy"
                 />
               ))
           ) : (
-            <div className="text-center py-12 bg-gray-50 rounded-lg" data-oid="vevu5p.">
-              <h3 className="text-xl font-semibold text-gray-700 mb-2" data-oid="da9kgpe">
+            <div className="text-center py-12 bg-gray-50 rounded-lg" data-oid="68rpvnl">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2" data-oid="4x:kwjr">
                 No segments yet
               </h3>
-              <p className="text-gray-500 mb-4" data-oid="ml7-isn">
+              <p className="text-gray-500 mb-4" data-oid="yfqo:pa">
                 This story is waiting for its first chapter.
               </p>
               {canContribute && (
-                <p className="text-purple-600" data-oid="vsi.jz6">
+                <p className="text-purple-600" data-oid="nwyu2sp">
                   Be the first to contribute!
                 </p>
               )}
@@ -204,8 +204,8 @@ const StoryPage: React.FC = () => {
 
         {/* Add Segment Form */}
         {canContribute && (
-          <div className="bg-white border border-gray-200 rounded-lg p-6" data-oid="1-w:ilx">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4" data-oid="9bky45e">
+          <div className="bg-white border border-gray-200 rounded-lg p-6" data-oid="0.bcu5t">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4" data-oid="tf57sl4">
               Continue the Story
             </h3>
             <textarea
@@ -214,18 +214,18 @@ const StoryPage: React.FC = () => {
               placeholder="Write the next part of the story..."
               className="w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
               disabled={isAddingSegment}
-              data-oid="5ht4.gt"
+              data-oid="tbya2kb"
             />
 
-            <div className="flex justify-between items-center mt-4" data-oid="yla2z._">
-              <span className="text-sm text-gray-500" data-oid=".6_qcc4">
+            <div className="flex justify-between items-center mt-4" data-oid="u73r1uj">
+              <span className="text-sm text-gray-500" data-oid="_-0g251">
                 {currentUserInput.length} characters
               </span>
               <button
                 onClick={handleAddSegment}
                 disabled={!currentUserInput.trim() || isAddingSegment}
                 className="bg-purple-600 text-white px-6 py-2 rounded hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                data-oid="ias397."
+                data-oid="a-8ul_3"
               >
                 {isAddingSegment ? 'Adding...' : 'Add Segment'}
               </button>
@@ -234,17 +234,17 @@ const StoryPage: React.FC = () => {
         )}
 
         {!user && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8" data-oid="bnj-_-v">
-            <h3 className="text-lg font-semibold text-blue-800 mb-2" data-oid="lthcnvo">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8" data-oid="wv4hay6">
+            <h3 className="text-lg font-semibold text-blue-800 mb-2" data-oid="ibjpbwt">
               Join the Story
             </h3>
-            <p className="text-blue-600 mb-4" data-oid="ltf72ig">
+            <p className="text-blue-600 mb-4" data-oid="mbmr4.2">
               Sign in to contribute to this collaborative story.
             </p>
             <button
               onClick={() => router.push('/login')}
               className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors"
-              data-oid="jeu:m2g"
+              data-oid="1:4a5j1"
             >
               Sign In
             </button>
@@ -253,23 +253,23 @@ const StoryPage: React.FC = () => {
 
         {/* Collaboration Sidebar - Simplified for now */}
         {currentStory.collaborators && currentStory.collaborators.length > 0 && (
-          <div className="mt-8 bg-gray-50 border border-gray-200 rounded-lg p-6" data-oid="tr:w9zc">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4" data-oid="7ary-lt">
+          <div className="mt-8 bg-gray-50 border border-gray-200 rounded-lg p-6" data-oid="ug3d1_j">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4" data-oid="e0p3:lo">
               Collaborators
             </h3>
-            <div className="space-y-2" data-oid="ux5g:_:">
+            <div className="space-y-2" data-oid="opui:o8">
               {currentStory.collaborators.map(collab => (
                 <div
                   key={collab.userId}
                   className="flex items-center justify-between"
-                  data-oid="x9zntl-"
+                  data-oid="4:s08ql"
                 >
-                  <span className="text-gray-700" data-oid="udrm-6e">
+                  <span className="text-gray-700" data-oid=".svkeg7">
                     {collab.userId}
                   </span>
                   <span
                     className="text-sm text-gray-500 bg-gray-200 px-2 py-1 rounded"
-                    data-oid="84qoumf"
+                    data-oid="i4r:2jj"
                   >
                     {collab.role}
                   </span>

@@ -105,7 +105,7 @@ const Card: React.FC<CardProps> = ({
         backgroundColor: currentTheme.colors.surface,
         borderColor: currentTheme.colors.border,
       }}
-      data-oid="83pwebm"
+      data-oid="q0lf:js"
     >
       {children}
     </div>

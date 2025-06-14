@@ -89,14 +89,14 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ storyId }) => {
   };
 
   return (
-    <div className="p-4 bg-gray-100 rounded-lg shadow h-full flex flex-col" data-oid="f:6h0:x">
-      <h3 className="text-lg font-semibold text-gray-700 mb-3 border-b pb-2" data-oid="6x3myfn">
+    <div className="p-4 bg-gray-100 rounded-lg shadow h-full flex flex-col" data-oid="ule7u-y">
+      <h3 className="text-lg font-semibold text-gray-700 mb-3 border-b pb-2" data-oid="wlro6.a">
         Story Chat
       </h3>
       <div
         className="flex-grow overflow-y-auto mb-3 pr-2 space-y-3"
         style={{ maxHeight: '300px' }}
-        data-oid="8w2w.hk"
+        data-oid="qfmqpg5"
       >
         {' '}
         {/* Max height for scroll */}
@@ -104,19 +104,19 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ storyId }) => {
           <div
             key={msg.id}
             className={`flex ${msg.userId === 'currentUser' /*user?.id*/ ? 'justify-end' : 'justify-start'}`}
-            data-oid="ajah-qw"
+            data-oid="db:k2o_"
           >
             <div
               className={`max-w-xs lg:max-w-md px-3 py-2 rounded-lg shadow ${msg.userId === 'currentUser' /*user?.id*/ ? 'bg-purple-500 text-white' : 'bg-white text-gray-800'}`}
-              data-oid=".46fq6o"
+              data-oid="w1e4nsp"
             >
-              <p className="text-xs font-semibold mb-0.5" data-oid="-1x4:n.">
+              <p className="text-xs font-semibold mb-0.5" data-oid="k-h2yms">
                 {msg.userDisplayName}
               </p>
-              <p className="text-sm" data-oid="hmp67v3">
+              <p className="text-sm" data-oid="a3x-13f">
                 {msg.text}
               </p>
-              <p className="text-xs opacity-70 mt-1 text-right" data-oid="otzmum8">
+              <p className="text-xs opacity-70 mt-1 text-right" data-oid="yyslc6l">
                 {new Date(msg.timestamp).toLocaleTimeString([], {
                   hour: '2-digit',
                   minute: '2-digit',
@@ -125,9 +125,9 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ storyId }) => {
             </div>
           </div>
         ))}
-        <div ref={messagesEndRef} data-oid="l450jso" />
+        <div ref={messagesEndRef} data-oid="aqoxhu-" />
       </div>
-      <form onSubmit={handleSendMessage} className="flex" data-oid="kn-ffie">
+      <form onSubmit={handleSendMessage} className="flex" data-oid="-brhfxd">
         <input
           type="text"
           value={newMessage}
@@ -135,13 +135,13 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ storyId }) => {
           placeholder="Type your message..."
           className="input-field flex-grow mr-2"
           // disabled={!user} // Disable if not logged in
-          data-oid="71_2q4u"
+          data-oid="f12o08n"
         />
 
         <button
           type="submit"
           className="btn-primary px-4"
-          /*disabled={!user || !newMessage.trim()}*/ data-oid="yjvozlb"
+          /*disabled={!user || !newMessage.trim()}*/ data-oid="o3-asqa"
         >
           Send
         </button>

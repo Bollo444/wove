@@ -82,7 +82,7 @@ const VisualEffectsLayer: React.FC<VisualEffectsLayerProps> = ({ children }) => 
               }
             }}
             aria-hidden="true" // Decorative effect
-            data-oid="knjp1ay"
+            data-oid="drym5ro"
           />
         )}
       {/* Other effect rendering (e.g., a canvas for particle effects) could go here */}
@@ -90,15 +90,15 @@ const VisualEffectsLayer: React.FC<VisualEffectsLayerProps> = ({ children }) => 
 
       {/* For testing: buttons to trigger effects */}
       {/* 
-                <div style={{ position: 'fixed', bottom: '10px', left: '10px', zIndex: 10000, background: 'white', padding: '10px', display: 'flex', gap: '5px' }}>
-                 <button onClick={() => triggerEffect({ type: 'fadeIn', duration: 500 })}>FadeIn</button>
-                 <button onClick={() => triggerEffect({ type: 'fadeOut', duration: 1000 })}>FadeOut</button>
-                 <button onClick={() => triggerEffect({ type: 'shakeScreen', duration: 300, intensity: 0.8 })}>Shake</button>
-                 <button onClick={() => triggerEffect({ type: 'colorOverlay', color: 'rgba(255,0,0,0.2)', duration: 2000, intensity: 0.2 })}>Red Overlay</button>
-                 <button onClick={() => triggerEffect({ type: 'rain', duration: 5000 })}>Rain</button>
-                 <button onClick={clearEffect}>Clear</button>
-                </div> 
-                */}
+                  <div style={{ position: 'fixed', bottom: '10px', left: '10px', zIndex: 10000, background: 'white', padding: '10px', display: 'flex', gap: '5px' }}>
+                   <button onClick={() => triggerEffect({ type: 'fadeIn', duration: 500 })}>FadeIn</button>
+                   <button onClick={() => triggerEffect({ type: 'fadeOut', duration: 1000 })}>FadeOut</button>
+                   <button onClick={() => triggerEffect({ type: 'shakeScreen', duration: 300, intensity: 0.8 })}>Shake</button>
+                   <button onClick={() => triggerEffect({ type: 'colorOverlay', color: 'rgba(255,0,0,0.2)', duration: 2000, intensity: 0.2 })}>Red Overlay</button>
+                   <button onClick={() => triggerEffect({ type: 'rain', duration: 5000 })}>Rain</button>
+                   <button onClick={clearEffect}>Clear</button>
+                  </div> 
+                  */}
     </>
   );
 };

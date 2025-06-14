@@ -26,8 +26,8 @@ services:
   # Frontend web application
   web:
     build:
-      context: ./frontend/wove-web
-      dockerfile: Dockerfile.dev
+      context: .
+      dockerfile: frontend/wove-web/Dockerfile.dev
     container_name: wove-web
     ports:
       - "3000:3000"

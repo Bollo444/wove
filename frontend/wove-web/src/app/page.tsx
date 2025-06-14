@@ -73,7 +73,7 @@ export default function Home() {
         size="xl"
         variant={ageTier === 'kids' ? 'dots' : 'spinner'}
         text={ageTier === 'kids' ? 'Preparing your magical adventure...' : 'Loading...'}
-        data-oid="_ieh6cl"
+        data-oid="7dh0bf5"
       />
     );
   }
@@ -81,25 +81,25 @@ export default function Home() {
   return (
     <div
       className="min-h-screen bg-background text-text-primary dark:bg-background-dark dark:text-text-primary-dark transition-colors duration-300"
-      data-oid="u3qn3bm"
+      data-oid="4ql7dly"
     >
       {/* Hero Section */}
       <section
         className="relative py-24 px-4 text-center bg-gradient-to-br from-primary-light via-background to-secondary-light dark:from-primary-dark/30 dark:via-background-dark dark:to-secondary-dark/30"
-        data-oid="o6a8-l9"
+        data-oid="cjy5_zh"
       >
         <div
           className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-3"
-          data-oid="tjk39vd"
+          data-oid="35f32xh"
         ></div>{' '}
         {/* Optional: subtle grid pattern */}
-        <div className="relative max-w-4xl mx-auto" data-oid="csig_kr">
-          <div className="flex justify-center mb-6" data-oid="y4zp6p6">
+        <div className="relative max-w-4xl mx-auto" data-oid="jlm9gnd">
+          <div className="flex justify-center mb-6" data-oid="lk_t6wf">
             <Badge
               variant="primary"
               size={ageTier === 'kids' ? 'lg' : 'md'}
               className="shadow-lg"
-              data-oid=".ovuj3i"
+              data-oid="r4kgnbr"
             >
               {ageTier === 'kids'
                 ? '🎨 Creative Zone'
@@ -119,14 +119,14 @@ export default function Home() {
                   ? 'text-6xl md:text-7xl' // Increased size
                   : 'text-6xl md:text-7xl' // Increased size
             }`}
-            data-oid="npnkv3z"
+            data-oid="soc-vdd"
           >
             {content.title.includes('Wove') ? (
               <>
                 {content.title.split('Wove')[0]}
                 <span
                   className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-primary-dark dark:to-secondary-dark animate-pulse"
-                  data-oid="qf-:i1u"
+                  data-oid="kzw12i-"
                 >
                   Wove
                 </span>
@@ -145,29 +145,29 @@ export default function Home() {
                   ? 'text-2xl' // Increased size
                   : 'text-2xl' // Increased size
             }`}
-            data-oid="h_nqbx9"
+            data-oid="y7xfh_d"
           >
             {content.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16" data-oid="pj8a_nh">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16" data-oid="tpdm8.9">
             <Button
               onClick={handleStartStory}
               variant="primary"
               size={ageTier === 'kids' ? 'xl' : 'lg'} // Increased size
               className="min-w-[220px] shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              data-oid="c:8sgge"
+              data-oid="p:155xv"
             >
               {content.buttonText}
             </Button>
 
-            <Tooltip content="Discover stories from our amazing community!" data-oid="n6_:mkj">
+            <Tooltip content="Discover stories from our amazing community!" data-oid="cyulin:">
               <Button
                 onClick={handleExploreStories}
                 variant="outline"
                 size={ageTier === 'kids' ? 'xl' : 'lg'} // Increased size
                 className="min-w-[220px] shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-                data-oid="ga.q3tb"
+                data-oid="vj8_n23"
               >
                 {content.exploreText}
               </Button>
@@ -175,25 +175,25 @@ export default function Home() {
           </div>
 
           {/* Feature Cards */}
-          <div className="grid md:grid-cols-3 gap-8 mt-20" data-oid=":tni1ne">
+          <div className="grid md:grid-cols-3 gap-8 mt-20" data-oid="wozcs8l">
             {' '}
             {/* Increased gap and margin */}
             <Card
               variant="elevated"
               hover
               className="text-center p-8 bg-surface dark:bg-surface-dark rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
-              data-oid="-0xwinn"
+              data-oid="brb53c8"
             >
               {' '}
               {/* Increased padding, rounded, shadow */}
-              <div className="text-5xl mb-6 text-primary dark:text-primary-dark" data-oid="pje-3y0">
+              <div className="text-5xl mb-6 text-primary dark:text-primary-dark" data-oid="ni8p05j">
                 {' '}
                 {/* Increased size, color */}
                 {ageTier === 'kids' ? '🎨' : '✍️'}
               </div>
               <h3
                 className="text-xl font-semibold mb-3 text-text-primary dark:text-text-primary-dark"
-                data-oid="epas2o3"
+                data-oid="_g4us41"
               >
                 {' '}
                 {/* Increased size */}
@@ -201,7 +201,7 @@ export default function Home() {
               </h3>
               <p
                 className="text-md text-text-secondary dark:text-text-secondary-dark"
-                data-oid="-r:m6su"
+                data-oid="2h5_0x9"
               >
                 {' '}
                 {/* Increased size */}
@@ -214,20 +214,20 @@ export default function Home() {
               variant="elevated"
               hover
               className="text-center p-6 bg-surface dark:bg-surface-dark"
-              data-oid="kaob19n"
+              data-oid="be6_gz0"
             >
-              <div className="text-4xl mb-4" data-oid="n.:_i.g">
+              <div className="text-4xl mb-4" data-oid="7e_.hb0">
                 {ageTier === 'kids' ? '👥' : '🌍'}
               </div>
               <h3
                 className="text-lg font-semibold mb-2 text-text-primary dark:text-text-primary-dark"
-                data-oid="xr:6ty_"
+                data-oid="o0lx5ul"
               >
                 {ageTier === 'kids' ? 'Make Friends' : 'Connect'}
               </h3>
               <p
                 className="text-sm text-text-secondary dark:text-text-secondary-dark"
-                data-oid="66rlc::"
+                data-oid="stkmqlm"
               >
                 {ageTier === 'kids'
                   ? 'Share your stories and make new friends!'
@@ -238,20 +238,20 @@ export default function Home() {
               variant="elevated"
               hover
               className="text-center p-6 bg-surface dark:bg-surface-dark"
-              data-oid="fbkxkq5"
+              data-oid="xyhvcv2"
             >
-              <div className="text-4xl mb-4" data-oid="y.wrw-1">
+              <div className="text-4xl mb-4" data-oid=":43x_ts">
                 {ageTier === 'kids' ? '🌟' : '📚'}
               </div>
               <h3
                 className="text-lg font-semibold mb-2 text-text-primary dark:text-text-primary-dark"
-                data-oid="vnqy776"
+                data-oid="9a9gaj6"
               >
                 {ageTier === 'kids' ? 'Discover Fun' : 'Explore'}
               </h3>
               <p
                 className="text-sm text-text-secondary dark:text-text-secondary-dark"
-                data-oid="cr91hil"
+                data-oid="hcdf0le"
               >
                 {ageTier === 'kids'
                   ? 'Find amazing stories and fun adventures!'
@@ -261,8 +261,8 @@ export default function Home() {
           </div>
 
           {/* Demo Modal Button */}
-          <div className="mt-12" data-oid="00s-zoh">
-            <Button onClick={() => setShowModal(true)} variant="ghost" size="sm" data-oid="u1bd6_d">
+          <div className="mt-12" data-oid="qoz9z6t">
+            <Button onClick={() => setShowModal(true)} variant="ghost" size="sm" data-oid="e_u8ne6">
               See UI Demo
             </Button>
           </div>
@@ -275,73 +275,73 @@ export default function Home() {
         onClose={() => setShowModal(false)}
         title="UI Components Demo"
         size="lg"
-        data-oid="emfi0u5"
+        data-oid="atjo-cm"
       >
-        <div className="space-y-6" data-oid="sw8ki.y">
-          <div data-oid="53are9:">
+        <div className="space-y-6" data-oid="5caiae1">
+          <div data-oid="cj75dq_">
             <h4
               className="font-semibold mb-3 text-text-primary dark:text-text-primary-dark"
-              data-oid="n5ef5v5"
+              data-oid="-7q:dp5"
             >
               Buttons
             </h4>
-            <div className="flex flex-wrap gap-2" data-oid="nuwvf-i">
-              <Button variant="primary" size="sm" data-oid=".8kfa6-">
+            <div className="flex flex-wrap gap-2" data-oid="-e53h7_">
+              <Button variant="primary" size="sm" data-oid="43p:49f">
                 Primary
               </Button>
-              <Button variant="secondary" size="sm" data-oid="o1k9.t_">
+              <Button variant="secondary" size="sm" data-oid="9wmi2h:">
                 Secondary
               </Button>
-              <Button variant="outline" size="sm" data-oid="zlwjo-d">
+              <Button variant="outline" size="sm" data-oid="w.n9piu">
                 Outline
               </Button>
-              <Button variant="ghost" size="sm" data-oid="x:ii-2-">
+              <Button variant="ghost" size="sm" data-oid="rjmxu79">
                 Ghost
               </Button>
             </div>
           </div>
 
-          <div data-oid="-u6tpuo">
+          <div data-oid="yzkqo6t">
             <h4
               className="font-semibold mb-3 text-text-primary dark:text-text-primary-dark"
-              data-oid="1nk9k3r"
+              data-oid="r8mz:d."
             >
               Badges
             </h4>
-            <div className="flex flex-wrap gap-2" data-oid="nkr-6zh">
-              <Badge variant="primary" data-oid="fj8s9cv">
+            <div className="flex flex-wrap gap-2" data-oid="s4xd1v7">
+              <Badge variant="primary" data-oid="1-bz771">
                 Primary
               </Badge>
-              <Badge variant="success" data-oid="so:n1y:">
+              <Badge variant="success" data-oid="2:wqqs0">
                 Success
               </Badge>
-              <Badge variant="warning" data-oid="9wc6dn.">
+              <Badge variant="warning" data-oid="op766vm">
                 Warning
               </Badge>
-              <Badge variant="error" data-oid="uxiom3l">
+              <Badge variant="error" data-oid="guv0l9w">
                 Error
               </Badge>
-              <Badge dot variant="info" data-oid="3ybqyag">
+              <Badge dot variant="info" data-oid="64to.l:">
                 With Dot
               </Badge>
             </div>
           </div>
 
-          <div data-oid="k48cx7_">
+          <div data-oid=".m53..m">
             <h4
               className="font-semibold mb-3 text-text-primary dark:text-text-primary-dark"
-              data-oid="dda:.7n"
+              data-oid="y.axzkl"
             >
               Cards
             </h4>
-            <div className="grid grid-cols-2 gap-4" data-oid="p:js7b.">
-              <Card variant="default" padding="md" data-oid="bb8:h4b">
-                <p className="text-sm" data-oid="pez.:39">
+            <div className="grid grid-cols-2 gap-4" data-oid="p:qpoqt">
+              <Card variant="default" padding="md" data-oid="4s8wln0">
+                <p className="text-sm" data-oid="b-eiv19">
                   Default Card
                 </p>
               </Card>
-              <Card variant="elevated" padding="md" data-oid="w9t1e-a">
-                <p className="text-sm" data-oid="bvs601w">
+              <Card variant="elevated" padding="md" data-oid="o0zveiz">
+                <p className="text-sm" data-oid="iz35c20">
                   Elevated Card
                 </p>
               </Card>

@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# Node modules
+**/node_modules
+
+# IDE & OS specific
+.vscode
+.idea
+.DS_Store
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files - specific project .env files should be managed carefully
+# .env
+# .env.*
+# !.env.example
+# !.env.docker
+
+# Build outputs (if any at root, or specific ones)
+**/dist
+**/build
+
+# Docker - sometimes docker-compose.yml might be versioned, but local overrides shouldn't
+# docker-compose.override.yml

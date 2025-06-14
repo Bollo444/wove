@@ -11,9 +11,9 @@ const BookViewerPage: React.FC = () => {
 
   if (!bookId) {
     return (
-      <Layout title="Error - Wove" data-oid="c:9mfo4">
-        <div className="text-center p-10" data-oid="g4kz-8.">
-          <p className="text-red-500" data-oid=":d.lp_6">
+      <Layout title="Error - Wove" data-oid="igrmg.k">
+        <div className="text-center p-10" data-oid="r2:v4q6">
+          <p className="text-red-500" data-oid="a-8y:fr">
             Book ID not found in URL.
           </p>
         </div>
@@ -22,10 +22,10 @@ const BookViewerPage: React.FC = () => {
   }
 
   return (
-    <Layout title="Reading Book - Wove" data-oid="hwyyf4e">
+    <Layout title="Reading Book - Wove" data-oid="8weu1_u">
       {' '}
       {/* Title could be dynamic based on fetched book data */}
-      <DigitalBookViewer bookId={bookId} data-oid="cgycbw:" />
+      <DigitalBookViewer bookId={bookId} data-oid="ndyc49u" />
     </Layout>
   );
 };

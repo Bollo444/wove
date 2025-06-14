@@ -16,9 +16,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       clientID: configService.get<string>('GOOGLE_CLIENT_ID'),
       clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET'),
       callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL'), // e.g., http://localhost:3001/auth/google/callback
-      scope: ['email', 'profile', 'https://www.googleapis.com/auth/user.birthday.read'], // Request birthday for age verification
-      passReqToCallback: false, // Explicitly set based on validate signature
-    } as StrategyOptions); // Cast to StrategyOptions to satisfy the constructor
+      scope: ['email', 'profile', 'https://www.googleapis.com/auth/user.birthday.read'], // Added birthday scope
+    });
     this.logger.log(
       'GoogleStrategy initialized. Ensure GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, and GOOGLE_CALLBACK_URL are set in .env',
     );
@@ -27,41 +26,55 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   async validate(
     accessToken: string,
     refreshToken: string,
-    profile: Profile,
+    profile: any, // Profile type from 'passport-google-oauth20'
     done: VerifyCallback,
   ): Promise<any> {
-    const { name, emails, photos, _json } = profile;
-    this.logger.debug(`Google Profile received: ${JSON.stringify(profile._json)}`);
+    const { id, name, emails, photos, _json } = profile; // Added _json to access raw profile data
+    this.logger.log(`Validating Google profile for email: ${emails?.[0]?.value}`);
 
-    const birthdayData = (_json as any).birthdays?.[0]?.date;
-    let dateOfBirth: Date | undefined;
-    if (birthdayData && birthdayData.year && birthdayData.month && birthdayData.day) {
-      dateOfBirth = new Date(birthdayData.year, birthdayData.month - 1, birthdayData.day);
+    if (!emails || emails.length === 0) {
+      this.logger.error('Google profile did not return an email.');
+      return done(new Error('No email found in Google profile'), false);
+    }
+
+    let dateOfBirth: Date | undefined = undefined;
+    // Google People API returns birthdays in the 'birthdays' field
+    // The structure is an array, and we need to parse year, month, day
+    // Example: _json.birthdays = [ { metadata: { primary: true, source: { type: 'ACCOUNT', id: 'xxx' } }, date: { year: 1990, month: 1, day: 15 } } ]
+    if (_json?.birthdays && Array.isArray(_json.birthdays) && _json.birthdays.length > 0) {
+      const birthdayEntry = _json.birthdays.find(b => b.date && b.date.year && b.date.month && b.date.day);
+      if (birthdayEntry && birthdayEntry.date) {
+        const { year, month, day } = birthdayEntry.date;
+        // Ensure year, month, and day are valid numbers before creating a Date object
+        if (typeof year === 'number' && typeof month === 'number' && typeof day === 'number') {
+          dateOfBirth = new Date(year, month - 1, day); // Month is 0-indexed in JS Date
+          this.logger.log(`Extracted date of birth: ${dateOfBirth.toISOString()}`);
+        } else {
+          this.logger.warn('Birthday data found but year, month, or day was not a number:', birthdayEntry.date);
+        }
+      } else {
+        this.logger.log('No primary birthday entry with year, month, and day found in Google profile.');
+      }
     } else {
-      this.logger.warn(
-        `Birthday data not found or incomplete in Google profile for ${emails?.[0]?.value}. Age verification might be impacted.`,
-      );
+      this.logger.log('No birthdays field found or it is empty in Google profile _json.');
     }
 
     const googleUser = {
-      email: emails?.[0]?.value,
-      firstName: name?.givenName,
-      lastName: name?.familyName,
+      googleId: id,
+      email: emails[0].value,
+      firstName: name?.givenName || '',
+      lastName: name?.familyName || '',
       picture: photos?.[0]?.value,
       accessToken,
-      googleId: profile.id,
-      dateOfBirth,
+      refreshToken, // Note: refreshToken might not always be provided by Google
+      dateOfBirth, // Assign extracted date of birth
     };
 
-    try {
-      this.logger.log(`User validated via Google: ${googleUser.email}`);
-      done(null, googleUser);
-    } catch (err) {
-      this.logger.error(
-        `Error during Google OAuth validation for ${googleUser.email}: ${err.message}`,
-        err.stack,
-      );
-      done(err, false);
-    }
+    this.logger.debug(`Google user constructed: ${JSON.stringify(googleUser)}`);
+
+    // Here, you might want to call authService to find or create the user
+    // For now, we just pass the constructed googleUser to the callback
+    // The AuthController's google/callback route will handle user processing
+    return done(null, googleUser);
   }
 }

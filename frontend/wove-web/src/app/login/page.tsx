@@ -96,45 +96,45 @@ const ExplorePage: React.FC = () => {
     filters.searchTerm || filters.genre || filters.ageTier || filters.sortBy !== 'popularity';
 
   return (
-    <Layout title="Explore Stories - Wove" data-oid="10687oc">
-      <div className="container mx-auto py-8 px-4" data-oid="0:mb6ut">
-        <div className="text-center mb-8" data-oid="6voj8as">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4" data-oid="s.w8_5y">
+    <Layout title="Explore Stories - Wove" data-oid="dj7c:.e">
+      <div className="container mx-auto py-8 px-4" data-oid="2nda4ke">
+        <div className="text-center mb-8" data-oid="xqtgpgj">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4" data-oid="nny-rig">
             Discover Amazing Stories
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto" data-oid="m4ckyd5">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto" data-oid="bbimlfe">
             Explore interactive stories created by our community of storytellers
           </p>
         </div>
 
         {/* Enhanced Filter UI */}
-        <div className="mb-8 bg-white rounded-lg shadow-lg p-6" data-oid="k14i11j">
+        <div className="mb-8 bg-white rounded-lg shadow-lg p-6" data-oid="0xhjr8.">
           <div
             className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4"
-            data-oid="xrpd7wz"
+            data-oid="sovs_9l"
           >
-            <h2 className="text-xl font-semibold text-gray-700 mb-4 lg:mb-0" data-oid="3vgh12n">
+            <h2 className="text-xl font-semibold text-gray-700 mb-4 lg:mb-0" data-oid="0cbokus">
               Find Your Perfect Story
             </h2>
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
                 className="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center"
-                data-oid="z-5thv0"
+                data-oid="8t9qtsv"
               >
                 <svg
                   className="w-4 h-4 mr-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  data-oid="gorw1s9"
+                  data-oid="e2e_1i0"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M6 18L18 6M6 6l12 12"
-                    data-oid="zcew7di"
+                    data-oid="vd-y.rh"
                   />
                 </svg>
                 Clear All Filters
@@ -142,17 +142,17 @@ const ExplorePage: React.FC = () => {
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" data-oid="cm5f8-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" data-oid="0:f13es">
             {/* Search Input */}
-            <div className="lg:col-span-2" data-oid="llaaf7-">
+            <div className="lg:col-span-2" data-oid="3cxnnla">
               <label
                 htmlFor="searchTerm"
                 className="block text-sm font-medium text-gray-700 mb-2"
-                data-oid="h7wxis-"
+                data-oid="xi:luai"
               >
                 Search Stories
               </label>
-              <div className="relative" data-oid="3pj6.-w">
+              <div className="relative" data-oid="rkncjp2">
                 <input
                   type="text"
                   id="searchTerm"
@@ -161,37 +161,37 @@ const ExplorePage: React.FC = () => {
                   onChange={handleFilterChange}
                   placeholder="Search by title, description, or author..."
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                  data-oid="r17chxl"
+                  data-oid="ic764zn"
                 />
 
                 <div
                   className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
-                  data-oid="2wk-6vs"
+                  data-oid="k-og246"
                 >
                   <svg
                     className="h-5 w-5 text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    data-oid="jg203qg"
+                    data-oid="7brjf:z"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      data-oid="h_80wu2"
+                      data-oid="jh-rbxa"
                     />
                   </svg>
                 </div>
                 {isSearching && (
                   <div
                     className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                    data-oid="esvavod"
+                    data-oid="qe6x2g8"
                   >
                     <div
                       className="animate-spin rounded-full h-4 w-4 border-b-2 border-purple-600"
-                      data-oid="p._2v:-"
+                      data-oid="nb9pz8o"
                     ></div>
                   </div>
                 )}
@@ -199,11 +199,11 @@ const ExplorePage: React.FC = () => {
             </div>
 
             {/* Genre Filter */}
-            <div data-oid="f_spl9:">
+            <div data-oid="ime0b:s">
               <label
                 htmlFor="genre"
                 className="block text-sm font-medium text-gray-700 mb-2"
-                data-oid="vxwocn-"
+                data-oid="x6q9tmn"
               >
                 Genre
               </label>
@@ -213,13 +213,13 @@ const ExplorePage: React.FC = () => {
                 value={filters.genre}
                 onChange={handleFilterChange}
                 className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                data-oid="bnvm1b_"
+                data-oid="zriw:ka"
               >
-                <option value="" data-oid="l1q5z5.">
+                <option value="" data-oid="pcbz51a">
                   All Genres
                 </option>
                 {availableGenres.map(genre => (
-                  <option key={genre.id} value={genre.id} data-oid="n9844yd">
+                  <option key={genre.id} value={genre.id} data-oid="c4_28gl">
                     {genre.name}
                   </option>
                 ))}
@@ -227,11 +227,11 @@ const ExplorePage: React.FC = () => {
             </div>
 
             {/* Age Tier Filter */}
-            <div data-oid="zlpc8vi">
+            <div data-oid="m.tbvss">
               <label
                 htmlFor="ageTier"
                 className="block text-sm font-medium text-gray-700 mb-2"
-                data-oid="ix7kcag"
+                data-oid="3sq54yc"
               >
                 Age Group
               </label>
@@ -241,21 +241,21 @@ const ExplorePage: React.FC = () => {
                 value={filters.ageTier}
                 onChange={handleFilterChange}
                 className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                data-oid="047zfqa"
+                data-oid="colfop_"
               >
-                <option value="" data-oid="1hpvjah">
+                <option value="" data-oid=".ocdacf">
                   All Ages
                 </option>
-                <option value={AgeTier.KIDS} data-oid="paiptr-">
+                <option value={AgeTier.KIDS} data-oid="xgmzofp">
                   Kids (6-12)
                 </option>
-                <option value={AgeTier.TEENS_U16} data-oid="2z-.g0y">
+                <option value={AgeTier.TEENS_U16} data-oid="8lcc0p2">
                   Young Teens (13-15)
                 </option>
-                <option value={AgeTier.TEENS_16_PLUS} data-oid="abj1qon">
+                <option value={AgeTier.TEENS_16_PLUS} data-oid="bo3mxvf">
                   Older Teens (16-17)
                 </option>
-                <option value={AgeTier.ADULTS} data-oid="mr.iod-">
+                <option value={AgeTier.ADULTS} data-oid="f68cv9w">
                   Adults (18+)
                 </option>
               </select>
@@ -263,15 +263,15 @@ const ExplorePage: React.FC = () => {
           </div>
 
           {/* Sort Options */}
-          <div className="mt-4 pt-4 border-t border-gray-200" data-oid="xtz7f5p">
+          <div className="mt-4 pt-4 border-t border-gray-200" data-oid="a5gwji2">
             <label
               htmlFor="sortBy"
               className="block text-sm font-medium text-gray-700 mb-2"
-              data-oid="_c1kzcj"
+              data-oid="6uivf3k"
             >
               Sort By
             </label>
-            <div className="flex flex-wrap gap-2" data-oid="qktxmth">
+            <div className="flex flex-wrap gap-2" data-oid="iyy.v10">
               {[
                 { value: 'popularity', label: 'Most Popular' },
                 { value: 'newest', label: 'Newest First' },
@@ -286,7 +286,7 @@ const ExplorePage: React.FC = () => {
                       ? 'border-purple-500 bg-purple-50 text-purple-700'
                       : 'border-gray-300 hover:border-gray-400'
                   }`}
-                  data-oid="qi27ici"
+                  data-oid="40tulja"
                 >
                   <input
                     type="radio"
@@ -295,10 +295,10 @@ const ExplorePage: React.FC = () => {
                     checked={filters.sortBy === option.value}
                     onChange={handleFilterChange}
                     className="sr-only"
-                    data-oid="fo83n_a"
+                    data-oid="iwz12jr"
                   />
 
-                  <span className="text-sm font-medium" data-oid="kx9j:fw">
+                  <span className="text-sm font-medium" data-oid="du6qn3n">
                     {option.label}
                   </span>
                 </label>
@@ -308,27 +308,27 @@ const ExplorePage: React.FC = () => {
         </div>
 
         {/* Results Summary */}
-        <div className="mb-6 flex items-center justify-between" data-oid="h4zma9t">
-          <div className="text-gray-600" data-oid="0_yy2gz">
+        <div className="mb-6 flex items-center justify-between" data-oid="v6-5lkp">
+          <div className="text-gray-600" data-oid="fo:0ntq">
             {isLoading ? (
-              <span data-oid="2av3rle">Loading stories...</span>
+              <span data-oid="z5iecuo">Loading stories...</span>
             ) : (
-              <span data-oid="35cia49">
+              <span data-oid="u8nau5m">
                 {stories.length} {stories.length === 1 ? 'story' : 'stories'} found
-                {filters.searchTerm && <span data-oid="0m7.bio"> for "{filters.searchTerm}"</span>}
+                {filters.searchTerm && <span data-oid="id.b-d6"> for "{filters.searchTerm}"</span>}
               </span>
             )}
           </div>
 
           {user && (
-            <div className="text-sm" data-oid="5_np:zp">
-              <span className="text-gray-500 mr-2" data-oid=":5db.4-">
+            <div className="text-sm" data-oid="77n8:b_">
+              <span className="text-gray-500 mr-2" data-oid="jip.9x:">
                 Want to share your story?
               </span>
               <a
                 href="/create"
                 className="text-purple-600 hover:text-purple-700 font-medium"
-                data-oid="aogxo8-"
+                data-oid="058ba7i"
               >
                 Create Story →
               </a>
@@ -340,10 +340,10 @@ const ExplorePage: React.FC = () => {
         {error && (
           <div
             className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
-            data-oid="p5ojcjj"
+            data-oid="llyh4_v"
           >
-            <div className="flex items-center" data-oid="55t2s5o">
-              <span className="text-red-500 mr-2" data-oid="_3gcvi-">
+            <div className="flex items-center" data-oid="nob0fqw">
+              <span className="text-red-500 mr-2" data-oid="_i0.e11">
                 ⚠
               </span>
               {error}
@@ -352,32 +352,32 @@ const ExplorePage: React.FC = () => {
         )}
 
         {/* Stories Grid */}
-        <StoryGrid stories={stories} isLoading={isLoading} error={error} data-oid="iuxwb6y" />
+        <StoryGrid stories={stories} isLoading={isLoading} error={error} data-oid="lasjy6:" />
 
         {/* Empty State */}
         {!isLoading && !error && stories.length === 0 && (
-          <div className="text-center py-12" data-oid="-2_p6a7">
-            <div className="text-gray-400 mb-4" data-oid="8c4ay3g">
+          <div className="text-center py-12" data-oid="n4f5-vz">
+            <div className="text-gray-400 mb-4" data-oid="09q25h:">
               <svg
                 className="mx-auto h-16 w-16"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                data-oid="br-xj8f"
+                data-oid="v_6l7mk"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={1}
                   d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  data-oid="grag53."
+                  data-oid="kxq:z.9"
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-medium text-gray-700 mb-2" data-oid="e4vt1xi">
+            <h3 className="text-xl font-medium text-gray-700 mb-2" data-oid="kuictig">
               {hasActiveFilters ? 'No stories match your filters' : 'No stories available yet'}
             </h3>
-            <p className="text-gray-500 mb-6" data-oid="wq_x8d.">
+            <p className="text-gray-500 mb-6" data-oid="_2hr9m.">
               {hasActiveFilters
                 ? 'Try adjusting your search criteria or clearing filters'
                 : 'Be the first to create and share a story with the community!'}
@@ -386,7 +386,7 @@ const ExplorePage: React.FC = () => {
               <button
                 onClick={clearFilters}
                 className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
-                data-oid="ozi6tz4"
+                data-oid="7v7-k:u"
               >
                 Clear Filters
               </button>
@@ -394,7 +394,7 @@ const ExplorePage: React.FC = () => {
               <a
                 href="/create"
                 className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors inline-block"
-                data-oid="yk8c6qz"
+                data-oid="_cg92y2"
               >
                 Create Your First Story
               </a>
@@ -402,7 +402,7 @@ const ExplorePage: React.FC = () => {
               <a
                 href="/register"
                 className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors inline-block"
-                data-oid="p94gb6q"
+                data-oid="83ed2jg"
               >
                 Join Wove to Create Stories
               </a>

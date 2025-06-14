@@ -19,8 +19,9 @@
 
 - [x] Implement user registration system
 - [x] Implement JWT-based authentication
-- [ ] Implement Google account integration for age verification {* Google OAuth 2.0 strategy and controller endpoints implemented. Actual user processing, age extraction logic from Google profile, and token generation in AuthService are placeholders. Requires Google Cloud project setup, API keys, and testing with live Google API. *}
-- [ ] Implement email verification for parent/guardian consent {* EmailVerificationToken entity, AuthService methods for token creation/verification, and AuthController endpoint for verification implemented. Actual email sending is a placeholder. Full parental consent flow involving ParentalControlService needs integration. *}
+- [X] Implement Google account integration for age verification {* Google OAuth 2.0 strategy updated to request 'user.birthday.read' scope and extract date of birth. AuthService's `findOrCreateUserFromGoogle` and `calculateAgeTier` methods now process this date to determine age tier and set `isAgeVerified`. Controller endpoints were already in place. **Remaining:** Requires Google Cloud project setup (enabling People API), configuring API client ID/secret in `.env`, and thorough testing with a live Google API to ensure correct age extraction and processing. *}
+- [ ] Implement email verification for parent/guardian consent {* - **Status:** `MailModule` and `MailService` created and configured. `AuthService` updated to use `MailService` for sending verification and parental consent emails. Basic email templates (`email-verification.hbs`, `parental-consent.hbs`) created.
+- **Remaining:** Refine email templates with dynamic content (e.g., parent's name). Thoroughly test the entire email verification and parental consent flow. Configure environment variables for SMTP server on deployment. Consider `ParentalControlService.createParentalLink` role in more complex scenarios. *}
 - [x] Create age verification service for ID verification
 - [x] Implement age tier system (Kids, Teens, Adults)
 - [x] Set up verification tokens for minimizing repeated verification

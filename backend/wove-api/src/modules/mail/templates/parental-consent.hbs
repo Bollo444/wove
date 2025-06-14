@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parental Consent Required</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff !important; /* Important to override link color */
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Parental Consent Required</h1>
+        <p>Hello {{ name }},</p>
+        <p>Your child, associated with the email {{ emailToVerify }}, has requested to create an account on Wove. To complete their registration, your consent is required.</p>
+        <p>Please click the button below to provide your consent:</p>
+        <a href="{{ verificationLink }}" class="button">Provide Consent</a>
+        <p>If you did not expect this email or do not wish to provide consent, no further action is required. The account will not be fully activated without your approval.</p>
+        <p>If the button above doesn't work, please copy and paste the following link into your web browser:</p>
+        <p><a href="{{ verificationLink }}">{{ verificationLink }}</a></p>
+        <p>For more information about our platform and safety policies, please visit our website.</p>
+        <p>Thanks,<br>The Wove Team</p>
+    </div>
+</body>
+</html>

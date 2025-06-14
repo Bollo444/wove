@@ -25,8 +25,8 @@ const ParentalControlsPage: React.FC = () => {
   // }
 
   return (
-    <Layout title="Parental Controls - Wove" data-oid="nkwpd44">
-      <ParentalControlDashboard data-oid="osrb68." />
+    <Layout title="Parental Controls - Wove" data-oid="6d..jls">
+      <ParentalControlDashboard data-oid="w5u.6tg" />
     </Layout>
   );
 };

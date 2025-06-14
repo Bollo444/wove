@@ -82,29 +82,17 @@ const Button: React.FC<ButtonProps> = ({
       `}
       disabled={isDisabled}
       {...props}
-      data-oid="7i8958n"
     >
       {isLoading ? (
         <>
-          <div
-            className="animate-spin rounded-full h-4 w-4 border-b-2 border-current"
-            data-oid="9k:wpk."
-          ></div>
+          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current"></div>
           Loading...
         </>
       ) : (
         <>
-          {leftIcon && (
-            <span className="flex-shrink-0" data-oid="30bgx8g">
-              {leftIcon}
-            </span>
-          )}
-          <span data-oid="d5z-ckl">{children}</span>
-          {rightIcon && (
-            <span className="flex-shrink-0" data-oid="qn7-b6p">
-              {rightIcon}
-            </span>
-          )}
+          {leftIcon && <span className="flex-shrink-0">{leftIcon}</span>}
+          <span>{children}</span>
+          {rightIcon && <span className="flex-shrink-0">{rightIcon}</span>}
         </>
       )}
     </button>

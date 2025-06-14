@@ -103,9 +103,9 @@ const AudioDisplay: React.FC<AudioDisplayProps> = ({
 
   if (!showCustomControls) {
     return (
-      <div className={`my-4 ${className || ''}`} data-oid=".gcu9.n">
+      <div className={`my-4 ${className || ''}`} data-oid="h2mqsnb">
         {title && (
-          <p className="text-sm font-medium text-gray-700 mb-1" data-oid="e-:w.xi">
+          <p className="text-sm font-medium text-gray-700 mb-1" data-oid="mryi3h-">
             {title}
           </p>
         )}
@@ -115,7 +115,7 @@ const AudioDisplay: React.FC<AudioDisplayProps> = ({
           ref={audioRef}
           loop={loop}
           className="w-full rounded-md shadow"
-          data-oid="ggvp.ym"
+          data-oid="g0z9bdu"
         >
           Your browser does not support the audio element.
         </audio>
@@ -127,23 +127,23 @@ const AudioDisplay: React.FC<AudioDisplayProps> = ({
   return (
     <div
       className={`my-4 p-3 bg-gray-50 rounded-lg shadow-md ${className || ''}`}
-      data-oid="1taqdzi"
+      data-oid="bkgbdad"
     >
-      <div className="flex items-center space-x-3" data-oid="u50weed">
+      <div className="flex items-center space-x-3" data-oid="ujl.-k3">
         {albumArtUrl && (
           <img
             src={albumArtUrl}
             alt={title || 'Album art'}
             className="w-12 h-12 rounded object-cover"
-            data-oid="7t8170s"
+            data-oid="ahejccv"
           />
         )}
-        <div data-oid="krjxtwq">
-          <p className="text-sm font-semibold text-gray-800" data-oid="5m:u4j:">
+        <div data-oid=".m.p2ak">
+          <p className="text-sm font-semibold text-gray-800" data-oid="jjdi12v">
             {title || 'Audio Track'}
           </p>
           {artist && (
-            <p className="text-xs text-gray-500" data-oid="r:3x3oi">
+            <p className="text-xs text-gray-500" data-oid=".rhwbh:">
               {artist}
             </p>
           )}
@@ -155,10 +155,10 @@ const AudioDisplay: React.FC<AudioDisplayProps> = ({
         loop={loop}
         preload="metadata"
         className="hidden"
-        data-oid="6a1oy:9"
+        data-oid="rbqpv_5"
       />
 
-      <div className="mt-2" data-oid="jzks6k:">
+      <div className="mt-2" data-oid="xoum6.a">
         <input
           type="range"
           min="0"
@@ -167,21 +167,21 @@ const AudioDisplay: React.FC<AudioDisplayProps> = ({
           onChange={handleTimeSeek}
           className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
           aria-label="Seek audio"
-          data-oid="4ff_dh3"
+          data-oid="qnn9dro"
         />
 
-        <div className="flex justify-between text-xs text-gray-500 mt-1" data-oid="6v1b4y6">
-          <span data-oid="ih-ix93">{formatTime(currentTime)}</span>
-          <span data-oid="6trdi:_">{formatTime(duration)}</span>
+        <div className="flex justify-between text-xs text-gray-500 mt-1" data-oid="2eawlmn">
+          <span data-oid="djfjbah">{formatTime(currentTime)}</span>
+          <span data-oid="0-bcy62">{formatTime(duration)}</span>
         </div>
       </div>
 
-      <div className="flex items-center justify-center space-x-3 mt-2" data-oid="6ii114j">
+      <div className="flex items-center justify-center space-x-3 mt-2" data-oid="ufvmof8">
         <button
           onClick={togglePlayPause}
           className="p-2 rounded-full hover:bg-gray-200 transition-colors"
           aria-label={isPlaying ? 'Pause' : 'Play'}
-          data-oid="ahkm9q2"
+          data-oid="az3z3f7"
         >
           {/* Placeholder for Play/Pause Icon */}
           {isPlaying ? '❚❚' : '►'}
@@ -190,7 +190,7 @@ const AudioDisplay: React.FC<AudioDisplayProps> = ({
           onClick={toggleMute}
           className="p-2 rounded-full hover:bg-gray-200 transition-colors"
           aria-label={isMuted ? 'Unmute' : 'Mute'}
-          data-oid="c-qy:_-"
+          data-oid="peep4rn"
         >
           {/* Placeholder for Volume Icon */}
           {isMuted ? '🔇' : '🔊'}
@@ -204,7 +204,7 @@ const AudioDisplay: React.FC<AudioDisplayProps> = ({
           onChange={handleVolumeChange}
           className="w-20 h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
           aria-label="Volume"
-          data-oid=".1bg3w7"
+          data-oid="-n.5j4n"
         />
       </div>
     </div>

@@ -9,6 +9,8 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { GoogleStrategy } from './strategies/google.strategy'; // Import GoogleStrategy
 import { AgeVerificationService } from './services/age-verification.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsersModule } from '../users/users.module'; // Import UsersModule
+import { MailModule } from '../mail/mail.module'; // Import MailModule
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         },
       }),
     }),
+    UsersModule, // Add UsersModule here
+    MailModule, // Add MailModule here
   ],
   controllers: [AuthController],
   providers: [AuthService, AgeVerificationService, JwtStrategy, GoogleStrategy], // Add GoogleStrategy

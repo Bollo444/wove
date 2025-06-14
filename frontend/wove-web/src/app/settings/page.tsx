@@ -21,8 +21,8 @@ const SettingsPage: React.FC = () => {
   // } // Removed extra closing brace that was here
 
   return (
-    <Layout title="Account Settings - Wove" data-oid="tho-..l">
-      <UserSettingsForm data-oid="-h0z62k" />
+    <Layout title="Account Settings - Wove" data-oid="efe91ay">
+      <UserSettingsForm data-oid="d2h79.e" />
     </Layout>
   );
 };

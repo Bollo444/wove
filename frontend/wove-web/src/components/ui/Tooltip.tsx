@@ -163,7 +163,7 @@ const Tooltip: React.FC<TooltipProps> = ({
         onMouseEnter={trigger === 'hover' ? showTooltip : undefined}
         onMouseLeave={trigger === 'hover' ? hideTooltip : undefined}
         onClick={trigger === 'click' ? toggleTooltip : undefined}
-        data-oid="ix5jmod"
+        data-oid="jwwjngu"
       >
         {children}
       </div>
@@ -182,13 +182,13 @@ const Tooltip: React.FC<TooltipProps> = ({
             borderColor: currentTheme.colors.border,
             color: currentTheme.colors.text.primary,
           }}
-          data-oid="gfsic9r"
+          data-oid="34shi0-"
         >
           {content}
           <div
             className={getArrowStyles()}
             style={{ color: currentTheme.colors.surface }}
-            data-oid="re3:8ji"
+            data-oid="8kp7r9j"
           />
         </div>
       )}

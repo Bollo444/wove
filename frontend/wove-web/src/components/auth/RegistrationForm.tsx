@@ -206,12 +206,12 @@ const RegistrationForm: React.FC = () => {
   const passwordStrength = getPasswordStrength(formData.password);
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg" data-oid="hsb_qft">
-      <div className="text-center mb-8" data-oid="4yf9zul">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2" data-oid="9fci52n">
+    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg" data-oid="sx:5i_t">
+      <div className="text-center mb-8" data-oid="th3cvph">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2" data-oid="sa9yyji">
           Join Wove
         </h2>
-        <p className="text-gray-600" data-oid=":x62-sf">
+        <p className="text-gray-600" data-oid="65emo6_">
           Create your account and start your storytelling journey
         </p>
       </div>
@@ -219,10 +219,10 @@ const RegistrationForm: React.FC = () => {
       {successMessage && (
         <div
           className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
-          data-oid="4mg_s36"
+          data-oid="850wysi"
         >
-          <div className="flex items-center" data-oid="2ngzv_i">
-            <span className="text-green-500 mr-2" data-oid="znrk18l">
+          <div className="flex items-center" data-oid="9fnf_.t">
+            <span className="text-green-500 mr-2" data-oid="7pj_ovk">
               ✓
             </span>
             {successMessage}
@@ -233,10 +233,10 @@ const RegistrationForm: React.FC = () => {
       {errors.general && (
         <div
           className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
-          data-oid=":k9cq94"
+          data-oid="j-_0q-k"
         >
-          <div className="flex items-center" data-oid="2p6pc0p">
-            <span className="text-red-500 mr-2" data-oid="xi_ap4q">
+          <div className="flex items-center" data-oid="-lztos0">
+            <span className="text-red-500 mr-2" data-oid="sop4w1a">
               ⚠
             </span>
             {errors.general}
@@ -244,14 +244,14 @@ const RegistrationForm: React.FC = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6" data-oid="j4kixhw">
+      <form onSubmit={handleSubmit} className="space-y-6" data-oid="3dul23:">
         {/* Name Fields */}
-        <div className="grid grid-cols-2 gap-4" data-oid="hqvhjx0">
-          <div data-oid="t:x2a3p">
+        <div className="grid grid-cols-2 gap-4" data-oid=":angk9u">
+          <div data-oid="vnsim8:">
             <label
               htmlFor="firstName"
               className="block text-sm font-medium text-gray-700 mb-2"
-              data-oid="g6tb5ig"
+              data-oid="250_0ot"
             >
               First Name *
             </label>
@@ -266,21 +266,21 @@ const RegistrationForm: React.FC = () => {
               }`}
               placeholder="John"
               disabled={isSubmitting}
-              data-oid="1e4tu:5"
+              data-oid="scq1235"
             />
 
             {errors.firstName && (
-              <p className="mt-1 text-sm text-red-600" data-oid="_4au.tm">
+              <p className="mt-1 text-sm text-red-600" data-oid="7pma.m2">
                 {errors.firstName}
               </p>
             )}
           </div>
 
-          <div data-oid="8u3nnin">
+          <div data-oid="7uhs.i0">
             <label
               htmlFor="lastName"
               className="block text-sm font-medium text-gray-700 mb-2"
-              data-oid="uq:57gg"
+              data-oid="rc4c84l"
             >
               Last Name *
             </label>
@@ -295,11 +295,11 @@ const RegistrationForm: React.FC = () => {
               }`}
               placeholder="Doe"
               disabled={isSubmitting}
-              data-oid="l9w5okw"
+              data-oid="x6axyku"
             />
 
             {errors.lastName && (
-              <p className="mt-1 text-sm text-red-600" data-oid="3tzig06">
+              <p className="mt-1 text-sm text-red-600" data-oid="nwuoi6_">
                 {errors.lastName}
               </p>
             )}
@@ -307,11 +307,11 @@ const RegistrationForm: React.FC = () => {
         </div>
 
         {/* Email */}
-        <div data-oid="0vluk7y">
+        <div data-oid="lkfuqfo">
           <label
             htmlFor="email"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid=":3fjdgb"
+            data-oid="v3n3kwd"
           >
             Email Address *
           </label>
@@ -326,26 +326,26 @@ const RegistrationForm: React.FC = () => {
             }`}
             placeholder="john.doe@example.com"
             disabled={isSubmitting}
-            data-oid="-ny6:u5"
+            data-oid="qwy4ges"
           />
 
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600" data-oid=":o37rf.">
+            <p className="mt-1 text-sm text-red-600" data-oid="b03yro8">
               {errors.email}
             </p>
           )}
         </div>
 
         {/* Password */}
-        <div data-oid="smqq8t8">
+        <div data-oid="5ioicpt">
           <label
             htmlFor="password"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="1_7tnuh"
+            data-oid="re8h0qm"
           >
             Password *
           </label>
-          <div className="relative" data-oid="bky6x4q">
+          <div className="relative" data-oid="719zv6b">
             <input
               type={showPassword ? 'text' : 'password'}
               id="password"
@@ -357,14 +357,14 @@ const RegistrationForm: React.FC = () => {
               }`}
               placeholder="Create a strong password"
               disabled={isSubmitting}
-              data-oid="e347:1z"
+              data-oid="n5qm88i"
             />
 
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
-              data-oid="ov4j1i6"
+              data-oid="9i_8dbp"
             >
               {showPassword ? (
                 <svg
@@ -372,14 +372,14 @@ const RegistrationForm: React.FC = () => {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  data-oid="jwmunf0"
+                  data-oid="5q9w:oo"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
-                    data-oid="tlf8-vx"
+                    data-oid="fj0:mh_"
                   />
                 </svg>
               ) : (
@@ -388,14 +388,14 @@ const RegistrationForm: React.FC = () => {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  data-oid="q_m7nyc"
+                  data-oid="z2f05w."
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    data-oid="3fa.6ba"
+                    data-oid="19xfjp2"
                   />
 
                   <path
@@ -403,7 +403,7 @@ const RegistrationForm: React.FC = () => {
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    data-oid="oyser3c"
+                    data-oid="9g.9rc4"
                   />
                 </svg>
               )}
@@ -412,9 +412,9 @@ const RegistrationForm: React.FC = () => {
 
           {/* Password Strength Indicator */}
           {formData.password && (
-            <div className="mt-2" data-oid="djz_u1l">
-              <div className="flex items-center justify-between text-sm" data-oid="129c3fo">
-                <span className="text-gray-600" data-oid="h2xfipt">
+            <div className="mt-2" data-oid="f9treyp">
+              <div className="flex items-center justify-between text-sm" data-oid="p_9ys69">
+                <span className="text-gray-600" data-oid="cma_-9f">
                   Password strength:
                 </span>
                 <span
@@ -427,38 +427,38 @@ const RegistrationForm: React.FC = () => {
                           ? 'text-blue-600'
                           : 'text-green-600'
                   }`}
-                  data-oid="xlu--uj"
+                  data-oid="l87-w66"
                 >
                   {passwordStrength.label}
                 </span>
               </div>
-              <div className="mt-1 w-full bg-gray-200 rounded-full h-2" data-oid="_mad4t6">
+              <div className="mt-1 w-full bg-gray-200 rounded-full h-2" data-oid="k_g3unz">
                 <div
                   className={`h-2 rounded-full transition-all duration-300 ${passwordStrength.color}`}
                   style={{ width: `${(passwordStrength.score / 5) * 100}%` }}
-                  data-oid="v56t5b4"
+                  data-oid="v841-9u"
                 ></div>
               </div>
             </div>
           )}
 
           {errors.password && (
-            <p className="mt-1 text-sm text-red-600" data-oid="1r:2f05">
+            <p className="mt-1 text-sm text-red-600" data-oid="1cj_d4n">
               {errors.password}
             </p>
           )}
         </div>
 
         {/* Confirm Password */}
-        <div data-oid="szg3d9u">
+        <div data-oid="2d3r8ma">
           <label
             htmlFor="confirmPassword"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="yvvb9_s"
+            data-oid="ovjn7hd"
           >
             Confirm Password *
           </label>
-          <div className="relative" data-oid="d1sxlv6">
+          <div className="relative" data-oid="ac36kst">
             <input
               type={showConfirmPassword ? 'text' : 'password'}
               id="confirmPassword"
@@ -470,14 +470,14 @@ const RegistrationForm: React.FC = () => {
               }`}
               placeholder="Confirm your password"
               disabled={isSubmitting}
-              data-oid="_0dp88j"
+              data-oid="6t:h6t_"
             />
 
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
-              data-oid=":twc9ef"
+              data-oid="oijwot2"
             >
               {showConfirmPassword ? (
                 <svg
@@ -485,14 +485,14 @@ const RegistrationForm: React.FC = () => {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  data-oid="dvbl7hb"
+                  data-oid="qmdk_nh"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
-                    data-oid="e09kmaj"
+                    data-oid="nuvk71m"
                   />
                 </svg>
               ) : (
@@ -501,14 +501,14 @@ const RegistrationForm: React.FC = () => {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  data-oid="w7lber."
+                  data-oid="d38updr"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    data-oid="ec-pi4g"
+                    data-oid="88wi65q"
                   />
 
                   <path
@@ -516,25 +516,25 @@ const RegistrationForm: React.FC = () => {
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    data-oid="t7payqb"
+                    data-oid="6eijoor"
                   />
                 </svg>
               )}
             </button>
           </div>
           {errors.confirmPassword && (
-            <p className="mt-1 text-sm text-red-600" data-oid="fcat2ty">
+            <p className="mt-1 text-sm text-red-600" data-oid="z4p.wf4">
               {errors.confirmPassword}
             </p>
           )}
         </div>
 
         {/* Date of Birth */}
-        <div data-oid="x418s49">
+        <div data-oid="n2fc4jk">
           <label
             htmlFor="dateOfBirth"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="-b2tvc."
+            data-oid="j5btnco"
           >
             Date of Birth *
           </label>
@@ -549,22 +549,22 @@ const RegistrationForm: React.FC = () => {
               errors.dateOfBirth ? 'border-red-500' : 'border-gray-300'
             }`}
             disabled={isSubmitting}
-            data-oid="qkt99r:"
+            data-oid="9gpqdc3"
           />
 
           {errors.dateOfBirth && (
-            <p className="mt-1 text-sm text-red-600" data-oid=":58du_o">
+            <p className="mt-1 text-sm text-red-600" data-oid="yjf6s2t">
               {errors.dateOfBirth}
             </p>
           )}
         </div>
 
         {/* Age Tier */}
-        <div data-oid="2er4:8l">
+        <div data-oid="0.9p4j:">
           <label
             htmlFor="ageTier"
             className="block text-sm font-medium text-gray-700 mb-2"
-            data-oid="z5wf__g"
+            data-oid="rdk94_e"
           >
             Age Group *
           </label>
@@ -577,26 +577,26 @@ const RegistrationForm: React.FC = () => {
               errors.ageTier ? 'border-red-500' : 'border-gray-300'
             }`}
             disabled={isSubmitting}
-            data-oid="blmgvga"
+            data-oid="ztfu9km"
           >
-            <option value="" data-oid="yqej-gr">
+            <option value="" data-oid="21q:-20">
               Select your age group
             </option>
-            <option value={AgeTier.KIDS} data-oid="j390rbe">
+            <option value={AgeTier.KIDS} data-oid="lv6b1hj">
               Kids (6-12 years)
             </option>
-            <option value={AgeTier.TEENS_U16} data-oid="bvp7liu">
+            <option value={AgeTier.TEENS_U16} data-oid="dp_xtb1">
               Young Teens (13-15 years)
             </option>
-            <option value={AgeTier.TEENS_16_PLUS} data-oid="w755fhw">
+            <option value={AgeTier.TEENS_16_PLUS} data-oid="-c0jnso">
               Older Teens (16-17 years)
             </option>
-            <option value={AgeTier.ADULTS} data-oid="uj25-m8">
+            <option value={AgeTier.ADULTS} data-oid="9uszint">
               Adults (18+ years)
             </option>
           </select>
           {errors.ageTier && (
-            <p className="mt-1 text-sm text-red-600" data-oid="88yqx92">
+            <p className="mt-1 text-sm text-red-600" data-oid="8wvhn.9">
               {errors.ageTier}
             </p>
           )}
@@ -604,35 +604,35 @@ const RegistrationForm: React.FC = () => {
 
         {/* Parent Email (conditional) */}
         {requiresParentEmail && (
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg" data-oid="if5ngwe">
-            <div className="flex items-start" data-oid="tkoxe0:">
+          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg" data-oid="s1ik79c">
+            <div className="flex items-start" data-oid="a64vbxk">
               <svg
                 className="h-5 w-5 text-blue-500 mt-0.5 mr-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                data-oid="r:t40ih"
+                data-oid="o2_ponm"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  data-oid="oz-d7hw"
+                  data-oid="w9.h0yq"
                 />
               </svg>
-              <div className="flex-1" data-oid="houhpnm">
-                <h4 className="text-sm font-medium text-blue-800 mb-1" data-oid="9w4armg">
+              <div className="flex-1" data-oid="66e.dvm">
+                <h4 className="text-sm font-medium text-blue-800 mb-1" data-oid="g7e83f6">
                   Parent/Guardian Consent Required
                 </h4>
-                <p className="text-sm text-blue-700 mb-3" data-oid="bctnf72">
+                <p className="text-sm text-blue-700 mb-3" data-oid="4phddp9">
                   Since you're under 16, we need a parent or guardian's email address for account
                   verification and safety.
                 </p>
                 <label
                   htmlFor="parentEmail"
                   className="block text-sm font-medium text-blue-800 mb-2"
-                  data-oid="ru7iqjr"
+                  data-oid="gkn9c7y"
                 >
                   Parent/Guardian Email *
                 </label>
@@ -647,11 +647,11 @@ const RegistrationForm: React.FC = () => {
                   }`}
                   placeholder="parent@example.com"
                   disabled={isSubmitting}
-                  data-oid="iz0s3tl"
+                  data-oid="xy9w5yo"
                 />
 
                 {errors.parentEmail && (
-                  <p className="mt-1 text-sm text-red-600" data-oid="02dj57k">
+                  <p className="mt-1 text-sm text-red-600" data-oid="kmyrf65">
                     {errors.parentEmail}
                   </p>
                 )}
@@ -661,7 +661,7 @@ const RegistrationForm: React.FC = () => {
         )}
 
         {/* Terms and Conditions */}
-        <div className="flex items-start" data-oid="-83q651">
+        <div className="flex items-start" data-oid="ajor31d">
           <input
             type="checkbox"
             id="agreedToTerms"
@@ -669,16 +669,16 @@ const RegistrationForm: React.FC = () => {
             onChange={e => setAgreedToTerms(e.target.checked)}
             className="mt-1 h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
             disabled={isSubmitting}
-            data-oid="qf_6i2f"
+            data-oid="2gd5wyo"
           />
 
-          <label htmlFor="agreedToTerms" className="ml-3 text-sm text-gray-700" data-oid="4716kna">
+          <label htmlFor="agreedToTerms" className="ml-3 text-sm text-gray-700" data-oid="381hepz">
             I agree to the{' '}
             <a
               href="/terms"
               className="text-purple-600 hover:text-purple-700 underline"
               target="_blank"
-              data-oid="o:6badk"
+              data-oid="41pq8wq"
             >
               Terms of Service
             </a>{' '}
@@ -687,7 +687,7 @@ const RegistrationForm: React.FC = () => {
               href="/privacy"
               className="text-purple-600 hover:text-purple-700 underline"
               target="_blank"
-              data-oid="iqrvcgq"
+              data-oid="m3-fa_m"
             >
               Privacy Policy
             </a>
@@ -699,13 +699,13 @@ const RegistrationForm: React.FC = () => {
           type="submit"
           disabled={isSubmitting || isLoading}
           className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          data-oid="qxalu4j"
+          data-oid="6cspu2d"
         >
           {isSubmitting || isLoading ? (
-            <div className="flex items-center justify-center" data-oid="fp70:v-">
+            <div className="flex items-center justify-center" data-oid=".-2ts5l">
               <div
                 className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"
-                data-oid="4j8qnt3"
+                data-oid="8sria34"
               ></div>
               Creating Account...
             </div>
@@ -716,13 +716,13 @@ const RegistrationForm: React.FC = () => {
       </form>
 
       {/* Login Link */}
-      <div className="mt-6 text-center" data-oid="sgpfwuf">
-        <p className="text-gray-600" data-oid="4d:336j">
+      <div className="mt-6 text-center" data-oid="ylqj0:z">
+        <p className="text-gray-600" data-oid="58v0d0b">
           Already have an account?{' '}
           <a
             href="/login"
             className="text-purple-600 hover:text-purple-700 font-medium"
-            data-oid="hrwlsda"
+            data-oid="t5jyk1o"
           >
             Sign in here
           </a>

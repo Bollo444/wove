@@ -86,7 +86,7 @@ const ParentalControlDashboard: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="text-center p-8" data-oid="198wv0f">
+      <div className="text-center p-8" data-oid="a6dg-6i">
         Loading dashboard...
       </div>
     );
@@ -94,7 +94,7 @@ const ParentalControlDashboard: React.FC = () => {
 
   if (error) {
     return (
-      <div className="text-center p-8 text-red-500" data-oid="1eoac6.">
+      <div className="text-center p-8 text-red-500" data-oid=":.na43p">
         Error: {error}
       </div>
     );
@@ -105,41 +105,41 @@ const ParentalControlDashboard: React.FC = () => {
   // }
 
   return (
-    <div className="space-y-8" data-oid="e8c90fi">
-      <h1 className="text-3xl font-bold text-gray-800" data-oid="q95bvsj">
+    <div className="space-y-8" data-oid="yujvtbz">
+      <h1 className="text-3xl font-bold text-gray-800" data-oid="isg1dvn">
         Parental Control Dashboard
       </h1>
 
       {/* Linked Child Accounts Section */}
-      <section className="p-6 bg-white rounded-lg shadow-xl" data-oid=".nwg84c">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4" data-oid="3b22kj6">
+      <section className="p-6 bg-white rounded-lg shadow-xl" data-oid="u:18o3z">
+        <h2 className="text-xl font-semibold text-gray-700 mb-4" data-oid=":19jx4.">
           Linked Child Accounts
         </h2>
         {childAccounts.length === 0 ? (
-          <p className="text-gray-600" data-oid="an36:v3">
+          <p className="text-gray-600" data-oid="12dbabf">
             No child accounts linked yet.
           </p>
         ) : (
-          <div className="space-y-4" data-oid="npf60r-">
+          <div className="space-y-4" data-oid="_f5.40t">
             {childAccounts.map(child => (
               <div
                 key={child.id}
                 className="p-4 border border-gray-200 rounded-md hover:shadow-md transition-shadow"
-                data-oid="to_-:jh"
+                data-oid="-g2dhe:"
               >
-                <h3 className="text-lg font-medium text-purple-700" data-oid="pn0wy6a">
+                <h3 className="text-lg font-medium text-purple-700" data-oid="0fj6r-4">
                   {child.displayName} ({child.ageTier})
                 </h3>
-                <p className="text-sm text-gray-500" data-oid="yvg2ku5">
+                <p className="text-sm text-gray-500" data-oid="4br9wtj">
                   Last Activity: {child.lastActivity}
                 </p>
-                <p className="text-sm text-gray-500" data-oid="jz2tsjg">
+                <p className="text-sm text-gray-500" data-oid="h:83jf9">
                   Time Spent Today: {child.timeSpentToday}
                 </p>
-                <p className="text-sm text-gray-500" data-oid="dn.vw31">
+                <p className="text-sm text-gray-500" data-oid="i8_orkr">
                   Content Restrictions: {child.contentRestrictions.join(', ') || 'None'}
                 </p>
-                <div className="mt-2" data-oid=":2ga95n">
+                <div className="mt-2" data-oid="pzkhe4k">
                   <button
                     onClick={() =>
                       handleUpdateChildSettings(child.id, {
@@ -147,7 +147,7 @@ const ParentalControlDashboard: React.FC = () => {
                       })
                     }
                     className="text-xs bg-purple-100 text-purple-700 hover:bg-purple-200 px-3 py-1 rounded-full"
-                    data-oid="030q2vb"
+                    data-oid="tgffvyq"
                   >
                     Manage Settings
                   </button>
@@ -159,50 +159,50 @@ const ParentalControlDashboard: React.FC = () => {
         <button
           onClick={() => alert('Link new child account functionality not implemented.')}
           className="mt-4 btn-secondary text-sm"
-          data-oid="pc6akq3"
+          data-oid="w-l1.aj"
         >
           Link New Child Account
         </button>
       </section>
 
       {/* Pending Requests Section */}
-      <section className="p-6 bg-white rounded-lg shadow-xl" data-oid="tk7r-06">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4" data-oid="wacdcom">
+      <section className="p-6 bg-white rounded-lg shadow-xl" data-oid="d7p6_uf">
+        <h2 className="text-xl font-semibold text-gray-700 mb-4" data-oid="chyp704">
           Pending Requests ({pendingRequests.length})
         </h2>
         {pendingRequests.length === 0 ? (
-          <p className="text-gray-600" data-oid="-eultl3">
+          <p className="text-gray-600" data-oid="cwrobi_">
             No pending requests.
           </p>
         ) : (
-          <div className="space-y-4" data-oid="j7um6kf">
+          <div className="space-y-4" data-oid="sq.-97g">
             {pendingRequests.map(req => (
               <div
                 key={req.id}
                 className="p-4 border border-amber-300 bg-amber-50 rounded-md"
-                data-oid="v0oljut"
+                data-oid="rqx3q5r"
               >
-                <h3 className="text-lg font-medium text-amber-800" data-oid="w083yfr">
+                <h3 className="text-lg font-medium text-amber-800" data-oid="o63ar0:">
                   {req.requestType} for {req.childName}
                 </h3>
-                <p className="text-sm text-gray-700" data-oid="8pbo1f1">
+                <p className="text-sm text-gray-700" data-oid="mbdjj5h">
                   {req.details}
                 </p>
-                <p className="text-xs text-gray-500" data-oid=".mk39iw">
+                <p className="text-xs text-gray-500" data-oid="d3jf3d8">
                   Requested: {req.requestedAt}
                 </p>
-                <div className="mt-3 space-x-2" data-oid="5jcu_qe">
+                <div className="mt-3 space-x-2" data-oid="kvs3wpc">
                   <button
                     onClick={() => handleApproveRequest(req.id)}
                     className="text-xs bg-green-100 text-green-700 hover:bg-green-200 px-3 py-1 rounded-full"
-                    data-oid="x:k1.k_"
+                    data-oid=".w0af:7"
                   >
                     Approve
                   </button>
                   <button
                     onClick={() => handleDenyRequest(req.id)}
                     className="text-xs bg-red-100 text-red-700 hover:bg-red-200 px-3 py-1 rounded-full"
-                    data-oid="q:st658"
+                    data-oid="rj3:2i:"
                   >
                     Deny
                   </button>

@@ -173,29 +173,29 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, onClose
   const unreadCount = notifications.filter(n => !n.read).length;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden" data-oid="4z036xi">
+    <div className="fixed inset-0 z-50 overflow-hidden" data-oid="0rn8s6f">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black bg-opacity-50"
         onClick={onClose}
-        data-oid="7b8fk2s"
+        data-oid="76aa0gk"
       />
 
       {/* Notification Panel */}
       <div
         className="absolute right-0 top-0 h-full w-full max-w-md bg-surface shadow-xl"
-        data-oid="up5b0-g"
+        data-oid="f9ygdcb"
       >
-        <div className="flex h-full flex-col" data-oid="-z5v4:j">
+        <div className="flex h-full flex-col" data-oid="zskreza">
           {/* Header */}
-          <div className="border-b border-default p-4" data-oid="4y8sl.a">
-            <div className="flex items-center justify-between" data-oid="kl.no4l">
-              <h2 className="text-lg font-semibold text-primary" data-oid="8bntu14">
+          <div className="border-b border-default p-4" data-oid="upo7xzi">
+            <div className="flex items-center justify-between" data-oid="39rwsl6">
+              <h2 className="text-lg font-semibold text-primary" data-oid="2a4-1px">
                 Notifications
                 {unreadCount > 0 && (
                   <span
                     className="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-500 rounded-full"
-                    data-oid="n0w4cqh"
+                    data-oid="igntase"
                   >
                     {unreadCount}
                   </span>
@@ -204,14 +204,14 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, onClose
               <button
                 onClick={onClose}
                 className="text-secondary hover:text-primary transition-colors"
-                data-oid="d02rivu"
+                data-oid="ew-bq48"
               >
                 ✕
               </button>
             </div>
 
             {/* Filter Tabs */}
-            <div className="mt-4 flex space-x-2" data-oid="3wivhl0">
+            <div className="mt-4 flex space-x-2" data-oid="j7l5.9r">
               {['all', 'unread', 'story', 'collaboration'].map(filterType => (
                 <button
                   key={filterType}
@@ -221,7 +221,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, onClose
                       ? 'bg-primary text-white'
                       : 'bg-gray-100 text-secondary hover:bg-gray-200'
                   }`}
-                  data-oid="98:j3n4"
+                  data-oid="..gfqtv"
                 >
                   {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
                 </button>
@@ -233,7 +233,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, onClose
               <button
                 onClick={markAllAsRead}
                 className="mt-2 text-sm text-accent hover:text-primary transition-colors"
-                data-oid="_m22kfq"
+                data-oid="noro1.j"
               >
                 Mark all as read
               </button>
@@ -241,64 +241,64 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, onClose
           </div>
 
           {/* Notifications List */}
-          <div className="flex-1 overflow-y-auto" data-oid="36xlodp">
+          <div className="flex-1 overflow-y-auto" data-oid="6nvdu11">
             {loading ? (
-              <div className="flex items-center justify-center h-32" data-oid="28ovg_9">
+              <div className="flex items-center justify-center h-32" data-oid="m7sm8kg">
                 <div
                   className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"
-                  data-oid="bxdbr3l"
+                  data-oid="w5-ifky"
                 ></div>
               </div>
             ) : filteredNotifications.length === 0 ? (
               <div
                 className="flex flex-col items-center justify-center h-32 text-secondary"
-                data-oid="r57oi01"
+                data-oid="8u91vd5"
               >
-                <div className="text-4xl mb-2" data-oid="y:5c.rt">
+                <div className="text-4xl mb-2" data-oid="_h-.hn1">
                   🔔
                 </div>
-                <p data-oid="pbycwbk">No notifications</p>
+                <p data-oid="jv7wo8o">No notifications</p>
               </div>
             ) : (
-              <div className="space-y-1" data-oid="j014qq2">
+              <div className="space-y-1" data-oid="705rg9w">
                 {filteredNotifications.map(notification => (
                   <div
                     key={notification.id}
                     className={`p-4 border-l-4 ${getPriorityColor(notification.priority)} ${
                       notification.read ? 'bg-gray-50' : 'bg-white'
                     } hover:bg-gray-50 transition-colors`}
-                    data-oid=":1q_e1w"
+                    data-oid="q3hxmjr"
                   >
-                    <div className="flex items-start justify-between" data-oid="m90:2m3">
-                      <div className="flex items-start space-x-3 flex-1" data-oid="-feoelk">
-                        <span className="text-xl" data-oid="3huw7fb">
+                    <div className="flex items-start justify-between" data-oid="x-r.2ih">
+                      <div className="flex items-start space-x-3 flex-1" data-oid="ao4:0k5">
+                        <span className="text-xl" data-oid="0k_vz:e">
                           {getNotificationIcon(notification.type)}
                         </span>
-                        <div className="flex-1 min-w-0" data-oid="kkin:q2">
-                          <div className="flex items-center space-x-2" data-oid="9f7anr-">
+                        <div className="flex-1 min-w-0" data-oid="3fbz2f_">
+                          <div className="flex items-center space-x-2" data-oid="2m6vofb">
                             <h3
                               className={`text-sm font-medium ${
                                 notification.read ? 'text-secondary' : 'text-primary'
                               }`}
-                              data-oid="7l-_o02"
+                              data-oid="46c_wd5"
                             >
                               {notification.title}
                             </h3>
                             {!notification.read && (
                               <div
                                 className="w-2 h-2 bg-blue-500 rounded-full"
-                                data-oid="r6edsob"
+                                data-oid="mxf-grt"
                               ></div>
                             )}
                           </div>
-                          <p className="mt-1 text-sm text-secondary" data-oid="8n9_:-w">
+                          <p className="mt-1 text-sm text-secondary" data-oid="gkcjw83">
                             {notification.message}
                           </p>
                           <div
                             className="mt-2 flex items-center justify-between"
-                            data-oid="ws__h82"
+                            data-oid="5gjfu81"
                           >
-                            <span className="text-xs text-gray-400" data-oid="z.:ft49">
+                            <span className="text-xs text-gray-400" data-oid="ih0alb_">
                               {formatTimestamp(notification.timestamp)}
                             </span>
                             {notification.actionUrl && (
@@ -306,7 +306,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, onClose
                                 href={notification.actionUrl}
                                 className="text-xs text-accent hover:text-primary transition-colors"
                                 onClick={() => markAsRead(notification.id)}
-                                data-oid="cf8tp0o"
+                                data-oid="2g6zx_u"
                               >
                                 {notification.actionText}
                               </a>
@@ -314,13 +314,13 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, onClose
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-2 ml-2" data-oid="md5d6f3">
+                      <div className="flex items-center space-x-2 ml-2" data-oid="cjrdwm-">
                         {!notification.read && (
                           <button
                             onClick={() => markAsRead(notification.id)}
                             className="text-xs text-accent hover:text-primary transition-colors"
                             title="Mark as read"
-                            data-oid="sin4sfs"
+                            data-oid="7zrhdlc"
                           >
                             ✓
                           </button>
@@ -329,7 +329,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ isOpen, onClose
                           onClick={() => deleteNotification(notification.id)}
                           className="text-xs text-gray-400 hover:text-red-500 transition-colors"
                           title="Delete"
-                          data-oid="4.9t107"
+                          data-oid=".tt8498"
                         >
                           🗑️
                         </button>

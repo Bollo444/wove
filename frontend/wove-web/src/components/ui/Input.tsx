@@ -74,7 +74,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputId = props.id || `input-${Math.random().toString(36).substr(2, 9)}`;
 
     return (
-      <div className="w-full" data-oid="d::n5w8">
+      <div className="w-full" data-oid="wm0-mr9">
         {label && (
           <label
             htmlFor={inputId}
@@ -82,17 +82,17 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               ageTier === 'kids' ? 'text-lg font-semibold' : ''
             }`}
             style={{ color: currentTheme.colors.text.primary }}
-            data-oid="xnvpui9"
+            data-oid="9uvvvof"
           >
             {label}
           </label>
         )}
 
-        <div className="relative" data-oid="76dyv32">
+        <div className="relative" data-oid="zbklw5z">
           {leftIcon && (
             <div
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              data-oid="_fsfojy"
+              data-oid="zoq9hee"
             >
               {leftIcon}
             </div>
@@ -116,13 +116,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               color: currentTheme.colors.text.primary,
             }}
             {...props}
-            data-oid="2opl--z"
+            data-oid="wypo7s0"
           />
 
           {rightIcon && (
             <div
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              data-oid="xlyvn:0"
+              data-oid="-bj6-7z"
             >
               {rightIcon}
             </div>
@@ -132,7 +132,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {error && (
           <p
             className={`mt-1 text-sm text-red-600 ${ageTier === 'kids' ? 'font-medium' : ''}`}
-            data-oid="akjwr2:"
+            data-oid="ybp5_my"
           >
             {error}
           </p>
@@ -141,7 +141,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {helperText && !error && (
           <p
             className={`mt-1 text-sm text-gray-500 ${ageTier === 'kids' ? 'font-medium' : ''}`}
-            data-oid="68hhlgp"
+            data-oid="djo:shn"
           >
             {helperText}
           </p>

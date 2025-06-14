@@ -71,7 +71,7 @@ export function DarkModeProvider({
   return (
     <DarkModeContext.Provider
       value={{ themeMode, setThemeMode, toggleThemeMode }}
-      data-oid="o03dn9c"
+      data-oid="rooo16p"
     >
       {children}
     </DarkModeContext.Provider>

@@ -41,10 +41,10 @@ const Footer: React.FC = () => {
       name: 'Twitter',
       href: 'https://twitter.com/wove',
       icon: (
-        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" data-oid="yghhcuv">
+        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" data-oid="is3777q">
           <path
             d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
-            data-oid="rwm4wuk"
+            data-oid="0-gwf1x"
           />
         </svg>
       ),
@@ -53,22 +53,22 @@ const Footer: React.FC = () => {
       name: 'Instagram',
       href: 'https://instagram.com/wove',
       icon: (
-        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" data-oid="io6n7wz">
+        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" data-oid="rgotd8s">
           <path
             fillRule="evenodd"
             d="M12.017 0C8.396 0 7.989.013 7.041.048 6.094.082 5.52.204 5.036.388a5.918 5.918 0 00-2.14 1.393A5.918 5.918 0 00.388 4.036C.204 4.52.082 5.094.048 6.041.013 6.989 0 7.396 0 11.017c0 3.621.013 4.028.048 4.976.034.947.156 1.521.34 2.005a5.918 5.918 0 001.393 2.14 5.918 5.918 0 002.14 1.393c.484.184 1.058.306 2.005.34.948.035 1.355.048 4.976.048 3.621 0 4.028-.013 4.976-.048.947-.034 1.521-.156 2.005-.34a5.918 5.918 0 002.14-1.393 5.918 5.918 0 001.393-2.14c.184-.484.306-1.058.34-2.005.035-.948.048-1.355.048-4.976 0-3.621-.013-4.028-.048-4.976-.034-.947-.156-1.521-.34-2.005a5.918 5.918 0 00-1.393-2.14A5.918 5.918 0 0018.982.388C18.498.204 17.924.082 16.977.048 16.029.013 15.622 0 12.001 0h.016zm-.117 2.164c3.573 0 3.993.014 5.402.08.947.034 1.462.156 1.805.26.454.176.778.387 1.12.73.343.343.554.667.73 1.12.104.343.226.858.26 1.805.066 1.409.08 1.829.08 5.402 0 3.573-.014 3.993-.08 5.402-.034.947-.156 1.462-.26 1.805a3.016 3.016 0 01-.73 1.12 3.016 3.016 0 01-1.12.73c-.343.104-.858.226-1.805.26-1.409.066-1.829.08-5.402.08-3.573 0-3.993-.014-5.402-.08-.947-.034-1.462-.156-1.805-.26a3.016 3.016 0 01-1.12-.73 3.016 3.016 0 01-.73-1.12c-.104-.343-.226-.858-.26-1.805-.066-1.409-.08-1.829-.08-5.402 0-3.573.014-3.993.08-5.402.034-.947.156-1.462.26-1.805.176-.454.387-.778.73-1.12.343-.343.667-.554 1.12-.73.343-.104.858-.226 1.805-.26 1.409-.066 1.829-.08 5.402-.08z"
             clipRule="evenodd"
-            data-oid="z50bxw0"
+            data-oid="c7e9:7."
           />
 
           <path
             fillRule="evenodd"
             d="M12.017 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12.017 16a4 4 0 110-8 4 4 0 010 8z"
             clipRule="evenodd"
-            data-oid="6m49y7b"
+            data-oid="hzr.nfs"
           />
 
-          <circle cx="18.406" cy="5.594" r="1.44" data-oid="qs95nc_" />
+          <circle cx="18.406" cy="5.594" r="1.44" data-oid="8oizeh9" />
         </svg>
       ),
     },
@@ -76,10 +76,10 @@ const Footer: React.FC = () => {
       name: 'YouTube',
       href: 'https://youtube.com/wove',
       icon: (
-        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" data-oid="5okx6rm">
+        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" data-oid="77p_rq9">
           <path
             d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-            data-oid="_ul503n"
+            data-oid="3ck:4rq"
           />
         </svg>
       ),
@@ -88,10 +88,10 @@ const Footer: React.FC = () => {
       name: 'Discord',
       href: 'https://discord.gg/wove',
       icon: (
-        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" data-oid="icx8zx4">
+        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" data-oid="3968k9s">
           <path
             d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"
-            data-oid="w1-yfaf"
+            data-oid="gzo7pyu"
           />
         </svg>
       ),
@@ -99,46 +99,46 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-white border-t border-gray-200 mt-auto" data-oid="etj5hf_">
+    <footer className="bg-white border-t border-gray-200 mt-auto" data-oid="qs1x44.">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-oid="mo5zmdn">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8" data-oid="oge-n-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-oid="i2somsb">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8" data-oid="n70yiyp">
           {/* Brand Section */}
-          <div className="lg:col-span-2" data-oid="evn2wk_">
-            <div className="flex items-center mb-4" data-oid="t:6fwox">
+          <div className="lg:col-span-2" data-oid="jim3ng-">
+            <div className="flex items-center mb-4" data-oid="adniaov">
               <div
                 className="h-8 w-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center"
-                data-oid=":rwfm78"
+                data-oid="9yb1cow"
               >
-                <span className="text-white font-bold text-lg" data-oid="inl_uf-">
+                <span className="text-white font-bold text-lg" data-oid="ghf:c61">
                   W
                 </span>
               </div>
-              <span className="ml-2 text-xl font-bold text-gray-900" data-oid="wwv:6r7">
+              <span className="ml-2 text-xl font-bold text-gray-900" data-oid="4fq_35i">
                 Wove
               </span>
             </div>
-            <p className="text-gray-600 mb-6 max-w-md" data-oid="w476a0b">
+            <p className="text-gray-600 mb-6 max-w-md" data-oid="9riwhat">
               Empowering young minds to create, share, and discover amazing stories. Join our
               community of storytellers and let your imagination soar.
             </p>
 
             {/* Newsletter Signup */}
-            <div className="mb-6" data-oid="t0nd9j5">
-              <h4 className="text-sm font-semibold text-gray-900 mb-2" data-oid="nc9a5r6">
+            <div className="mb-6" data-oid="uhhczm2">
+              <h4 className="text-sm font-semibold text-gray-900 mb-2" data-oid="2oymsra">
                 Stay Updated
               </h4>
-              <div className="flex max-w-md" data-oid="110txtv">
+              <div className="flex max-w-md" data-oid="qb8yoco">
                 <input
                   type="email"
                   placeholder="Enter your email"
                   className="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm"
-                  data-oid="rehsnzq"
+                  data-oid="t-gwn9o"
                 />
 
                 <button
                   className="px-4 py-2 bg-purple-600 text-white rounded-r-lg hover:bg-purple-700 transition-colors text-sm font-medium"
-                  data-oid="qyv.qer"
+                  data-oid="m:i5w9n"
                 >
                   Subscribe
                 </button>
@@ -146,11 +146,11 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Social Links */}
-            <div data-oid="2:bnkyq">
-              <h4 className="text-sm font-semibold text-gray-900 mb-3" data-oid="2lokug7">
+            <div data-oid="szo.a8i">
+              <h4 className="text-sm font-semibold text-gray-900 mb-3" data-oid="kgrwkp9">
                 Follow Us
               </h4>
-              <div className="flex space-x-4" data-oid="wggs:mi">
+              <div className="flex space-x-4" data-oid="4xyglq4">
                 {socialLinks.map(social => (
                   <a
                     key={social.name}
@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-purple-600 transition-colors"
                     aria-label={social.name}
-                    data-oid="ipwytac"
+                    data-oid="tzechwc"
                   >
                     {social.icon}
                   </a>
@@ -169,20 +169,20 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Platform Links */}
-          <div data-oid="i00ndkq">
+          <div data-oid="qkzhi7q">
             <h3
               className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4"
-              data-oid="u.e9ais"
+              data-oid="-l.meps"
             >
               Platform
             </h3>
-            <ul className="space-y-3" data-oid="8-l94ik">
+            <ul className="space-y-3" data-oid="wt-zp2.">
               {footerLinks.platform.map(link => (
-                <li key={link.name} data-oid="hu5d0-a">
+                <li key={link.name} data-oid="6h1dz_m">
                   <Link
                     href={link.href}
                     className="text-gray-600 hover:text-purple-600 transition-colors text-sm"
-                    data-oid="k5mokf."
+                    data-oid="c7rbq_h"
                   >
                     {link.name}
                   </Link>
@@ -192,20 +192,20 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Support Links */}
-          <div data-oid="upe1048">
+          <div data-oid="5:77vt2">
             <h3
               className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4"
-              data-oid="fwhm2nj"
+              data-oid="lm8g45."
             >
               Support
             </h3>
-            <ul className="space-y-3" data-oid="_h:fnq2">
+            <ul className="space-y-3" data-oid="pnp9s4_">
               {footerLinks.support.map(link => (
-                <li key={link.name} data-oid=":e3q7f:">
+                <li key={link.name} data-oid="h:4ff0c">
                   <Link
                     href={link.href}
                     className="text-gray-600 hover:text-purple-600 transition-colors text-sm"
-                    data-oid="giql74d"
+                    data-oid="h8jooq1"
                   >
                     {link.name}
                   </Link>
@@ -215,20 +215,20 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Legal & Company Links */}
-          <div data-oid="xv.waj8">
+          <div data-oid="z5at91c">
             <h3
               className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4"
-              data-oid="hbi:r5_"
+              data-oid="nt9_lxb"
             >
               Legal
             </h3>
-            <ul className="space-y-3 mb-6" data-oid="tnuvb7b">
+            <ul className="space-y-3 mb-6" data-oid=":wv1cfg">
               {footerLinks.legal.map(link => (
-                <li key={link.name} data-oid="2gltpf:">
+                <li key={link.name} data-oid="yx4if:s">
                   <Link
                     href={link.href}
                     className="text-gray-600 hover:text-purple-600 transition-colors text-sm"
-                    data-oid="ji-zgme"
+                    data-oid="7-_szhm"
                   >
                     {link.name}
                   </Link>
@@ -238,17 +238,17 @@ const Footer: React.FC = () => {
 
             <h3
               className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4"
-              data-oid="pru9y:5"
+              data-oid="ab1vu-9"
             >
               Company
             </h3>
-            <ul className="space-y-3" data-oid=":2o::a_">
+            <ul className="space-y-3" data-oid="8q22j8.">
               {footerLinks.company.map(link => (
-                <li key={link.name} data-oid="p_lwx-e">
+                <li key={link.name} data-oid=":-b.o2o">
                   <Link
                     href={link.href}
                     className="text-gray-600 hover:text-purple-600 transition-colors text-sm"
-                    data-oid="i5:wldb"
+                    data-oid="imaazrg"
                   >
                     {link.name}
                   </Link>
@@ -260,55 +260,55 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-200 bg-gray-50" data-oid=":s2ipw:">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6" data-oid="tjh2u81">
+      <div className="border-t border-gray-200 bg-gray-50" data-oid="cnka77a">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6" data-oid="hu_d6le">
           <div
             className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
-            data-oid="0yey:w3"
+            data-oid="xpcz-au"
           >
             <div
               className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6"
-              data-oid="sw:qbqm"
+              data-oid="o_ieic6"
             >
-              <p className="text-sm text-gray-500" data-oid="fh.a-e8">
+              <p className="text-sm text-gray-500" data-oid="yk2lj5w">
                 © {currentYear} Wove. All rights reserved.
               </p>
-              <div className="flex items-center space-x-4 text-xs text-gray-400" data-oid="czspdyb">
-                <span data-oid="7uyi_ns">Made with ❤️ for young storytellers</span>
-                <span data-oid="7ksklwv">•</span>
-                <span data-oid="v7he4zp">Version 1.0.0</span>
+              <div className="flex items-center space-x-4 text-xs text-gray-400" data-oid="5n_lwaq">
+                <span data-oid="3cs4k5:">Made with ❤️ for young storytellers</span>
+                <span data-oid="jhziwfw">•</span>
+                <span data-oid="0gypaoi">Version 1.0.0</span>
               </div>
             </div>
 
             {/* Age-Appropriate Badge */}
-            <div className="flex items-center space-x-2" data-oid="8jz0r0-">
+            <div className="flex items-center space-x-2" data-oid="wfm2ada">
               <div
                 className="flex items-center space-x-1 bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium"
-                data-oid="gag6grp"
+                data-oid="5o4dvti"
               >
-                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" data-oid="lt0czu9">
+                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" data-oid="9olqihd">
                   <path
                     fillRule="evenodd"
                     d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                     clipRule="evenodd"
-                    data-oid="lm2ba.x"
+                    data-oid="q54rx6-"
                   />
                 </svg>
-                <span data-oid="h7mpx0a">Safe for Kids</span>
+                <span data-oid="6-rzfry">Safe for Kids</span>
               </div>
               <div
                 className="flex items-center space-x-1 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium"
-                data-oid="0:68gn:"
+                data-oid="_kz3jh4"
               >
-                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" data-oid="loxdlfi">
+                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" data-oid="y4cs_7v">
                   <path
                     fillRule="evenodd"
                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
                     clipRule="evenodd"
-                    data-oid="i.h_bpn"
+                    data-oid="4pnjf9q"
                   />
                 </svg>
-                <span data-oid="7vga1t1">COPPA Compliant</span>
+                <span data-oid="ifrldkl">COPPA Compliant</span>
               </div>
             </div>
           </div>

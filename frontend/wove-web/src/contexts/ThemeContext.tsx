@@ -74,11 +74,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     isLoading: isLoading || authLoading,
   };
 
-  return (
-    <ThemeContext.Provider value={value} data-oid="rw:e:-l">
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeProvider;
