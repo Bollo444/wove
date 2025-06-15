@@ -3,7 +3,7 @@
   "description": "MCP server for shadcn/ui component references and installation guides",
   "transport": {
     "type": "sse",
-    "url": "http://localhost:3002/sse"
+    "url": "http://localhost:8812/sse"
   },
   "capabilities": {
     "tools": [

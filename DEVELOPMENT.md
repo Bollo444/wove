@@ -8,7 +8,7 @@ This guide explains how to run the Wove application locally with proper port con
 - **Backend (NestJS)**: Port 3004
 - **PostgreSQL**: Port 5432
 - **Redis**: Port 6379
-- **shadcn-ui-mcp-server**: Port 3002
+- **docker-mcp-toolkit**: Port 3002
 
 ## Quick Start
 
