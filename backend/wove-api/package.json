@@ -54,7 +54,7 @@
     "rxjs": "^7.8.1",
     "shared": "file:../../shared",
     "socket.io": "^4.8.1",
-    "typeorm": "^0.3.24"
+    "typeorm": "^0.3.26"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
